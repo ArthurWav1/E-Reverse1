@@ -1,20 +1,40 @@
 body
 {
-    background-color:burlywood;
+    background-color:darkslategray;
     margin:auto;
     width:1000px;
 }
 p {
-    color: red;
+    justify-content: left;
 }
 img {
-    width : 150px;
-    height : 150px;
-    border: 1px solid black;
+    width : 50px;
+    height : 50px;
     display: block;
 }
 
 h1{
     display: flex;
+    justify-content: center;
+
+}
+div{
+    display: flex;
+    justify-content: right;
+
+}
+
+nav  ul li { float:left; list-style: none; }
+nav  ul ul {display:none; width:150px;}
+nav  li {background:#CCCCCC;}
+nav  li a {text-decoration: none; color: #000; padding: 4px 0 4px; display:block; width:150px;}
+nav  ul {padding: 0; margin:0px; text-align:center;}
+nav  ul.niveau1 li.sousmenu:hover ul.niveau2{display:block;}
+nav  li:hover {background: lightgreen;}
+nav  li.sousmenu:hover {background: lightgreen;}
+nav{
+    position: fixed; /* Le menu a une position fixe lors de la descente dans la page */
+    text-align: center; /* alignement du texte centré */
+    width: 100%; /* largeur 100% de la fenêtre */
     justify-content: center;
 }
