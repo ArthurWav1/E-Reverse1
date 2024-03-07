@@ -15,11 +15,13 @@
     <div class="enTete">
       <img class="imageLogo" src="<c:url value='picture/logoReverse.jpg'/>" alt = "logo">
       <h1> REVERSE </h1>
-      <a href="../html/connexion.html" >
-        <img class="icon" src="../picture/log.png" alt="Login" width="50">
+
+      <a href="" >
+        <img class="icon" src="<c:url value='picture/log.png'/>" alt="Login" width="50">
+
       </a>
       <a href="" >
-        <img class="icon" src="../picture/icon_panier-removebg-preview.png" alt="Panier" width="50">
+        <img class="icon" src="<c:url value='picture/icon_panier-removebg-preview.png'/>" alt="Panier" width="50">
       </a>
 
       <div class="recherche"> <input type="search" id="site-search" name="q" />
