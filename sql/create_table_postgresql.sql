@@ -12,10 +12,6 @@ CREATE TABLE utilisateur
     password BYTEA NOT NULL
 );
 
-
-GRANT ALL ON ALL TABLES IN SCHEMA public TO Admin;
-grant all privileges on all sequences in schema public to Admin;
-
 --Création de la table panier qui représente le panier actuel d'un utilisateur avant commande
 CREATE TABLE panier
 (
