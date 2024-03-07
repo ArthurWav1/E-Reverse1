@@ -16,11 +16,11 @@
       <img class="imageLogo" src="<c:url value='picture/logoReverse.jpg'/>" alt = "logo">
       <h1> REVERSE </h1>
 
-      <a href="" >
+      <a href="<c:url value='/Connexion'/>" >
         <img class="icon" src="<c:url value='picture/log.png'/>" alt="Login" width="50">
 
       </a>
-      <a href="" >
+      <a href="<c:url value='/Panier'/>" >
         <img class="icon" src="<c:url value='picture/icon_panier-removebg-preview.png'/>" alt="Panier" width="50">
       </a>
 
