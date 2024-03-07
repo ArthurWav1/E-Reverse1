@@ -1,17 +1,8 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8">
-    <title>Reverse </title>
-    <link href="<c:url value='css/style.css'/>" rel="stylesheet">
 
-  </head>
-
-  <body>
-
+<jsp:include page="début.jsp"/>
       <div class="recherche"> <input type="search" id="site-search" name="q" />
         <input type="button" value="Recherche" />
       </div>
