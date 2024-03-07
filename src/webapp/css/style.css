@@ -1,11 +1,9 @@
 body
 {
     background-color:darkslategray;
-    margin:auto;
+    margin: auto;
+    margin-top: 20px;
     width:1000px;
-}
-p {
-    justify-content: left;
 }
 
 .imageLogo{
@@ -16,31 +14,36 @@ p {
     width : 50px;
     height : 50px;
 }
-
 h1{
     display: flex;
     justify-content: center;
 }
-
-
-nav  ul li { float:left; list-style: none; }
-nav  ul ul {display:none; width:150px;}
-nav  li {background:#CCCCCC;}
-nav  li a {text-decoration: none; color: #000; padding: 4px 0 4px; display:block; width:150px;}
-nav  ul {padding: 0; margin:0px; text-align:center;}
-nav  ul.niveau1 li.sousmenu:hover ul.niveau2{display:block;}
-nav  li:hover {background: lightgreen;}
-nav  li.sousmenu:hover {background: lightgreen;}
-nav{
-    position: fixed; /* Le menu a une position fixe lors de la descente dans la page */
-    text-align: center; /* alignement du texte centré */
+.menu ul li { float:left; list-style: none; }
+.menu ul ul {display:none; width:150px;}
+.menu  li {background:#CCCCCC;}
+.menu li a {text-decoration: none; color: #000; padding: 4px 0 4px; display:block; width:150px;}
+.menu ul {padding: 0; margin:0px; text-align:center;}
+.menu ul.niveau1 li.sousmenu:hover ul.niveau2{display:block;}
+.menu  li:hover {background: lightgreen;}
+.menu li.sousmenu:hover {background: lightgreen;}
+.menu {
+    text-align: center;
     width: 100%; /* largeur 100% de la fenêtre */
     justify-content: center;
-}
+    grid-column :1/-1;
 
+}
+.recherche{
+    grid-column :1/-1;
+
+}
 .enTete{
     /*border:2px dashed darkblue;*/
     display:grid;
-    /*position: fixed;*/
-    grid-template-columns: 150px 800px 50px 50px;
+
+    position: fixed;
+    grid-template-columns: 150px 700px 50px 50px;
+    grid-template-rows: 150px 50px 50px;
+    grid-gap: 10px;
+
 }
