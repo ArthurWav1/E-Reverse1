@@ -1,11 +1,14 @@
 package classe;
 
-public class Produit {
+public class Article {
+
+    private int id;
     private String nom;
     private double prix;
+    private int nbAcheté;
 
     // Constructeur
-    public Produit(String nom, double prix) {
+    public Article(String nom, double prix) {
         this.nom = nom;
         this.prix = prix;
     }
@@ -25,5 +28,21 @@ public class Produit {
 
     public void setPrix(double prix) {
         this.prix = prix;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getNbAcheté() {
+        return nbAcheté;
+    }
+
+    public void setNbAcheté(int nbAcheté) {
+        this.nbAcheté = nbAcheté;
     }
 }
