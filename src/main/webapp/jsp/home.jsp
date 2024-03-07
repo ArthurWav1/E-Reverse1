@@ -13,7 +13,7 @@
   <body>
 
     <div class="enTete">
-      <img class="imageLogo" src="<c:url value='picture/log.png'/>" alt = "logo">
+      <img class="imageLogo" src="<c:url value='picture/logoReverse.jpg'/>" alt = "logo">
       <h1> REVERSE </h1>
       <a href="../html/connexion.html" >
         <img class="icon" src="../picture/log.png" alt="Login" width="50">
