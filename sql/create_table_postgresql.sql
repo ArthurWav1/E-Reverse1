@@ -9,7 +9,7 @@ CREATE TABLE utilisateur
     adresse  VARCHAR(1000) NOT NULL,
     login    VARCHAR(20) NOT NULL UNIQUE,
     salt     BYTEA NOT NULL,
-    password BYTEA NOT NULL,
+    password BYTEA NOT NULL
 );
 
 
