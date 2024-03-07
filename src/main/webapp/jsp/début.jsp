@@ -12,7 +12,11 @@
 <body>
 
 <div class="enTete">
-    <img class="imageLogo" src="<c:url value='picture/logoReverse.jpg'/>" alt = "logo">
+
+    <a href="<c:url value='/'/>">
+        <img class="imageLogo" src="<c:url value='picture/logoReverse.jpg'/>" alt = "logo">
+    </a>
+
     <h1> REVERSE </h1>
 
     <a href="<c:url value='/Connexion'/>" >
@@ -22,5 +26,5 @@
     <a href="<c:url value='/Panier'/>" >
         <img class="icon" src="<c:url value='picture/icon_panier-removebg-preview.png'/>" alt="Panier" width="50">
     </a>
-    </div>
+</div>
 
