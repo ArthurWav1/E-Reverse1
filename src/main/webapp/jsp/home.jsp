@@ -1,15 +1,19 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8">
     <title>Reverse </title>
-    <link rel="stylesheet" href="../css/style.css">
+    <link href="<c:url value='css/style.css'/>" rel="stylesheet">
+
   </head>
 
   <body>
 
     <div class="enTete">
-      <img class="imageLogo" src="../picture/logoReverse.jpg" alt = "logo">
+      <img class="imageLogo" src="<c:url value='picture/log.png'/>" alt = "logo">
       <h1> REVERSE </h1>
       <a href="../html/connexion.html" >
         <img class="icon" src="../picture/log.png" alt="Login" width="50">
