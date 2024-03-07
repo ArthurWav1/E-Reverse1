@@ -30,11 +30,11 @@ h1{
     text-align: center;
     width: 100%; /* largeur 100% de la fenêtre */
     justify-content: center;
-    grid-column :1/-1;
+
 
 }
 .recherche{
-    grid-column :1/-1;
+
 
 }
 .enTete{
@@ -43,7 +43,7 @@ h1{
 
     position: fixed;
     grid-template-columns: 150px 700px 50px 50px;
-    grid-template-rows: 150px 50px 50px;
+    grid-template-rows: 150px;
     grid-gap: 10px;
 
 }

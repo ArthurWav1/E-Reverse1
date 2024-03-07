@@ -15,6 +15,6 @@
 <p> <input type="text" name="user" placeholder="Utilisateur" required>
     <input type="password" name="pass" required> </p>
 
-<p> <a href="inscription.html"> Inscription </a>  </p>
+<p> <a href="<c:url value='/Inscription'/>"> Inscription </a>  </p>
 </body>
 </html>
