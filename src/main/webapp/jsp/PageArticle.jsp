@@ -1,18 +1,20 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Produit 1</title>
-    <link rel = "stylesheet" href ="../css/style.css">
+    <link href="<c:url value='css/style.css'/>" rel="stylesheet">
 </head>
 
 <body>
 
 <div class="product-details">
     <h1>Nom du Produit</h1>
-    <img src="../picture/Gourde.jpg" alt = "article 1">
-    <p>Description du article</p>
+    <img class="Article1" src="<c:url value='picture/Gourde.jpg'/>" alt = "Gourde">
+    <p>Description article</p>
     <p>Prix</p>
     <p>Quantité :
         <select name ="Quantité">
@@ -26,7 +28,7 @@
 </div>
 
 <div classe = "panier">
-    <h1>Panier</h1>
+    <h3>Panier</h3>
     <form action = "PagePanier.html">
         <button> Panier</button>
     </form>
