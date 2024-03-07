@@ -41,7 +41,7 @@ h1{
     /*border:2px dashed darkblue;*/
     display:grid;
 
-    position: fixed;
+
     grid-template-columns: 150px 700px 50px 50px;
     grid-template-rows: 150px;
     grid-gap: 10px;
