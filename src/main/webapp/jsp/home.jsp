@@ -49,7 +49,6 @@
     <br>
     <br>
     <br>
-
     <img class="imageFond" src="<c:url value='picture/fondCamp2.jpeg'/>" alt = "logo" width ="1000">
 
 
