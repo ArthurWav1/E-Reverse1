@@ -53,6 +53,4 @@
     <img class="imageFond" src="<c:url value='picture/fondCamp2.jpeg'/>" alt = "logo" width ="1000">
 
 
-
-  </body>
-</html>
+<jsp:include page="fin.jsp"/>
