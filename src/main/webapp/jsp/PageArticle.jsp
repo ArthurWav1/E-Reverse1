@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <jsp:include page="début.jsp"/>
 <div class="product-details">
-    <h1>Nom du Produit</h1>
+    <h2>Nom du Produit</h2>
     <img class="Article1" src="<c:url value='picture/Gourde.jpg'/>" alt = "Gourde">
     <p>Description article</p>
     <p>Prix</p>

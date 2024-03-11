@@ -43,13 +43,136 @@
           <li><a href="<c:url value='/'/>">SAV</a></li>
         </ul>
       </nav>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <img class="imageFond" src="<c:url value='picture/fondCamp2.jpeg'/>" alt = "logo" width ="1000">
+<br>
+<br>
+<div>
+  <div class="carousel">
+    <ul class="slides">
+      <input type="radio" name="radio-buttons" id="img-1" checked />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="<c:url value='picture/car1.png'/>">
+        </div>
+        <div class="carousel-controls">
+          <label for="img-3" class="prev-slide">
+            <span>&lsaquo;</span>
+          </label>
+          <label for="img-2" class="next-slide">
+            <span>&rsaquo;</span>
+          </label>
+        </div>
+      </li>
+      <input type="radio" name="radio-buttons" id="img-2" />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="<c:url value='picture/car2.jpeg'/>">
+        </div>
+        <div class="carousel-controls">
+          <label for="img-1" class="prev-slide">
+            <span>&lsaquo;</span>
+          </label>
+          <label for="img-3" class="next-slide">
+            <span>&rsaquo;</span>
+          </label>
+        </div>
+      </li>
+      <input type="radio" name="radio-buttons" id="img-3" />
+      <li class="slide-container">
+        <div class="slide-image">
+          <img src="<c:url value='picture/car3.jpeg'/>">
+        </div>
+        <div class="carousel-controls">
+          <label for="img-2" class="prev-slide">
+            <span>&lsaquo;</span>
+          </label>
+          <label for="img-1" class="next-slide">
+            <span>&rsaquo;</span>
+          </label>
+        </div>
+      </li>
+      <div class="carousel-dots">
+        <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+        <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+        <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+      </div>
+    </ul>
+  </div>
+</div>
+<div class="carousel">
+  <div class="carousel-inner">
+    <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
+    <div class="carousel-item">
+      <img src="http://fakeimg.pl/2000x800/0079D8/fff/?text=Without">
+    </div>
+    <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
+    <div class="carousel-item">
+      <img src="http://fakeimg.pl/2000x800/DA5930/fff/?text=JavaScript">
+    </div>
+    <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
+    <div class="carousel-item">
+      <img src="http://fakeimg.pl/2000x800/F90/fff/?text=Carousel">
+    </div>
+    <label for="carousel-3" class="carousel-control prev control-1">‹</label>
+    <label for="carousel-2" class="carousel-control next control-1">›</label>
+    <label for="carousel-1" class="carousel-control prev control-2">‹</label>
+    <label for="carousel-3" class="carousel-control next control-2">›</label>
+    <label for="carousel-2" class="carousel-control prev control-3">‹</label>
+    <label for="carousel-1" class="carousel-control next control-3">›</label>
+    <ol class="carousel-indicators">
+      <li>
+        <label for="carousel-1" class="carousel-bullet">•</label>
+      </li>
+      <li>
+        <label for="carousel-2" class="carousel-bullet">•</label>
+      </li>
+      <li>
+        <label for="carousel-3" class="carousel-bullet">•</label>
+      </li>
+    </ol>
+  </div>
+</div>
+<div id="mz-gallery-container">
+
+  <div id="mz-gallery">
+
+    <figure>
+      <img src="<c:url value='picture/gourde1.jpg'/>" alt="Gourde 1" width="700" height="700">
+      <figcaption>Gourde 1</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+
+    <figure>
+      <img src="<c:url value='picture/gourde2.jpg'/>" alt="Gourde 2" width="700" height="700">
+      <figcaption>Gourde 2</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+
+    <figure>
+      <img src="<c:url value='picture/gourde4.jpg'/>" alt="Gourde 3" width="700" height="700">
+      <figcaption>Gourde 3</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
+
+    <figure>
+      <img src="<c:url value='picture/gourde3.jpg'/>" alt="Gourde 4" width="700" height="700">
+      <figcaption>Gourde 4</figcaption>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </figure>
 
 
+  </div>
+
+</div>
 <jsp:include page="fin.jsp"/>
