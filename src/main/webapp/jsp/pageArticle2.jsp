@@ -14,10 +14,8 @@
             </div>
             <div class="photo-album">
                 <ul>
-                    <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302064/codepen/delicious-apples/green-apple2.png" alt="green apple"></li>
-                    <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537303532/codepen/delicious-apples/half-apple.png" alt="half apple"></li>
-                    <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537303160/codepen/delicious-apples/green-apple-flipped.png" alt="green apple"></li>
-                    <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537303708/codepen/delicious-apples/apple-top.png" alt="apple top"></li>
+                    <li><img src="<c:url value='picture/ModèleNoir2.webp'/>">
+                    <li><img src="<c:url value='picture/ModèleNoir3.webp'/>">
                 </ul>
             </div>
         </div>
@@ -32,17 +30,17 @@
         <div class="variant">
             <h3>COULEURS</h3>
             <ul>
-                <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302064/codepen/delicious-apples/green-apple2.png" alt="green apple"></li>
-                <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302752/codepen/delicious-apples/yellow-apple.png" alt="yellow apple"></li>
-                <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302427/codepen/delicious-apples/orange-apple.png" alt="orange apple"></li>
-                <li><img src="https://res.cloudinary.com/john-mantas/image/upload/v1537302285/codepen/delicious-apples/red-apple.png" alt="red apple"></li>
+                <li><img src="<c:url value='picture/ModèleOrange.webp'/>"></li>
+                <li><img src="<c:url value='picture/ModèleRose.webp'/>"></li>
+                <li><img src="<c:url value='picture/ModèleTurquoise.webp'/>"></li>
+                <li><img src="<c:url value='picture/ModèleViolet.webp'/>"></li>
             </ul>
         </div>
         <div class="description">
             <h3>CARACTERISTIQUES</h3>
             <ul>
                 <li>Remet full shield</li>
-                <li>5O cl</li>
+                <li>50 cl</li>
                 <li>Chauffe ou Refroidis</li>
             </ul>
         </div>

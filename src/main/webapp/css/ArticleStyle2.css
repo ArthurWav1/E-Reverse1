@@ -49,7 +49,7 @@ img {
     display: grid;
     grid-template-rows: 1fr;
     width: 100%;
-    height: 100%;
+    height: 98%;
     border-radius: 6px;
     box-shadow: 4px 4px 25px -2px rgba(0, 0, 0, 0.3);
 }
@@ -57,7 +57,7 @@ img {
 .photo-main {
     border-radius: 6px 6px 0 0;
     background-color: darkslategray;
-    background: radial-gradient(darkslategray, darkslategray);
+
 
     .controls {
         display: flex;
@@ -72,8 +72,9 @@ img {
 
     img {
         position: absolute;
+        border-radius: 6px;
         left: -2em;
-        top: 2.5em;
+        top: 2.7em;
         max-width: 105%;
         filter: saturate(150%) contrast(120%) hue-rotate(10deg)
         drop-shadow(1px 20px 10px rgba(0, 0, 0, 0.3));
@@ -82,23 +83,27 @@ img {
 
 .photo-album {
     padding: 0.7em 1em;
-    border-radius: 0 0 6px 6px;
+    border-radius: 6px 6px;
     background-color: #fff;
-
-    ul {
-        display: flex;
-        justify-content: space-around;
-    }
-
-    li {
-        float: left;
-        width: 55px;
-        height: 55px;
-        padding: 7px;
-        border: 1px solid #a6a6a6;
-        border-radius: 3px;
-    }
 }
+
+.photo-album ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none; /* Supprime les puces */
+    padding: 0; /* Supprime le padding par défaut */
+    margin: 0; /* Supprime les marges par défaut */
+}
+
+.photo-album li {
+    width: 85px; /* Largeur souhaitée */
+    height: 100px; /* Hauteur souhaitée */
+    padding: 10px; /* Ajout de padding pour espacer les photos */
+    margin: 5px; /* Ajout de marges pour espacer les cases */
+    border: 2px solid #000000;
+    border-radius: 6px;
+}
+
 
 /* ----- Informations Section ----- */
 .product__info {
@@ -106,6 +111,8 @@ img {
 }
 
 .title {
+    position: relative;
+    left: -13px; /* Déplacer le titre vers la gauche de 20 pixels */
     h1 {
         margin-bottom: 0.1em;
         color: #4c4c4c;
@@ -138,9 +145,12 @@ img {
     }
 
     li {
+        position: relative;
+        left: -30px; /* Déplacer le titre vers la gauche de 20 pixels */
+        list-style: none; /* Supprime les puces */
         float: left;
-        width: 35px;
-        height: 35px;
+        width: 65px;
+        height: 80px;
         padding: 3px;
         border: 1px solid transparent;
         border-radius: 3px;
@@ -178,6 +188,8 @@ img {
 }
 
 .buy--btn {
+    position: relative;
+    right: -30px; /* Déplacer le titre vers la gauche de 20 pixels */
     padding: 1.5em 3.1em;
     border: none;
     border-radius: 7px;
