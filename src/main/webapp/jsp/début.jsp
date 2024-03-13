@@ -27,5 +27,6 @@
         <img class="icon" src="<c:url value='picture/icon_panier-removebg-preview.png'/>" alt="Panier" width="50">
     </a>
 </div>
+<br>
 
 
