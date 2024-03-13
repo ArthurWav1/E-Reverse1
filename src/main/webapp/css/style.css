@@ -1,44 +1,40 @@
 body
 {
     background-color:#1d2124;
-    margin: auto;
-    margin-top: 20px;
-    width:1000px;
 
+    width:1000px;
+    margin: auto;
+    /*margin-top: 20px;*/
 }
 
 .imageLogo{
     width : 150px;
-    height : 150px;
+    height : 90px;
 }
 .icon{
     width : 50px;
     height : 50px;
 }
 h1{
-    display: flex;
+
     justify-content: center;
-    color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #0b2e13;
+    color: #000000;
     font-size: 50px;
 
 }
 
-.recherche{
-}
 .enTete{
     /*border:2px dashed darkblue;*/
     display:grid;
-
-
     grid-template-columns: 150px 700px 50px 50px;
-    grid-template-rows: 150px;
+    grid-template-rows: 90px;
     grid-gap: 10px;
-
+    margin-top: 10px;
+    background: white;
 
 
 }
+.
 .imageFond{
 
     background-position:center;
@@ -110,4 +106,8 @@ h1{
     color: white;
     margin-bottom: 0;
 }
-/* ______________________________________________*/
+/*-----------------------*/
+
+
+
+

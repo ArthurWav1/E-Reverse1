@@ -1,13 +1,16 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<!--
 
+
+-->
 <jsp:include page="début.jsp"/>
 <link href="<c:url value='css/homeStyle.css'/>" rel="stylesheet">
 <br>
-      <div class="recherche"> <input type="search" id="site-search" name="q" />
+      <!--<div class="recherche"> <input type="search" id="site-search" name="q" />
         <input type="button" value="Recherche" />
-      </div>
+      </div>-->
 <br>
       <nav class="menu">
         <ul class="niveau1">
