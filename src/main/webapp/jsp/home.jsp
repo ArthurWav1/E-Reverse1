@@ -11,7 +11,9 @@
 <!--<div class="recherche"> <input type="search" id="site-search" name="q" />
 <input type="button" value="Recherche" />
 </div>-->
-<br>
+
+<button type="button" class="btn btn-light"> <a href="<c:url value='/Compte'/>">Compte </button>
+
 
 <div>
     <nav class="menu">
