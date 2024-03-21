@@ -9,7 +9,7 @@
        <link href="<c:url value='css/style.css'/>" rel="stylesheet" >
     </head>
     <body>
-        <%@ include file="Template/alerte.jsp"%>
+        <%@ include file="alerte.jsp"%>
         <h1> Inscription </h1> <br>
         <div>
             <form method = "post" id="idInscription" action="Inscription">
