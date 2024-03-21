@@ -1,49 +1,114 @@
 body
 {
-    background-color:darkslategray;
-    margin: auto;
-    margin-top: 20px;
+    background-color:#1d2124;
     width:1000px;
+    margin: auto;
+    /*margin-top: 20px;*/
 }
 
 .imageLogo{
     width : 150px;
-    height : 150px;
+    height : 90px;
 }
 .icon{
     width : 50px;
     height : 50px;
 }
 h1{
-    display: flex;
+
     justify-content: center;
-}
-.menu ul li { float:left; list-style: none; }
-.menu ul ul {display:none; width:150px;}
-.menu  li {background:#CCCCCC;}
-.menu li a {text-decoration: none; color: #000; padding: 4px 0 4px; display:block; width:150px;}
-.menu ul {padding: 0; margin:0px; text-align:center;}
-.menu ul.niveau1 li.sousmenu:hover ul.niveau2{display:block;}
-.menu  li:hover {background: lightgreen;}
-.menu li.sousmenu:hover {background: lightgreen;}
-.menu {
-    text-align: center;
-    width: 100%; /* largeur 100% de la fenêtre */
-    justify-content: center;
-    grid-column :1/-1;
+    color: #ffffff;
+    font-size: 50px;
 
 }
-.recherche{
-    grid-column :1/-1;
 
-}
 .enTete{
     /*border:2px dashed darkblue;*/
+    position: relative;
+    z-index: 2;
     display:grid;
-
-    position: fixed;
     grid-template-columns: 150px 700px 50px 50px;
-    grid-template-rows: 150px 50px 50px;
+    grid-template-rows: 90px;
     grid-gap: 10px;
+    margin-top: 10px;
+
+
 
 }
+
+.imageFond{
+
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+.footer-basic {
+    padding:40px 0;
+    background-color:black;
+    color:#CCCCCC;
+    width: 100%;
+
+
+}
+
+.footer-basic ul {
+    padding:0;
+    list-style:none;
+    text-align:center;
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:0;
+}
+
+.footer-basic li {
+    padding:0 10px;
+
+}
+
+.footer-basic ul a {
+    color:inherit;
+    text-decoration:none;
+    opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+    opacity:1;
+}
+
+.footer-basic .social {
+    text-align:center;
+    padding-bottom:5px;
+}
+
+.footer-basic .social > a {
+    font-size:24px;
+    width:40px;
+    height:40px;
+    line-height:40px;
+    display:inline-block;
+    text-align:center;
+    border-radius:50%;
+    border:1px solid black;
+    margin:0 8px;
+    color:inherit;
+    opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+    opacity:0.9;
+}
+
+.footer-basic .copyright {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: white;
+    margin-bottom: 0;
+}
+/*-----------------------*/
+
+
+
+

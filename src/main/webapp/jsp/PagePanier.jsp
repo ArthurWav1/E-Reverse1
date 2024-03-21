@@ -1,11 +1,13 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Panier</title>
-    <link rel = "stylesheet" href ="../css/style.css">
+    <link href="<c:url value='css/style.css'/>" rel="stylesheet">
 </head>
 
 <body>

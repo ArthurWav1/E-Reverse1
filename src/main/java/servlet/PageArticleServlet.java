@@ -7,11 +7,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet({"/PageArticle"})
+@WebServlet({"/Article"})
 public class PageArticleServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    getServletContext().getRequestDispatcher("/jsp/PageArticle.jsp").forward(req,resp);
+    getServletContext().getRequestDispatcher("/jsp/pageArticle2.jsp").forward(req,resp);
     }
 }
 
