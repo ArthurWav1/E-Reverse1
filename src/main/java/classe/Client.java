@@ -6,7 +6,7 @@ public class Client {
     private String nom;
     private String mail;
     private String adresse;
-
+    private boolean access;
     /**
      * Constructeur pour l'enregistrement de l'utilisateur
      * @param prenom
@@ -19,15 +19,16 @@ public class Client {
         this.nom = nom;
         this.mail = mail;
         this.adresse = adresse;
+        this.access = false;
     }
 
     /**
      * Constructeur pour la connexion de l'utilisateur
      * @param id : id unique de l'utilisateur
-     * @param prenom
-     * @param nom
-     * @param mail
-     * @param adresse
+     * @param prenom : prenom
+     * @param nom : nom
+     * @param mail : mail
+     * @param adresse : adresse
      */
     public Client(int id, String prenom, String nom, String mail, String adresse) {
         this.id = id;
@@ -35,9 +36,19 @@ public class Client {
         this.nom = nom;
         this.mail = mail;
         this.adresse = adresse;
+        //Test si son adresse mail correspond à celle d'un vendeur pour lui donner des accès particuliers
+        if (mail.equals("vendeur@reverse.com")){
+            this.access = true;
+        }
+        else{
+            this.access = false;
+        }
     }
 
     //Méthodes d'accès
+    public int getId(){
+        return this.id;
+    }
     public String getNom(){
         return this.nom;
     }
@@ -49,5 +60,13 @@ public class Client {
     }
     public String getAdresse() {
         return adresse;
+    }
+    public boolean getAccess(){
+        return access;
+    }
+
+    @Override
+    public String toString() {
+        return "Nom du client: " + this.getNom() + ", id du client: " + this.getId();
     }
 }
