@@ -36,7 +36,7 @@
                 </div>
                 <div class="hr"></div>
                 <div class="foot-lnk">
-                    <a href="<c:url value="/inscription.jsp"/>"> Pas encore inscrit ?</a>
+                    <a href="<c:url value="/Inscription"/>"> Pas encore inscrit ?</a>
                 </div>
             </div>
             <!--
