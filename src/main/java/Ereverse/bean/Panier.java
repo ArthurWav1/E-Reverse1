@@ -1,4 +1,6 @@
-package classe;
+package Ereverse.bean;
+
+import Ereverse.bean.articles.Article;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +30,7 @@ public class Panier {
     public double TotalPanier(){
         double somme = 0;
         for(Article article : produits){
-            somme += article.getPrix();
+            somme += article.get_Prix();
         }
         return somme;
     }

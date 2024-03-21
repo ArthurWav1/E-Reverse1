@@ -1,7 +1,7 @@
-package DAO;
+package Ereverse.dao;
 
-import ConnexionBDD.ServiceConnexionBDD;
-import classe.Client;
+import Ereverse.ConnexionBDD.ServiceConnexionBDD;
+import Ereverse.bean.Client;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -42,6 +42,7 @@ public class ClientDAO {
             prep.setBytes(5, salt);
             prep.setBytes(6, hashPassword(salt, mdp));
             prep.execute();
+            System.out.println("Client " + client.getNom() + " ajouté à la bdd");
 
         } catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
@@ -54,12 +55,12 @@ public class ClientDAO {
      * @param mdp : mdp entré par l'utilisateur.
      * @return l'objet correspondant au client en cas de succès de la connexion ou null dans le cas contraire.
      */
-    public Client login(String nom,String mdp){
+    public Client login(String mail,String mdp){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             //Préparation de la commande.
-            PreparedStatement prep = connection.prepareStatement("SELECT * FROM Utilisateur WHERE nom = ?");
-            prep.setString(1,nom);
+            PreparedStatement prep = connection.prepareStatement("SELECT * FROM Utilisateur WHERE mail = ?");
+            prep.setString(1,mail);
             ResultSet rs = prep.executeQuery();
             if (rs.next()) {
                 byte[] salt = rs.getBytes("salt");
