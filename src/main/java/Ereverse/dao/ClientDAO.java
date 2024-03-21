@@ -1,7 +1,7 @@
-package DAO;
+package Ereverse.dao;
 
-import ConnexionBDD.ServiceConnexionBDD;
-import classe.Client;
+import Ereverse.ConnexionBDD.ServiceConnexionBDD;
+import Ereverse.bean.Client;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;

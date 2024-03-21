@@ -1,4 +1,4 @@
-package classe;
+package Ereverse.bean;
 
 public class Client {
     private int id;

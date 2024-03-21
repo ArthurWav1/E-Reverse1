@@ -1,4 +1,6 @@
-package classe;
+package Ereverse.bean;
+
+import Ereverse.bean.Article;
 
 import java.util.ArrayList;
 import java.util.List;
