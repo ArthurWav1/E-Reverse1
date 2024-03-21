@@ -33,7 +33,7 @@ public class Article implements Serializable {
         this.ref_Article=ref_Article;
     }
 
-    /** Méthodes d'accès (getters et setters) pour les propriétés
+    /** Getters et Setters
 
         getters*/
     public String get_Nom() {
@@ -66,7 +66,7 @@ public class Article implements Serializable {
         return id_Kit_appartenance;
     };
 
-    /** Méthodes d'accès (getters et setters) pour les propriétés
+    /** Getters et Setters
 
      setters*/
 
