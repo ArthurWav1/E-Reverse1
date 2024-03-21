@@ -7,10 +7,6 @@ package Ereverse.bean.articles;
  */
 public class Pastille extends Article {
 
-    public Pastille() {
-        super(null, null, 0);
-    }
-
     private String saveur;
 
     public Pastille(String type_Article, String saveur, String nom_pastille,int prix) {
