@@ -15,4 +15,8 @@ public class CompteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(req, resp);
     }
-    }
+
+
+
+
+}
