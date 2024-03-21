@@ -1,7 +1,7 @@
-package servlet;
+package Ereverse.servlet;
 
-import DAO.ClientDAO;
-import classe.Client;
+import Ereverse.dao.ClientDAO;
+import Ereverse.bean.Client;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

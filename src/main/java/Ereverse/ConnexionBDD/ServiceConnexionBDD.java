@@ -1,4 +1,4 @@
-package ConnexionBDD;
+package Ereverse.ConnexionBDD;
 
 
 import org.apache.commons.dbcp2.*;
