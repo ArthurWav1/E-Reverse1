@@ -63,8 +63,6 @@ public class ServiceConnexionBDD {
         try (LoggerContext ignored = Configurator.initialize(null,
                 new ConfigurationSource(new FileInputStream(propFile)))) {
         }
-
-
     }
 }
 
