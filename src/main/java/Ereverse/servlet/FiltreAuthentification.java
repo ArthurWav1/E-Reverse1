@@ -36,7 +36,7 @@ public class FiltreAuthentification implements Filter {
         String path = req.getRequestURI().substring(req.getContextPath().length()).replaceAll("/+$", "");
 
         // OK pour fichiers du réperotire css
-        if (path.startsWith("/css/")) {
+        if (path.startsWith("/css/") || path.startsWith("/picture/")) {
             // poursuit par le prochain filtre
             filterChain.doFilter(request, response);
             return;
