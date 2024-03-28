@@ -12,6 +12,7 @@
 <input type="button" value="Recherche" />
 </div>-->
 
+<button type="button" class="btn btn-light"> <a href="<c:url value='/Compte'/>"> Compte </button>
 
 <div>
     <nav class="menu">
