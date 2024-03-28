@@ -3,7 +3,8 @@
 .carousel {
     position: relative;
 
-    z-index: 3;
+    z-index: 2;
+
     margin-left: 15%;
     margin-right: 15%;
 }
@@ -387,6 +388,7 @@ input:checked + .slide-container .nav label { display: block; }
     }
 
 }
+
 .menu ul li { float:left; list-style: none; }
 .menu ul ul {display:none; width:150px;}
 .menu  li {background:#CCCCCC;}
@@ -396,7 +398,9 @@ input:checked + .slide-container .nav label { display: block; }
 .menu  li:hover {background: darkslategray;}
 .menu li.sousmenu:hover {background: darkslategray;}
 .menu {
+
     text-align: center;
     width: 100%; /* largeur 100% de la fenêtre */
     justify-content: center;
+    z-index: 3;
 }
