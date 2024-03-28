@@ -53,7 +53,6 @@ public class ServiceConnexionBDD {
         driver.closePool("MyPool");
 
     }
-
     /**
      * Initialise le système de logging à partir d'un fichier de configuration
      *
