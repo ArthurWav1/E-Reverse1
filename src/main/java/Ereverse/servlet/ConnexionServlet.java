@@ -20,7 +20,6 @@ public class ConnexionServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/jsp/connexion.jsp").forward(req, resp);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,7 +45,7 @@ public class ConnexionServlet extends HttpServlet {
                 System.out.println("Client trouvé : " + client);
                 HttpSession session =request.getSession();
                 session.setAttribute(FiltreAuthentification.SESSION_USER_KEY,client);
-                response.sendRedirect("");
+                response.sendRedirect("Compte");
             }
             else{
                 request.setAttribute("erreurUtilisateurIntrouvable","L'utilisateur demandé est introuvable, veuillez vérifier votre mail ou votre mot de passe");

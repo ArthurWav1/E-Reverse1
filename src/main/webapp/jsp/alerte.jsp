@@ -10,3 +10,8 @@
             ${enregistrementReussi}
     </div>
 </c:if>
+<c:if test ="${erreurUtilisateurIntrouvable != null }">
+    <div class = "alert alert-info" role="alert">
+            ${erreurUtilisateurIntrouvable}
+    </div>
+</c:if>

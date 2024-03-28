@@ -9,8 +9,8 @@ public class Module extends Article {
 
     private String type_module;
 
-    public Module(String type_Article, String type_module, String nom_module,int prix) {
-        super(nom_module, type_Article, prix);
+    public Module(int reference, String type_module, String nom_module,int prix) {
+        super(reference, nom_module, prix);
         this.type_module=type_module;
     }
 
