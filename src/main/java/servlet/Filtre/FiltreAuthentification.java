@@ -4,6 +4,8 @@ import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,9 +19,11 @@ public class FiltreAuthentification implements Filter {
 
     public static final String SESSION_USER_KEY = "utilisateur";
 
+    private final Logger logger = LogManager.getLogger(FiltreAuthentification.class);
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        Filter.super.init(filterConfig);
+        logger.info("Initialisation du filtre d'Authentification");
     }
 
     @Override
@@ -45,11 +49,11 @@ public class FiltreAuthentification implements Filter {
         List<String> authorizedServlets = List.of("", "/manifest.json", "/Connexion", "/Inscription","/Article");
 
         // Redirection vers la page de login s'il n'est pas authentifié et devrait l'être pour accéder à la page demandée.
-        // Check si c'est une servlet authorisée et si on est connecté.
+        // Check si c'est une servlet autorisée et si on est connecté.
         if (!authorizedServlets.contains(path) && !isAuthenticated) {
             System.out.println("Session null");
             // Affichage de la page de connexion
-            req.getServletContext().getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+            req.getServletContext().getRequestDispatcher("/jsp/connexion.jsp").forward(request, response);
         } else {
             // poursuit par le prochain filtre.
             filterChain.doFilter(request, response);
