@@ -1,4 +1,4 @@
-package servlet;
+package Ereverse.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,15 +8,13 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet({"/Compte"})
-public class CompteServlet extends HttpServlet {
+@WebServlet({"/Panier"})
+public class PanierServlet extends HttpServlet {
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/jsp/PagePanier.jsp").forward(req,resp);
     }
-
-
-
 
 }

@@ -1,4 +1,4 @@
-package ConnexionBDD;
+package Ereverse.ConnexionBDD;
 
 
 import org.apache.commons.dbcp2.*;
@@ -63,8 +63,6 @@ public class ServiceConnexionBDD {
         try (LoggerContext ignored = Configurator.initialize(null,
                 new ConfigurationSource(new FileInputStream(propFile)))) {
         }
-
-
     }
 }
 
