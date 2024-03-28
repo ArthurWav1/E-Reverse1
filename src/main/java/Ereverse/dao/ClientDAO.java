@@ -6,6 +6,7 @@ import Ereverse.bean.Client;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
+import java.security.Provider;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
@@ -36,9 +37,9 @@ public class ClientDAO {
             prep.setString(i++,client.getNom());
             prep.setString(i++,client.getPrenom());
             prep.setString(i++,client.getMail());
-
             prep.setString(i++,client.getAdresse());
             prep.setString(i++,client.getPrenom());
+
             //Préparation pour le mot de passe
             SecureRandom random = new SecureRandom();
             byte[] salt = new byte[16];
@@ -63,7 +64,9 @@ public class ClientDAO {
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             //Préparation de la commande.
-            PreparedStatement prep = connection.prepareStatement("SELECT * FROM Utilisateur WHERE mail = ?");
+            PreparedStatement prep = connection.prepareStatement(
+                    "SELECT * FROM Utilisateur " +
+                            "WHERE mail = ?");
             prep.setString(1,mail);
             ResultSet rs = prep.executeQuery();
             if (rs.next()) {
@@ -81,6 +84,38 @@ public class ClientDAO {
         catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void Modification(Client client, String nouveauNom, String nouveauPrenom, String nouvelleAdresse, String nouveauMDP){
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                    "UPDATE utilisateur " +
+                            "SET nom = ? , prenom = ? , adresse = ? , salt = ? , password = ? " +
+                            "WHERE mail = ? ");
+            int i = 1;
+            //Changement des Strings normaux de l'utilisateur (on ne peut pas modifier le mail)
+            prep.setString(i++,nouveauNom);
+            prep.setString(i++,nouveauPrenom);
+            prep.setString(i++,nouvelleAdresse);
+
+            //Changement du mot de passe et du salt de la bdd à partir du nouveau mdp de l'utilisateur
+            SecureRandom random = new SecureRandom();
+            byte[] salt = new byte[16];
+            random.nextBytes(salt);
+            prep.setBytes(i++, salt);
+            prep.setBytes(i++, hashPassword(salt, nouveauMDP));
+            prep.execute();
+            System.out.println("Les données du client ont bien été modifiées.");
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur de connection à la base de donnée");
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        } catch (InvalidKeySpecException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     /**

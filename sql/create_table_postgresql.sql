@@ -7,7 +7,7 @@ CREATE TABLE utilisateur
     prenom   VARCHAR(20) NOT NULL,
     mail     VARCHAR(100) NOT NULL UNIQUE,
     adresse  VARCHAR(1000) NOT NULL,
-    login    VARCHAR(20) NOT NULL UNIQUE,
+    login    VARCHAR(20) NOT NULL UNIQUE, --Ne sert absolument à rien, n'est jamais utilisé dans le code ou dans les recherches dans la table
     salt     BYTEA NOT NULL,
     password BYTEA NOT NULL
 );
