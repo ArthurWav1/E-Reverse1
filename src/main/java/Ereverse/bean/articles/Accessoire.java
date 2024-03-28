@@ -7,8 +7,8 @@ package Ereverse.bean.articles;
 
 public class Accessoire extends Article {
 
-    public Accessoire(String nom_accessoir, String type_Article,double prix) {
-        super(nom_accessoir, type_Article, prix);
+    public Accessoire(int reference, String nom_accessoire,double prix) {
+        super(reference, nom_accessoire, prix);
     }
 
     public Accessoire(int id_accessoire, int reference, String nom_Article,String type_Article,double prix) {
