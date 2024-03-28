@@ -19,16 +19,17 @@ public class Article implements Serializable {
     protected int id_Kit_appartenance;
 
 
-    //constructeur definissant les nom, type et prix de l'article
-    public Article(String nom_Article, String type_Article,double prix) {
-        this.type_Article=type_Article;
+    //constructeur definissant les nom, ref et prix de l'article, pour consulter un article (en général)
+    public Article(int ref_Article, String nom_Article, double prix) {
+        this.ref_Article=ref_Article;
         this.nom_Article=nom_Article;
         this.prix=prix;
     }
 
-    //constructeur affectant reference et identifiant de l'article
+    //constructeur affectant reference et identifiant de l'article, pour ajouter un article
     public Article(int id, int ref_Article, String nom_Article,String type_Article,double prix) {
-        this(nom_Article,type_Article,prix);
+        this(ref_Article,nom_Article,prix);
+        this.type_Article=type_Article;
         this.id=id;
         this.ref_Article=ref_Article;
     }
