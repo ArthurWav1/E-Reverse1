@@ -19,7 +19,7 @@
         </button>
         <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">NOM Prenom</h5>
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel" name = "nomPrenomAffichage"> ${nomEtPrenom} </h5> <!-- Affichage nom et prénom du client dynamique -->
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
@@ -63,56 +63,62 @@
 </nav>
 <br>
 <br>
-<ul class="nav nav-pills nav-fill">
 
-    <br>
-    <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">Caractéristiques produit</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Images</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Apercu</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Finalisation</a>
-    </li>
-
-</ul>
-<br>
+<c:if test="${acces}"> <!-- test pour savoir si la partie vendeur est accessible à partir de l'attribut acces de l'utilisateur -->
 <div>
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Type de produit</option>
-        <option value="1">Gourde</option>
-        <option value="2">Module</option>
-        <option value="3">Accessoire</option>
-        <option value=4>Pastille</option>
+    <ul class="nav nav-pills nav-fill">
+
+     <br>
+     <li class="nav-item">
+         <a class="nav-link active" aria-current="page" href="#">Caractéristiques produit</a>
+     </li>
+     <li class="nav-item">
+          <a class="nav-link" href="#">Images</a>
+        </li>
+        <li class="nav-item">
+         <a class="nav-link" href="#">Apercu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Finalisation</a>
+        </li>
+
+    </ul>
+<br>
+    <div>
+     <select class="form-select" aria-label="Default select example">
+         <option selected>Type de produit</option>
+         <option value="1">Gourde</option>
+         <option value="2">Module</option>
+         <option value="3">Accessoire</option>
+         <option value=4>Pastille</option>
     </select>
 
     <br>
-    <div class="mb-3">
+       <div class="mb-3">
 
-        <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nom du produit">
-    </div>
+           <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
+           <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nom du produit">
+     </div>
+     <br>
+       <div class="input-group mb-3">
+         <label for="exampleFormControlInput1" class="form-label">Prix</label>
+          <br>
+          <span class="input-group-text">€</span>
+         <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+      </div>
     <br>
-    <div class="input-group mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Prix</label>
-        <br>
-        <span class="input-group-text">€</span>
-        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-    </div>
-    <br>
-    <div class="input-group">
+     <div class="input-group">
         <span class="input-group-text"> Caractéristiques</span>
         <textarea class="form-control" aria-label="With textarea"></textarea>
+     </div>
+        <br>
+     <div class="input-group mb-3">
+         <input type="file" class="form-control" id="inputGroupFile02">
+         <label class="input-group-text" for="inputGroupFile02">Upload</label>
+     </div>
     </div>
-    <br>
-    <div class="input-group mb-3">
-        <input type="file" class="form-control" id="inputGroupFile02">
-        <label class="input-group-text" for="inputGroupFile02">Upload</label>
     </div>
-</div>
+</c:if>
+
 <br>
 <jsp:include page="fin.jsp"/>

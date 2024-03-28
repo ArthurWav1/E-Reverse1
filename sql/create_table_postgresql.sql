@@ -43,6 +43,7 @@ CREATE TABLE Article
     nom_Article VARCHAR(20) NOT NULL,
     prix NUMERIC(7,2) NOT NULL,
     Type_Article VARCHAR(20) NOT NULL,
+    Caractéristique
     ref_Article INT NOT NULL UNIQUE
 );
 
