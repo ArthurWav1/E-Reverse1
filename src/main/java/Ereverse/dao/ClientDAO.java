@@ -28,19 +28,23 @@ public class ClientDAO {
     public void Enregistrement(Client client, String mdp){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
-            PreparedStatement prep = connection.prepareStatement("INSERT INTO Utilisateur(nom,prenom,mail,adresse,login,salt,password) VALUES (?,?,?,?,?,?,?)");
+            PreparedStatement prep = connection.prepareStatement(
+                    "INSERT INTO Utilisateur(nom,prenom,mail,adresse,login,salt,password) " +
+                            "VALUES (?,?,?,?,?,?,?)");
             //Préparations des String simples
-            prep.setString(1,client.getNom());
-            prep.setString(2,client.getPrenom());
-            prep.setString(3,client.getMail());
-            prep.setString(4,client.getPrenom());
+            int i = 1;
+            prep.setString(i++,client.getNom());
+            prep.setString(i++,client.getPrenom());
+            prep.setString(i++,client.getMail());
 
+            prep.setString(i++,client.getAdresse());
+            prep.setString(i++,client.getPrenom());
             //Préparation pour le mot de passe
             SecureRandom random = new SecureRandom();
             byte[] salt = new byte[16];
             random.nextBytes(salt);
-            prep.setBytes(5, salt);
-            prep.setBytes(6, hashPassword(salt, mdp));
+            prep.setBytes(i++, salt);
+            prep.setBytes(i++, hashPassword(salt, mdp));
             prep.execute();
             System.out.println("Client " + client.getNom() + " ajouté à la bdd");
 
@@ -51,7 +55,7 @@ public class ClientDAO {
 
     /**
      * Méthode qui s'exécute lorsqu'un utilisateur souhaite se connecter.
-     * @param nom : login entré par l'utilisateur.
+     * @param mail : login entré par l'utilisateur.
      * @param mdp : mdp entré par l'utilisateur.
      * @return l'objet correspondant au client en cas de succès de la connexion ou null dans le cas contraire.
      */
