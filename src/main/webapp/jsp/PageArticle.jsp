@@ -22,10 +22,10 @@
     </div>
     <div class="product__info">
         <div class="title">
-            <h1>GOURDE DU BRAVE</h1>
+            <h1>GOURDE FAMILIALE</h1>
         </div>
         <div class="price">
-         <span>119,99€</span>
+         <span>109,99€</span>
         </div>
         <div class="variant">
             <h3>COULEURS</h3>
@@ -40,7 +40,7 @@
             <h3>CARACTERISTIQUES</h3>
             <ul>
                 <li>Remet full shield</li>
-                <li>50 cl</li>
+                <li>400 ml</li>
                 <li>Chauffe ou Refroidis</li>
             </ul>
         </div>
