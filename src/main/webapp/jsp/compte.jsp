@@ -29,7 +29,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/Compte'/>">Paramètre du compte</a>
+                        <a class="nav-link" href="<c:url value='/Compte/Parametre'/>">Paramètre du compte</a>
                     </li>
 
                     <li class="nav-item dropdown">
@@ -55,6 +55,10 @@
                             <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Ordres des articles</a></li>
                             <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Nouvelle catégorie</a></li>
                         </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"  href="<c:url value="'/'"/>" methods="post">Se déconnecter</a>
                     </li>
                 </ul>
             </div>

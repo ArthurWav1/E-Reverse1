@@ -32,7 +32,7 @@ public class ConnexionServlet extends HttpServlet {
             erreurConnexion = "Le mail entré est trop long, et n'appartient à aucun utilisateur";
         }
         if (mdp.length()>100){
-            erreurConnexion = "Le mot de passe entré est trop long, et n'appartient à aucun utilisateur";
+            erreurConnexion = "Le mot de passe entré est trop long et n'appartient à aucun utilisateur";
         }
 
         if (erreurConnexion != null){

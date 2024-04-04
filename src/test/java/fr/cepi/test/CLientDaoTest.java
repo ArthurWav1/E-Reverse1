@@ -30,7 +30,7 @@ public class CLientDaoTest {
      */
     @Test
     public void test() {
-        dao.Enregistrement(new Client("p","n","mail","a"),"mdp");
+        dao.enregistrement(new Client("p","n","mail","a"),"mdp");
 
         //le bon client + le bon mot de passe
         Assertions.assertNotNull(dao.login("mail", "mdp"));
