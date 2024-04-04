@@ -8,20 +8,21 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-@WebServlet({"/Article"})
-public class PageArticleServlet extends HttpServlet {
+@WebServlet({"/gourdes"})
+public class PageGourdeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupérer l'identifiant de l'article à partir des paramètres de la requête
-        int ref_article =  Integer.parseInt(request.getParameter("ref_article"));
+        int id_gamme =  Integer.parseInt(request.getParameter("id_gamme"));
 
         // Utiliser cet identifiant pour charger les informations de l'article depuis la base de données
         // (vous pouvez utiliser votre DAO pour cela)
-        Article article = ArticleDAO.TrouverArticle(ref_article);
+        ArrayList<Article> articles = ArticleDAO.ListerGourde(id_gamme);
 
-        // Mettre l'objet Article en tant qu'attribut de la requête pour l'affichage dans la JSP
-        request.setAttribute("Article", article);
+        // Mettre l'objet ListeGourde en tant qu'attribut de la requête pour l'affichage dans la JSP
+        request.setAttribute("ListeGourde", articles);
 
         // Rediriger vers la page JSP de l'article avec les informations chargées
         request.getRequestDispatcher("/pageArticle.jsp").forward(request, response);

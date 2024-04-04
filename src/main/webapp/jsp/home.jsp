@@ -18,9 +18,9 @@
             <li><a href="<c:url value='/'/>">Accueil</a></li>
             <li class="sousmenu"><a href="">Les gourdes</a>
                 <ul class="niveau2">
-                    <li><a href="<c:url value='/Article?ref_article=1'/>">Modèle 1</a></li>
-                    <li><a href="<c:url value='/Article?ref_article=2'/>">Modèle 2</a></li>
-                    <li><a href="<c:url value='/Article?ref_article=3'/>">Modèle 3</a></li>
+                    <li><a href="<c:url value='/gourdes?id_gamme=1'/>">Modèle 1</a></li>
+                    <li><a href="<c:url value='/gourdes?id_gamme=2'/>">Modèle 2</a></li>
+                    <li><a href="<c:url value='/gourdes?id_gamme=3'/>">Modèle 3</a></li>
                 </ul>
             </li>
             <li class="sousmenu"><a href="<c:url value='/'/>">Les Modules</a>
