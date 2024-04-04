@@ -2,6 +2,7 @@ package Ereverse.servlet;
 
 import Ereverse.bean.Client;
 import Ereverse.bean.articles.Article;
+import Ereverse.dao.ArticleDAO;
 import Ereverse.dao.ClientDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,8 +16,8 @@ import java.io.IOException;
 public class CompteServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(request, response);
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupération des valeurs des champs du formulaire
@@ -50,10 +51,10 @@ public class CompteServlet extends HttpServlet {
         }
         //Si aucune erreur n'est détectée, ajout de l'utilisateur à la BDD et renvoie à la page de connexion.
         else{
-            //article = new Article(refArticle,nomProduit,prix,caracteristique);
-            //new ArticleDAO().Enregistrement();
-            request.setAttribute("enregistrementReussi","enregristrement terminé, vous pouvez désormais vous identifier");
-            getServletContext().getRequestDispatcher("/jsp/connexion.jsp").forward(request,response);
+            Article article = new Article(refArticle,nomProduit,prix,caracteristique);
+            new ArticleDAO().EntreArticle(article);
+            request.setAttribute("Entre Article en base de donné","enregristrement terminé,");
+            getServletContext().getRequestDispatcher("/jsp/Compte.jsp").forward(request,response);
         }
     }
 
