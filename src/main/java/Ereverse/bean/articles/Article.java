@@ -17,21 +17,23 @@ public class Article implements Serializable {
     protected int nb_dispo;
     protected int nb_Achete;
     protected int id_Kit_appartenance;
+    protected String caracteristique;
 
 
     //constructeur definissant les nom, ref et prix de l'article, pour consulter un article (en général)
-    public Article(int ref_Article, String nom_Article, double prix) {
+    public Article(int ref_Article, String nom_Article, double prix,String caracteristique) {
         this.ref_Article=ref_Article;
         this.nom_Article=nom_Article;
         this.prix=prix;
+        this.caracteristique=caracteristique;
     }
 
     //constructeur affectant reference et identifiant de l'article, pour ajouter un article
-    public Article(int id, int ref_Article, String nom_Article,String type_Article,double prix) {
-        this(ref_Article,nom_Article,prix);
+    public Article(int id, int ref_Article, String nom_Article,String type_Article,double prix,String caracteristique) {
+        this(ref_Article,nom_Article,prix,caracteristique);
         this.type_Article=type_Article;
         this.id=id;
-        this.ref_Article=ref_Article;
+
     }
 
     /** Getters et Setters
@@ -48,6 +50,8 @@ public class Article implements Serializable {
         return prix;
     }
 
+    public String get_caracteristique(){
+        return get_caracteristique();}
     public int get_Id() {
         return id;
     }
@@ -81,6 +85,10 @@ public class Article implements Serializable {
 
     public void set_prix(double prix) {
         this.prix = prix;
+    }
+
+    public void set_caracteristique(String caracteristique) {
+        this.caracteristique = caracteristique;
     }
 
     public void set_nb_achete(int nbAchete) {

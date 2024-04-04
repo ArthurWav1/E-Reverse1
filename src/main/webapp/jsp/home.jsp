@@ -7,6 +7,7 @@
 <jsp:include page="début.jsp"/>
 <link href="<c:url value='css/homeStyle.css'/>" rel="stylesheet">
 <br>
+
 <!--<div class="recherche"> <input type="search" id="site-search" name="q" />
 <input type="button" value="Recherche" />
 </div>-->
@@ -49,6 +50,10 @@
         </ul>
     </nav>
 </div>
+<br>
+<br>
+<br>
+<br>
 <br>
 <br>
 <div>
