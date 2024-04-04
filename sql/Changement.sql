@@ -8,6 +8,14 @@ DROP TABLE gamme CASCADE;
 DROP TABLE image CASCADE;
 DROP TABLE pastille CASCADE;
 
+ALTER TABLE panier
+    ADD CONSTRAINT fk_utilisateur
+        FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
+
+ALTER TABLE commande
+    ADD CONSTRAINT fk_utilisateur
+        FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
+
 CREATE TABLE article (
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     reference VARCHAR(30) NOT NULL UNIQUE,
