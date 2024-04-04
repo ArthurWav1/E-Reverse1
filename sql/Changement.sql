@@ -1,10 +1,7 @@
 --Suppression des tables inutiles
-DROP TABLE accessoire;
-DROP TABLE kit;
 DROP TABLE article CASCADE;
 DROP TABLE module CASCADE;
 DROP TABLE gourde CASCADE;
-DROP TABLE gamme CASCADE;
 DROP TABLE image CASCADE;
 DROP TABLE pastille CASCADE;
 
