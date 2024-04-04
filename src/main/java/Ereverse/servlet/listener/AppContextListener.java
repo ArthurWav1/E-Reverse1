@@ -50,7 +50,4 @@ public class AppContextListener implements ServletContextListener {
         } catch (Exception ignored) {
         }
     }
-
-
-
 }
