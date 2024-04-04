@@ -42,8 +42,8 @@ CREATE TABLE Article
     nom VARCHAR(20) NOT NULL,
     prix NUMERIC(7,2) NOT NULL,
     type VARCHAR(20) NOT NULL,
-    reference INT NOT NULL UNIQUE,
-    description VARCHAR(1000) NOT NULL
+    description VARCHAR(1000) NOT NULL,
+    reference VARCHAR(30) NOT NULL UNIQUE
 );
 
 CREATE UNIQUE INDEX ux_panier ON panier (id_Utilisateur,id_Article);
