@@ -28,44 +28,53 @@ CREATE TABLE Commande
     prix NUMERIC(7,2) NOT NULL
 );
 
---Création de la table image qui regroupe toutes les images des produits à afficher
-CREATE TABLE Image
-(
-    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    refArticle INT NOT NULL,
-    lien VARCHAR(200) NOT NULL
-);
-
-CREATE TABLE Article
-(
-    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    nom VARCHAR(20) NOT NULL,
-    prix NUMERIC(7,2) NOT NULL,
-    type VARCHAR(20) NOT NULL,
-    description VARCHAR(1000) NOT NULL,
-    reference VARCHAR(30) NOT NULL UNIQUE
-);
-
 CREATE UNIQUE INDEX ux_panier ON panier (id_Utilisateur,id_Article);
 
-
-CREATE TABLE Gourde
-(
-    id_gourde INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    couleur VARCHAR (20) NOT NULL,
-    taille VARCHAR (20) NOT NULL,
-    id_article INT NOT NULL UNIQUE,
-    gamme VARCHAR(20) NOT NULL UNIQUE
+--Création de la table image qui regroupe toutes les images des produits à afficher
+CREATE TABLE article (
+     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+     reference VARCHAR(30) NOT NULL UNIQUE,
+     saveur VARCHAR(30),
+     description VARCHAR(1000) NOT NULL,
+     prix NUMERIC(7,2) NOT NULL,
+     image BYTEA NOT NULL,
+     id_type INT NOT NULL UNIQUE,
+     id_gamme INT NOT NULL UNIQUE,
+     id_couleur INT NOT NULL UNIQUE
 );
 
-CREATE TABLE Module
-(   id_module INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    type_module VARCHAR(20) NOT NULL,
-    id_article INT NOT NULL UNIQUE
+CREATE TABLE gamme(
+     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+     taille VARCHAR(30) NOT NULL UNIQUE,
+     prix NUMERIC(7,2) NOT NULL
 );
 
-CREATE TABLE Pastille
-(   id_pastille INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    saveur VARCHAR(20) NOT NULL,
-    id_article INT NOT NULL UNIQUE
+CREATE TABLE couleur(
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    libelle VARCHAR(30) NOT NULL UNIQUE
 );
+
+CREATE TABLE type(
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    libelle VARCHAR(30) NOT NULL UNIQUE
+);
+
+-- Clés secondaires
+ALTER TABLE article
+    ADD CONSTRAINT fk_type
+        FOREIGN KEY (id_type) REFERENCES type(id);
+ALTER TABLE article
+    ADD CONSTRAINT fk_gamme
+        FOREIGN KEY (id_gamme) REFERENCES gamme(id);
+ALTER TABLE article
+    ADD CONSTRAINT fk_couleur
+        FOREIGN KEY (id_couleur) REFERENCES couleur(id);
+ALTER TABLE panier
+    ADD CONSTRAINT fk_article
+        FOREIGN KEY (id_article) REFERENCES article(id);
+ALTER TABLE panier
+    ADD CONSTRAINT fk_utilisateur
+        FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
+ALTER TABLE commande
+    ADD CONSTRAINT fk_utilisateur
+        FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
