@@ -1,21 +1,19 @@
 package Ereverse.servlet;
 
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
 @WebServlet({"/Deconnexion"})
-public class DeconnexionServlet {
+public class DeconnexionServlet extends HttpServlet{
 
     static Logger logger = LogManager.getLogger(DeconnexionServlet.class);
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response){
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
