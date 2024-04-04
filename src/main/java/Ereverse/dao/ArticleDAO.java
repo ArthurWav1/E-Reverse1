@@ -21,16 +21,16 @@ public class ArticleDAO {
                             "VALUES (?,?,?,?)");
             //Préparations des String simples
             int i = 1;
-            prep.setString(i++, article.get_Nom());
-            prep.setString(i++, article.get_Nom());
-            prep.setDouble(i++,article.get_Prix());
-            prep.setString(i++, article.get_caracteristique());
+            prep.setString(i++, article.getType_Article());
+            prep.setString(i++, article.getNom_Article());
+            prep.setDouble(i++,article.getPrix());
+            prep.setString(i++, article.getCaracteristique());
 
             //Préparation pour le mot de passe
 
             prep.execute();
 
-            System.out.println("Article " + article.get_Nom() + " ajouté à la bdd");
+            System.out.println("Article " + article.getNom_Article() + " ajouté à la bdd");
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
-<body>
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="<c:url value='/'/>"> Reverse </a>
@@ -82,37 +81,43 @@
 </ul>
 <br>
 <div>
-    <select class="form-select" aria-label="Default select example">
-        <option selected>Type de produit</option>
-        <option value="1">Gourde</option>
-        <option value="2">Module</option>
-        <option value="3">Accessoire</option>
-        <option value=4>Pastille</option>
-    </select>
+    <form method="post" action="Compte">
+        <select class="form-select" name="typeProduit" aria-label="Default">
+            <option selected>Type de produit</option>
+            <option value="1" >Gourde</option>
+            <option value="2">Module</option>
+            <option value="3">Accessoire</option>
+            <option value="4">Pastille</option>
+        </select>
 
-    <br>
-    <div class="mb-3">
-
-        <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nom du produit">
-    </div>
-    <br>
-    <div class="input-group mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Prix</label>
         <br>
-        <span class="input-group-text">€</span>
-        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-    </div>
-    <br>
-    <div class="input-group">
-        <span class="input-group-text"> Caractéristiques</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-    </div>
-    <br>
-    <div class="input-group mb-3">
-        <input type="file" class="form-control" id="inputGroupFile02">
-        <label class="input-group-text" for="inputGroupFile02">Upload</label>
-    </div>
+        <div class="mb-3">
+
+            <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
+            <input class="form-control" id="exampleFormControlInput1" placeholder="Nom du produit" name="nomProduit">
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Prix</label>
+            <br>
+            <span class="input-group-text">€</span>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" name="prix">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-text"> Caractéristiques</span>
+            <textarea class="form-control" aria-label="With textarea" name="caracteristique"></textarea>
+        </div>
+        <br>
+        <!--
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        </div>
+        -->
+        <button type="submit" class="btn btn-primary">Créer</button>
+    </form>
 </div>
+
 <br>
 <jsp:include page="fin.jsp"/>
