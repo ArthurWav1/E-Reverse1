@@ -23,7 +23,14 @@ public class CompteServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(req, resp);
     }
 
-
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response){
+        try {
+            getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(request,response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

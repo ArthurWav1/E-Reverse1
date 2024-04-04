@@ -58,7 +58,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"  href="<c:url value="'/'"/>" methods="post">Se déconnecter</a>
+                        <a href="<c:url value="Deconnexion"/>">Se déconnecter</a> <!-- Déconnexion du compte et renvoie vers home -->
                     </li>
                 </ul>
             </div>
