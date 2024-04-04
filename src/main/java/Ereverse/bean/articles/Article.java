@@ -26,6 +26,8 @@ public class Article implements Serializable {
         this.prix=prix;
     }
 
+    public Article(){
+    }
     //constructeur affectant reference et identifiant de l'article, pour ajouter un article
     public Article(int id, int ref_Article, String nom_Article,String type_Article,double prix) {
         this(ref_Article,nom_Article,prix);
