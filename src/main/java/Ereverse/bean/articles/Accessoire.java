@@ -11,8 +11,8 @@ public class Accessoire extends Article {
         super(reference, nom_accessoire, prix);
     }
 
-    public Accessoire(int id_accessoire, int reference, String nom_Article,String type_Article,double prix) {
-        super(id_accessoire, reference, nom_Article, type_Article, prix);
+    public Accessoire(int id_accessoire, int reference, String nom_Article,int id_type,double prix) {
+        super(id_accessoire, reference, nom_Article, id_type, prix);
     }
 
 

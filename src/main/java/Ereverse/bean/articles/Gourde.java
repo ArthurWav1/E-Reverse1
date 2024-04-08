@@ -18,9 +18,9 @@ public class Gourde extends Article {
 
     }
 
-    public Gourde(int id_gourde,int reference,String type_Article, String nom_gourde,String gamme,
+    public Gourde(int id_gourde,int reference,int id_type, String nom_gourde,String gamme,
                   String taille, String couleur, int prix) {
-        super(id_gourde, reference, nom_gourde, type_Article,prix);
+        super(id_gourde, reference, nom_gourde, id_type,prix);
     }
 
     public Gourde(String taille, String couleur, String gamme,int prix){
