@@ -2,6 +2,8 @@ package Ereverse.dao;
 
 import Ereverse.ConnexionBDD.ServiceConnexionBDD;
 import Ereverse.bean.articles.Article;
+import Ereverse.bean.articles.Gourde;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -65,7 +67,7 @@ public class ArticleDAO {
                 // Obtenir la connexion à la base de données
                 connection = ServiceConnexionBDD.getConnection();
 
-                // Requête SQL pour sélectionner tous les articles
+                // Requête SQL pour sélectionner tous les articles et les éléments
                 String query ="SELECT article.*, couleur.nom, gamme.taille, gamme.gamme, gamme.volume " +
                               "FROM article " +
                               "JOIN gourde ON article.id = gourde.id_article " +
