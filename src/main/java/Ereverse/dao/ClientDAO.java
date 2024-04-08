@@ -6,7 +6,6 @@ import Ereverse.bean.Client;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
-import java.security.Provider;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
@@ -26,7 +25,7 @@ public class ClientDAO {
      * @param client : l'objet client de l'utilisateur à enregistrer.
      * @param mdp : le mot de passe qu'a entré le client pour s'enregistrer.
      */
-    public void Enregistrement(Client client, String mdp){
+    public void enregistrement(Client client, String mdp){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
@@ -86,7 +85,7 @@ public class ClientDAO {
         }
     }
 
-    public void Modification(Client client, String nouveauNom, String nouveauPrenom, String nouvelleAdresse, String nouveauMDP){
+    public void modification(Client client, String nouveauNom, String nouveauPrenom, String nouvelleAdresse, String nouveauMDP){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
@@ -116,6 +115,21 @@ public class ClientDAO {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void suppressionClient(Client client){
+        Connection connection = null;
+        try {
+            connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                "DELETE FROM utilisateur WHERE mail = ? "
+            );
+            prep.setString(1,client.getMail());
+            prep.execute();
+            System.out.println("Utilisateur" + client.getNom() + " supprimé");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**

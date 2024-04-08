@@ -20,7 +20,7 @@
 
     <h1> REVERSE  </h1>
 
-    <a href="<c:url value='/Connexion'/>" >
+    <a href="<c:url value='/Compte'/>" >
         <img class="icon" src="<c:url value='picture/log.png'/>" alt="Login" width="50">
 
     </a>

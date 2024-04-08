@@ -23,4 +23,11 @@ public class Gourde extends Article {
         super(id_gourde, reference, nom_gourde, type_Article,prix);
     }
 
+    public Gourde(String taille, String couleur, String gamme,int prix){
+        this.taille = taille;
+        this.couleur = couleur;
+        this.gamme = gamme;
+        this.prix = prix;
+    }
+
 }

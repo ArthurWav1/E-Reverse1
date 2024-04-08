@@ -58,7 +58,7 @@ public class InscriptionServlet extends HttpServlet {
         //Si aucune erreur n'est détectée, ajout de l'utilisateur à la BDD et renvoie à la page de connexion.
         else{
             Client client = new Client(prenom,nom,mail,adresse);
-            new ClientDAO().Enregistrement(client,mdp);
+            new ClientDAO().enregistrement(client,mdp);
             request.setAttribute("enregistrementReussi","enregristrement terminé, vous pouvez désormais vous identifier");
             getServletContext().getRequestDispatcher("/jsp/connexion.jsp").forward(request,response);
         }
