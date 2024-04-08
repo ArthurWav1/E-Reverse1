@@ -11,7 +11,9 @@ public class Article implements Serializable {
 
     protected int id;
     protected int ref_Article;
-    protected String type_Article;
+    protected int id_type;
+    protected int id_gamme;
+    protected int id_couleur;
     protected String nom_Article;
     protected double prix;
     protected int nb_dispo;
@@ -29,9 +31,9 @@ public class Article implements Serializable {
     public Article(){
     }
     //constructeur affectant reference et identifiant de l'article, pour ajouter un article
-    public Article(int id, int ref_Article, String nom_Article,String type_Article,double prix) {
+    public Article(int id, int ref_Article, String nom_Article,int id_type,double prix) {
         this(ref_Article,nom_Article,prix);
-        this.type_Article=type_Article;
+        this.id_type=id_type;
         this.id=id;
         this.ref_Article=ref_Article;
     }
@@ -43,8 +45,8 @@ public class Article implements Serializable {
         return nom_Article;
     }
 
-    public String get_Type(){
-        return type_Article;}
+    public int get_idType(){
+        return id_type;}
 
     public double get_Prix() {
         return prix;
@@ -77,8 +79,8 @@ public class Article implements Serializable {
         nom_Article = nom;
     }
 
-    public void set_type(String type) {
-        type_Article = type;
+    public void set_type(int id_type) {
+        id_type= id_type;
     }
 
     public void set_prix(double prix) {
