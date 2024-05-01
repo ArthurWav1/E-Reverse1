@@ -15,7 +15,7 @@ public class Pastille extends Article {
     }
 
     public Pastille(int id_pastille,int reference,int id_type, String nom_pastille, int prix) {
-        super(id_pastille, reference, nom_pastille, id_type,prix);
+        super(id_pastille, reference, nom_pastille, id_type ,prix);
     }
 
 }

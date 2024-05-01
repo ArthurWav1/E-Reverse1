@@ -35,7 +35,6 @@ public class Article implements Serializable {
         this(ref_Article,nom_Article,prix);
         this.id_type=id_type;
         this.id=id;
-        this.ref_Article=ref_Article;
     }
 
     /** Getters et Setters
