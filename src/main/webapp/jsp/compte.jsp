@@ -105,14 +105,25 @@
             <!-- gamme -->
         <select class="form-select" aria-label="Default select example" name="gamme">
             <option selected>Type de produit</option>
-            <option value="1">Gamme 1</option>
-            <option value="2">Gamme 2</option>
-            <option value="3">Gamme 3</option>
-            <option value="4">Gamme 4</option>
+            <option value="1">Standard</option>
+            <option value="2">Familiale</option>
+            <option value="3">Sport</option>
+            <option value="4">Pas de gamme</option>
         </select>
 
         <br>
 
+            <!-- Couleur> -->
+        <select class="form-select" aria-label="Default select example" name="gamme">
+            <option selected>Couleur du produit</option>
+            <option value="1">Rouge</option>
+            <option value="2">Vert</option>
+            <option value="3">Bleu Fonce</option>
+            <option value="4">Jaune</option>
+            <option value="5">Noir</option>
+            <option value="6">Blanc</option>
+            <option value="7">Pas de Couleur</option>
+        </select>
 
             <!-- Nom -->
         <div class="mb-3">

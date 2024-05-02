@@ -48,8 +48,8 @@ CREATE TABLE article (
      prix NUMERIC(7,2) NOT NULL,
      image VARCHAR(100),
      id_type INT NOT NULL,
-     id_gamme INT NOT NULL,
-     id_couleur INT NOT NULL,
+     id_gamme INT,
+     id_couleur INT,
      nom VARCHAR(50) NOT NULL
 );
 
