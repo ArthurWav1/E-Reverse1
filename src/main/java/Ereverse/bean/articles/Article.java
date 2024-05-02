@@ -45,13 +45,6 @@ public class Article implements Serializable {
         this.id=id;
     }
 
-    public String getType_Article() {
-        return type_Article;
-    }
-
-    public void setType_Article(String type_Article) {
-        this.type_Article = type_Article;
-    }
 
     public String getNom_Article() {
         return nom_Article;
