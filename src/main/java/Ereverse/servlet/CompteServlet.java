@@ -54,8 +54,7 @@ public class CompteServlet extends HttpServlet {
         }
         //Si aucune erreur n'est détectée, ajout de l'utilisateur à la BDD et renvoie à la page de connexion.
         else{
-            Article article = new Article(refArticle,nomProduit,prix,caracteristique);
-            new ArticleDAO().EntreArticle(article);
+
             request.setAttribute("Entre Article en base de donné","enregristrement terminé,");
             getServletContext().getRequestDispatcher("/jsp/Compte.jsp").forward(request,response);
         }
