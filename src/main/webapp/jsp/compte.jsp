@@ -90,7 +90,9 @@
 <br>
     <div>
         <form method="post" action="Compte">
-        <select class="form-select" aria-label="Default select example">
+
+            <!-- TypeProduit -->
+        <select class="form-select" aria-label="Default select example" name="typeProduit">
             <option selected>Type de produit</option>
              <option value="1">Gourde</option>
              <option value="2">Module</option>
@@ -98,29 +100,49 @@
              <option value=4>Pastille</option>
         </select>
 
-        <br>
-            <div class="mb-3">
+        <c:if test="typeProduit = 1">
+            <select class="form-select" aria-label="Default select example" name="gamme">
+                <option selected>Type de produit</option>
+                <option value="1">Gamme 1</option>
+                <option value="2">Gamme 2</option>
+                <option value="3">Gamme 3</option>
+                <option value="4">Gamme 4</option>
+            </select>
+        </c:if>
 
-              <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
-              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nom du produit">
-            </div>
         <br>
+
+            <!-- Nom -->
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" name="NomProduit" placeholder="Nom du produit">
+        </div>
+
+        <br>
+
+            <!-- Prix -->
         <div class="input-group mb-3">
              <label for="exampleFormControlInput1" class="form-label">Prix</label>
              <br>
              <span class="input-group-text">€</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+            <input type="text" class="form-control" name="Prix" aria-label="Amount (to the nearest dollar)">
         </div>
+
         <br>
+
+            <!-- Description -->
         <div class="input-group">
-            <span class="input-group-text"> Caractéristiques</span>
+            <input class="input-group-text" name="description"> Description</input>
             <textarea class="form-control" aria-label="With textarea"></textarea>
          </div>
         <br>
+
+            <!-- image -->
         <div class="input-group mb-3">
-            <input type="file" class="form-control" id="inputGroupFile02">
+            <input type="file" class="form-control" id="inputGroupFile02" name="image">
             <label class="input-group-text" for="inputGroupFile02">Upload</label>
         </div>
+
         </form>
     </div>
 </div>
