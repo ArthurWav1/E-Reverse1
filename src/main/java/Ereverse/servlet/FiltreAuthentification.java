@@ -46,7 +46,7 @@ public class FiltreAuthentification implements Filter {
         boolean isAuthenticated = session != null && session.getAttribute(SESSION_USER_KEY) != null;
 
         //Listes des servlets autorisées sans connexion. La page d'accueil, des articles, de connexion et d'enregistrement.
-        List<String> authorizedServlets = List.of("", "/manifest.json", "/Connexion", "/Inscription","/Article","/Compte");
+        List<String> authorizedServlets = List.of("", "/manifest.json", "/Connexion", "/Inscription","/Article","/gourdes","/Compte");
 
         // Redirection vers la page de login s'il n'est pas authentifié et devrait l'être pour accéder à la page demandée.
         // Check si c'est une servlet autorisée et si on est connecté.
