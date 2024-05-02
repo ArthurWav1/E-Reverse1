@@ -6,19 +6,33 @@
 <link href="<c:url value='css/style.css'/>" rel="stylesheet">
 <br>
 <br>
-<div class="footer-basic">
-    <footer>
-        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-linkedin"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="<c:url value='/'/>">Contact</a></li>
-            <li class="list-inline-item"><a href="<c:url value='/'/>">About</a></li>
-            <li class="list-inline-item"><a href="<c:url value='/'/>">SAV</a></li>
-            <li class="list-inline-item"><a href="<c:url value='/'/>">Recrutement</a></li>
-            <li class="list-inline-item"><a href="<c:url value='/'/>">Privacy Policy</a></li>
-        </ul>
-        <p class="copyright">Reverse copyright © 2024</p>
-    </footer>
+<br>
+<br>
+<div class="d-inline p-2 text-bg-dark">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">SAV</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Recrutement</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Privicy policy</a>
+        </li>
+        <br>
+    </ul>
+    <ul class="nav justify-content-center">
+        <p class="">Reverse copyright © 2024</p>
+    </ul>
+
 </div>
+
 
 </body>
 </html>

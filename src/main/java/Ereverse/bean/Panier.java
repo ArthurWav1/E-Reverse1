@@ -30,7 +30,7 @@ public class Panier {
     public double TotalPanier(){
         double somme = 0;
         for(Article article : produits){
-            somme += article.get_Prix();
+            somme += article.getPrix();
         }
         return somme;
     }
