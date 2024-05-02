@@ -63,3 +63,6 @@ ALTER TABLE gamme
 
 ALTER TABLE article
     ADD COLUMN nom VARCHAR(50) NOT NULL;
+
+ALTER TABLE gamme
+    DROP COLUMN taille;
