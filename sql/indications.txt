@@ -1,2 +1,2 @@
-Si la base de donnée n'a jamais été créée : exécuter create_database.sql puis create_table_postgresql.sql
-Si la base de donnée est déjà créée : exécuter uniquement Changement.sql
+Exécuter le fichier create_database.sql puis Creation_tables_BDD.sql entièrement.
+Puis exécuter remplissageBDD.sql
