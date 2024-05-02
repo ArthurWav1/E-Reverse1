@@ -1,6 +1,7 @@
 package Ereverse.dao;
 
 import Ereverse.ConnexionBDD.ServiceConnexionBDD;
+import Ereverse.bean.Client;
 import Ereverse.bean.articles.Article;
 import Ereverse.bean.articles.Gourde;
 import java.sql.Connection;

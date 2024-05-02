@@ -19,6 +19,7 @@ public class Article implements Serializable {
     protected int nb_dispo;
     protected int nb_Achete;
     protected int id_Kit_appartenance;
+    protected String caracteristique;
 
 
     //constructeur definissant les nom, ref et prix de l'article, pour consulter un article (en général)
@@ -37,22 +38,27 @@ public class Article implements Serializable {
         this.id=id;
     }
 
-    /** Getters et Setters
+    public String getType_Article() {
+        return type_Article;
+    }
 
-        getters*/
-    public String get_Nom() {
+    public void setType_Article(String type_Article) {
+        this.type_Article = type_Article;
+    }
+
+    public String getNom_Article() {
         return nom_Article;
     }
 
     public int get_idType(){
         return id_type;}
 
-    public double get_Prix() {
+    public double getPrix() {
         return prix;
     }
 
-    public int get_Id() {
-        return id;
+    public void setPrix(double prix) {
+        this.prix = prix;
     }
 
     public String get_ref(){
@@ -66,7 +72,19 @@ public class Article implements Serializable {
         return nb_dispo;
     }
 
-    public int get_id_Kit(){
+    public void setNb_dispo(int nb_dispo) {
+        this.nb_dispo = nb_dispo;
+    }
+
+    public int getNb_Achete() {
+        return nb_Achete;
+    }
+
+    public void setNb_Achete(int nb_Achete) {
+        this.nb_Achete = nb_Achete;
+    }
+
+    public int getId_Kit_appartenance() {
         return id_Kit_appartenance;
     };
 
@@ -82,23 +100,11 @@ public class Article implements Serializable {
         id_type= id_type;
     }
 
-    public void set_prix(double prix) {
-        this.prix = prix;
+    public String getCaracteristique() {
+        return caracteristique;
     }
 
-    public void set_nb_achete(int nbAchete) {
-        nb_Achete = nbAchete;
-    }
-
-    public void Set_id_Kit(int a){
-        id_Kit_appartenance = a;}
-
-    public void set_nb_dispo(int nb) {
-        nb_dispo=nb;}
-
-
-    @Override
-    public String toString() {
-        return super.toString();
+    public void setCaracteristique(String caracteristique) {
+        this.caracteristique = caracteristique;
     }
 }

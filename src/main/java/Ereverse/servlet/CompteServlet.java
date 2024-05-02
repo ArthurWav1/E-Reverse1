@@ -22,4 +22,45 @@ public class CompteServlet extends HttpServlet {
         }
         getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(req, resp);
     }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Récupération des valeurs des champs du formulaire
+        String typeProduit = request.getParameter("typeProduit");
+        String nomProduit = request.getParameter("nomProduit");
+        double prix = Double.parseDouble(request.getParameter("prix"));
+        String caracteristique = request.getParameter("caracteristique");
+        int refArticle = Integer.parseInt(request.getParameter("refArticle"));
+
+
+        String erreur = null;
+
+        //Vérification de la validité des champs.
+        //Uniquement pour vérifier que les champs conviennent à la BDD, aucune vérification que l'adresse ou l'adresse mail soient valides.
+
+        if (nomProduit.length() > 20) {
+            erreur = "Nom du produit incorrect (>20 caractères)";
+        }
+        if (caracteristique.length() > 1000) {
+            erreur = "Caracteristique trop long (>1000 caractères)";
+        }
+        if (prix < 0) {
+            erreur = "Prix négatif";
+        }
+
+
+        //Affichage d'une erreur éventuelle.
+        if (erreur != null) {
+            request.setAttribute("erreurChamp", erreur);
+            getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(request, response);
+        }
+        //Si aucune erreur n'est détectée, ajout de l'utilisateur à la BDD et renvoie à la page de connexion.
+        else{
+            Article article = new Article(refArticle,nomProduit,prix,caracteristique);
+            new ArticleDAO().EntreArticle(article);
+            request.setAttribute("Entre Article en base de donné","enregristrement terminé,");
+            getServletContext().getRequestDispatcher("/jsp/Compte.jsp").forward(request,response);
+        }
+    }
+
+
+
 }
