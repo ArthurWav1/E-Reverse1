@@ -47,9 +47,9 @@ CREATE TABLE article (
      description VARCHAR(1000) NOT NULL,
      prix NUMERIC(7,2) NOT NULL,
      image VARCHAR(100),
-     id_type INT NOT NULL UNIQUE,
-     id_gamme INT NOT NULL UNIQUE,
-     id_couleur INT NOT NULL UNIQUE,
+     id_type INT NOT NULL,
+     id_gamme INT NOT NULL,
+     id_couleur INT NOT NULL,
      nom VARCHAR(50) NOT NULL
 );
 
@@ -57,7 +57,7 @@ CREATE TABLE gamme(
      id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
      prix NUMERIC(7,2) NOT NULL,
      volume INT,
-     gamme VARCHAR(30) NOT NULL
+     gamme VARCHAR(30)
 );
 
 CREATE TABLE couleur(
