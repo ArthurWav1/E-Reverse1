@@ -29,15 +29,14 @@ public class ClientDAO {
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
-                    "INSERT INTO Utilisateur(nom,prenom,mail,adresse,login,salt,password) " +
-                            "VALUES (?,?,?,?,?,?,?)");
-            //Préparations des String simples
+                    "INSERT INTO Utilisateur(nom,prenom,mail,adresse,salt,password) " +
+                            "VALUES (?,?,?,?,?,?)");
+            //Préparations des Strings simples
             int i = 1;
             prep.setString(i++,client.getNom());
             prep.setString(i++,client.getPrenom());
             prep.setString(i++,client.getMail());
             prep.setString(i++,client.getAdresse());
-            prep.setString(i++,client.getPrenom());
 
             //Préparation pour le mot de passe
             SecureRandom random = new SecureRandom();

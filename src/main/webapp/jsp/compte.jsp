@@ -97,38 +97,38 @@
              <option value="1">Gourde</option>
              <option value="2">Module</option>
              <option value="3">Accessoire</option>
-             <option value=4>Pastille</option>
+             <option value="4">Pastille</option>
         </select>
 
             <br>
 
             <!-- gamme -->
         <select class="form-select" aria-label="Default select example" name="gamme">
-            <option selected>Type de produit</option>
+            <option selected>Gamme de la gourde</option>
+            <option value="0">Pas de gamme</option>
             <option value="1">Standard</option>
             <option value="2">Familiale</option>
             <option value="3">Sport</option>
-            <option value="4">Pas de gamme</option>
         </select>
 
         <br>
 
             <!-- Couleur> -->
-        <select class="form-select" aria-label="Default select example" name="gamme">
+        <select class="form-select" aria-label="Default select example" name="couleur">
             <option selected>Couleur du produit</option>
+            <option value="0">Pas de couleur</option>
             <option value="1">Rouge</option>
             <option value="2">Vert</option>
             <option value="3">Bleu Fonce</option>
             <option value="4">Jaune</option>
             <option value="5">Noir</option>
             <option value="6">Blanc</option>
-            <option value="7">Pas de Couleur</option>
         </select>
 
             <!-- Nom -->
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" name="NomProduit" placeholder="Nom du produit">
+            <input type="email" class="form-control" id="exampleFormControlInput1" name="Nom" placeholder="Nom du produit">
         </div>
 
         <br>
@@ -145,12 +145,19 @@
 
             <!-- Description -->
         <div class="input-group">
-            <input class="input-group-text" name="description"> Description</input>
+            <input class="input-group-text" name="description">Description</input>
             <textarea class="form-control" aria-label="With textarea"></textarea>
-         </div>
+        </div>
+
         <br>
 
-            <!-- image -->
+            <!-- Saveur -->
+        <div class="input-group">
+            <input class="input-group-text" name="saveur">Saveur</input>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+        </div>
+
+            <!-- Image -->
         <div class="input-group mb-3">
             <input type="file" class="form-control" id="inputGroupFile02" name="image">
             <label class="input-group-text" for="inputGroupFile02">Upload</label>

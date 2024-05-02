@@ -26,10 +26,10 @@ VALUES
 -- Gourdes
 INSERT INTO article(reference,description,prix,id_couleur,id_gamme,id_type,nom)
 VALUES
-    ('GOST001BE','Gourde Standar : autonomie 5 boissons, taille 26cm',109,3,1,1,'Gourde Standart'),
-    ('GOST002R','Gourde Standard : autonomie 5 boissons, taille 26cm',109,1,1,1,'Gourde Standart'),
-    ('GOST003N','Gourde Standard : autonomie 5 boissons, taille 26cm',109,5,1,1,'Gourde Standart'),
-    ('GOST004BA','Gourde Standard : autonomie 5 boissons, taille 26cm',109,6,1,1,'Gourde Standart'),
+    ('GOST001BE','Gourde Standart : autonomie 5 boissons, taille 26cm',109,3,1,1,'Gourde Standart'),
+    ('GOST002R','Gourde Standart : autonomie 5 boissons, taille 26cm',109,1,1,1,'Gourde Standart'),
+    ('GOST003N','Gourde Standart : autonomie 5 boissons, taille 26cm',109,5,1,1,'Gourde Standart'),
+    ('GOST004BA','Gourde Standart : autonomie 5 boissons, taille 26cm',109,6,1,1,'Gourde Standart'),
 
     ('GOFA001BE','Gourde Familiale : autonomie 10 boissons, taille 32cm',129,3,2,1,'Gourde Familiale'),
     ('GOFA002J','Gourde Familiale: autonomie 10 boissons, taille 32cm',129,4,2,1,'Gourde Familiale'),
