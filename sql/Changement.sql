@@ -66,3 +66,6 @@ ALTER TABLE article
 
 ALTER TABLE gamme
     DROP COLUMN taille;
+
+ALTER TABLE article
+    DROP COLUMN image;
