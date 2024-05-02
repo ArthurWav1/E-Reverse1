@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Article implements Serializable {
 
     //Attributs d'un article
-
+    protected String type_Article;
     protected int id;
     protected String ref_Article;
     protected int id_type;
@@ -19,7 +19,7 @@ public class Article implements Serializable {
     protected int nb_dispo;
     protected int nb_Achete;
     protected int id_Kit_appartenance;
-    protected String caracteristique;
+    protected String description;
 
 
     //constructeur definissant les nom, ref et prix de l'article, pour consulter un article (en général)
@@ -27,6 +27,13 @@ public class Article implements Serializable {
         this.ref_Article=ref_Article;
         this.nom_Article=nom_Article;
         this.prix=prix;
+    }
+
+    public Article(String ref_Article, String nom_Article, double prix, String description) {
+        this.ref_Article=ref_Article;
+        this.nom_Article=nom_Article;
+        this.prix=prix;
+        this.description=description;
     }
 
     public Article(){
@@ -100,11 +107,11 @@ public class Article implements Serializable {
         id_type= id_type;
     }
 
-    public String getCaracteristique() {
-        return caracteristique;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCaracteristique(String caracteristique) {
-        this.caracteristique = caracteristique;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
