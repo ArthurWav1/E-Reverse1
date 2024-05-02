@@ -22,7 +22,7 @@ public class CompteServlet extends HttpServlet {
         }
         getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(req, resp);
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupération des valeurs des champs du formulaire
         String typeProduit = request.getParameter("typeProduit");
         String nomProduit = request.getParameter("nomProduit");
@@ -59,7 +59,7 @@ public class CompteServlet extends HttpServlet {
             request.setAttribute("Entre Article en base de donné","enregristrement terminé,");
             getServletContext().getRequestDispatcher("/jsp/Compte.jsp").forward(request,response);
         }
-    }
+    } */
 
 
 

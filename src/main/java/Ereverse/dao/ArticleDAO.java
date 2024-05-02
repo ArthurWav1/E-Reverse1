@@ -66,20 +66,21 @@ public class ArticleDAO {
      * @param id_gamme : id de la gamme voulue
      * @return liste des gourdes de la gamme voulue (null si la liste est vide)
      */
-    public static ArrayList<Article> ListerGourde(int id_gamme){
+    public static ArrayList<Gourde> ListerGourde(int id_gamme){
             Connection connection = null;
             PreparedStatement statement = null;
             ResultSet resultSet = null;
-            ArrayList<Article> articles = new ArrayList<>();
+            ArrayList<Gourde> ListeGourde = new ArrayList<>();
 
             try {
                 // Obtenir la connexion à la base de données
                 connection = ServiceConnexionBDD.getConnection();
 
                 // Requête SQL pour sélectionner tous les articles et les éléments
-                String query ="SELECT article.* " +
-                              "FROM type, article " +
+                String query ="SELECT article.*, gamme.*,couleur.libelle AS libelle_couleur" +
+                              "FROM article" +
                               "JOIN gamme ON article.id_gamme = gamme.id " +
+                              "JOIN couleur ON article.id_couleur = couleur.id"+
                               "WHERE gamme.id = ?";
                 statement = connection.prepareStatement(query);
                 statement.setInt(1, id_gamme);
@@ -88,15 +89,16 @@ public class ArticleDAO {
 
                 // Parcourir les résultats et créer des objets Article pour chaque ligne
                 while (resultSet.next()) {
-                    Article article = new Article(
-                            resultSet.getInt("id"),
+                    Gourde gourde = new Gourde(
                             resultSet.getString("reference"),
-                            resultSet.getString("nom"),
-                            resultSet.getInt("id_type"),
-                            resultSet.getDouble("prix")
+                            resultSet.getString("gamme"),
+                            resultSet.getInt("prix"),
+                            resultSet.getString("description"),
+                            resultSet.getString("libelle_couleur"),
+                            resultSet.getInt("volume")
                             // Ajoutez d'autres attributs de l'article ici si nécessaire
                     );
-                    articles.add(article);
+                    ListeGourde.add(gourde);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -111,7 +113,7 @@ public class ArticleDAO {
                 }
             }
 
-            return articles;
+            return ListeGourde;
         }
 
 
