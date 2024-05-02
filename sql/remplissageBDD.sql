@@ -47,7 +47,7 @@ INSERT INTO article(reference,saveur,description,prix,id_couleur,id_gamme,id_typ
 VALUES
     ('PAC001CA','Café','10 pastilles café noir',4,7,4,3,'Café'),
     ('PAC002TH','Thé','10 pastilles thé vert',5,7,4,2,'Thé'),
-    ('PAC003CH','10 pastilles chocolat chaud',5,7,4,2,'Chocolat'),
+    ('PAC003CH','ChocolatChaud','10 pastilles chocolat chaud',5,7,4,2,'Chocolat'),
     ('PAF004FR','Fraise','10 pastilles fraise',4,7,4,2,'Fraise'),
     ('PAF005PO','Pomme','10 pastilles pomme',4,7,4,2,'Pomme');
 
