@@ -9,12 +9,12 @@ public class Module extends Article {
 
     private String type_module;
 
-    public Module(int reference, String type_module, String nom_module,int prix) {
+    public Module(String reference, String type_module, String nom_module,int prix) {
         super(reference, nom_module, prix);
         this.type_module=type_module;
     }
 
-    public Module(int id_module,int reference,int id_type, String nom_module, int prix) {
+    public Module(int id_module,String reference,int id_type, String nom_module, int prix) {
         super(id_module, reference, nom_module, id_type,prix);
     }
 

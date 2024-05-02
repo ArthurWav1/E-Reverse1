@@ -7,11 +7,11 @@ package Ereverse.bean.articles;
 
 public class Accessoire extends Article {
 
-    public Accessoire(int reference, String nom_accessoire,double prix) {
+    public Accessoire(String reference, String nom_accessoire,double prix) {
         super(reference, nom_accessoire, prix);
     }
 
-    public Accessoire(int id_accessoire, int reference, String nom_Article,int id_type,double prix) {
+    public Accessoire(int id_accessoire, String reference, String nom_Article,int id_type,double prix) {
         super(id_accessoire, reference, nom_Article, id_type, prix);
     }
 

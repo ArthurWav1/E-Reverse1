@@ -25,9 +25,7 @@ public class PageGourdeServlet extends HttpServlet {
         request.setAttribute("ListeGourde", articles);
 
         // Rediriger vers la page JSP de l'article avec les informations chargées
-        request.getRequestDispatcher("/pageArticle.jsp").forward(request, response);
-
-        getServletContext().getRequestDispatcher("/jsp/PageArticle.jsp").forward(request,response);
+        request.getRequestDispatcher("/jsp/PageArticle.jsp").forward(request, response);
     }
 }
 

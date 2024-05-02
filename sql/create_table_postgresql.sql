@@ -34,6 +34,7 @@ CREATE UNIQUE INDEX ux_panier ON panier (id_Utilisateur,id_Article);
 CREATE TABLE article (
      id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
      reference VARCHAR(30) NOT NULL UNIQUE,
+     nom VARCHAR(50) NOT NULL,
      saveur VARCHAR(30),
      description VARCHAR(1000) NOT NULL,
      prix NUMERIC(7,2) NOT NULL,
@@ -46,7 +47,9 @@ CREATE TABLE article (
 CREATE TABLE gamme(
      id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
      taille VARCHAR(30) NOT NULL UNIQUE,
-     prix NUMERIC(7,2) NOT NULL
+     prix NUMERIC(7,2) NOT NULL,
+     volume INT NOT NULL,
+     gamme VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE couleur(

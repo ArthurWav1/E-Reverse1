@@ -89,39 +89,41 @@
     </ul>
 <br>
     <div>
-     <select class="form-select" aria-label="Default select example">
-         <option selected>Type de produit</option>
-         <option value="1">Gourde</option>
-         <option value="2">Module</option>
-         <option value="3">Accessoire</option>
-         <option value=4>Pastille</option>
-    </select>
+        <form method="post" action="Compte">
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Type de produit</option>
+             <option value="1">Gourde</option>
+             <option value="2">Module</option>
+             <option value="3">Accessoire</option>
+             <option value=4>Pastille</option>
+        </select>
 
-    <br>
-       <div class="mb-3">
-
-           <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
-           <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nom du produit">
-     </div>
-     <br>
-       <div class="input-group mb-3">
-         <label for="exampleFormControlInput1" class="form-label">Prix</label>
-          <br>
-          <span class="input-group-text">€</span>
-         <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-      </div>
-    <br>
-     <div class="input-group">
-        <span class="input-group-text"> Caractéristiques</span>
-        <textarea class="form-control" aria-label="With textarea"></textarea>
-     </div>
         <br>
-     <div class="input-group mb-3">
-         <input type="file" class="form-control" id="inputGroupFile02">
-         <label class="input-group-text" for="inputGroupFile02">Upload</label>
-     </div>
+            <div class="mb-3">
+
+              <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Nom du produit">
+            </div>
+        <br>
+        <div class="input-group mb-3">
+             <label for="exampleFormControlInput1" class="form-label">Prix</label>
+             <br>
+             <span class="input-group-text">€</span>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-text"> Caractéristiques</span>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+         </div>
+        <br>
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" id="inputGroupFile02">
+            <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        </div>
+        </form>
     </div>
-    </div>
+</div>
 </c:if>
 
 <br>

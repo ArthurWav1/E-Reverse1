@@ -10,7 +10,7 @@ public class Gourde extends Article {
     private String taille;
     private String gamme;
 
-    public Gourde(int reference, String nom_gourde,String gamme, String taille, String couleur, int prix) {
+    public Gourde(String reference, String nom_gourde,String gamme, String taille, String couleur, int prix) {
         super(reference, nom_gourde, prix);
         this.couleur=couleur;
         this.gamme=gamme;
@@ -18,7 +18,7 @@ public class Gourde extends Article {
 
     }
 
-    public Gourde(int id_gourde,int reference,int id_type, String nom_gourde,String gamme,
+    public Gourde(int id_gourde,String reference,int id_type, String nom_gourde,String gamme,
                   String taille, String couleur, int prix) {
         super(id_gourde, reference, nom_gourde, id_type,prix);
     }
