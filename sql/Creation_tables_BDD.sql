@@ -36,6 +36,16 @@ CREATE TABLE Commande
     prix NUMERIC(7,2) NOT NULL
 );
 
+CREATE TABLE relation_couleur
+(
+    id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    id_article INT NOT NULL,
+    id_couleur INT NOT NULL,
+    image VARCHAR(100)
+);
+
+CREATE UNIQUE INDEX ux_couleur ON relation_couleur(id_article,id_couleur);
+
 CREATE UNIQUE INDEX ux_panier ON panier (id_Utilisateur,id_Article);
 
 --Création de la table image qui regroupe toutes les images des produits à afficher
@@ -45,6 +55,7 @@ CREATE TABLE article (
      saveur VARCHAR(30),
      description VARCHAR(1000) NOT NULL,
      prix NUMERIC(7,2) NOT NULL,
+     volume INT,
      image VARCHAR(100),
      id_type INT NOT NULL,
      id_gamme INT,
@@ -52,12 +63,6 @@ CREATE TABLE article (
      nom VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE gamme(
-     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-     prix NUMERIC(7,2) NOT NULL,
-     volume INT,
-     gamme VARCHAR(30)
-);
 
 CREATE TABLE couleur(
     id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,

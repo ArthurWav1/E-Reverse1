@@ -23,17 +23,17 @@ public class CompteServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(req, resp);
     }
 
-    /*
 
+    /*
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupération des valeurs des champs du formulaire
         String reference = request.getParameter("reference");
         String saveur = request.getParameter("saveur");
         String description = request.getParameter("description");
         double prix = Double.parseDouble(request.getParameter("prix"));
+        int volume = Integer.parseInt(request.getParameter("volume"));
         String image = request.getParameter("image");
         int id_type = Integer.parseInt(request.getParameter("type"));
-        int id_gamme = Integer.parseInt(request.getParameter("gamme"));
         int id_couleur = Integer.parseInt(request.getParameter("couleur"));
 
 
@@ -65,7 +65,5 @@ public class CompteServlet extends HttpServlet {
             getServletContext().getRequestDispatcher("/jsp/Compte.jsp").forward(request,response);
         }
     }
-*/
-
-
+    */
 }

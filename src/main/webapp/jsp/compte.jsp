@@ -102,15 +102,6 @@
 
             <br>
 
-            <!-- gamme -->
-        <select class="form-select" aria-label="Default select example" name="gamme">
-            <option selected>Gamme de la gourde</option>
-            <option value="0">Pas de gamme</option>
-            <option value="1">Standard</option>
-            <option value="2">Familiale</option>
-            <option value="3">Sport</option>
-        </select>
-
         <br>
 
             <!-- Couleur> -->
@@ -132,6 +123,12 @@
         </div>
 
         <br>
+
+            <!--Volume -->
+            <div class="input-group">
+                <input class="input-group-text" name="volume">Volume</input>
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
 
             <!-- Prix -->
         <div class="input-group mb-3">
@@ -162,7 +159,7 @@
             <input type="file" class="form-control" id="inputGroupFile02" name="image">
             <label class="input-group-text" for="inputGroupFile02">Upload</label>
         </div>
-
+            <input type="submit" value="Ajouter l'article">
         </form>
     </div>
 </div>
