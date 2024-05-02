@@ -92,7 +92,7 @@
         <form method="post" action="Compte">
 
             <!-- TypeProduit -->
-        <select class="form-select" aria-label="Default select example" name="typeProduit">
+        <select class="form-select" aria-label="Default select example" name="type">
             <option selected>Type de produit</option>
              <option value="1">Gourde</option>
              <option value="2">Module</option>
@@ -100,17 +100,19 @@
              <option value=4>Pastille</option>
         </select>
 
-        <c:if test="typeProduit = 1">
-            <select class="form-select" aria-label="Default select example" name="gamme">
-                <option selected>Type de produit</option>
-                <option value="1">Gamme 1</option>
-                <option value="2">Gamme 2</option>
-                <option value="3">Gamme 3</option>
-                <option value="4">Gamme 4</option>
-            </select>
-        </c:if>
+            <br>
+
+            <!-- gamme -->
+        <select class="form-select" aria-label="Default select example" name="gamme">
+            <option selected>Type de produit</option>
+            <option value="1">Gamme 1</option>
+            <option value="2">Gamme 2</option>
+            <option value="3">Gamme 3</option>
+            <option value="4">Gamme 4</option>
+        </select>
 
         <br>
+
 
             <!-- Nom -->
         <div class="mb-3">

@@ -66,3 +66,5 @@ ALTER TABLE article
 
 ALTER TABLE gamme
     DROP COLUMN taille;
+
+ALTER TABLE article alter column id_gamme set NOT NULL;

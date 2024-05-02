@@ -1,4 +1,13 @@
 -- Création de la table des utilisateurs
+DROP TABLE utilisateur CASCADE;
+DROP TABLE panier CASCADE;
+DROP TABLE Commande CASCADE;
+DROP TABLE article CASCADE;
+DROP TABLE gamme CASCADE;
+DROP TABLE couleur CASCADE;
+DROP TABLE type CASCADE;
+
+
 
 CREATE TABLE utilisateur
 (
@@ -34,21 +43,20 @@ CREATE UNIQUE INDEX ux_panier ON panier (id_Utilisateur,id_Article);
 CREATE TABLE article (
      id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
      reference VARCHAR(30) NOT NULL UNIQUE,
-     nom VARCHAR(50) NOT NULL,
      saveur VARCHAR(30),
      description VARCHAR(1000) NOT NULL,
      prix NUMERIC(7,2) NOT NULL,
-     image BYTEA NOT NULL,
+     image VARCHAR(100),
      id_type INT NOT NULL UNIQUE,
      id_gamme INT NOT NULL UNIQUE,
-     id_couleur INT NOT NULL UNIQUE
+     id_couleur INT NOT NULL UNIQUE,
+     nom VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE gamme(
      id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-     taille VARCHAR(30) NOT NULL UNIQUE,
      prix NUMERIC(7,2) NOT NULL,
-     volume INT NOT NULL,
+     volume INT,
      gamme VARCHAR(30) NOT NULL
 );
 
@@ -72,12 +80,14 @@ ALTER TABLE article
 ALTER TABLE article
     ADD CONSTRAINT fk_couleur
         FOREIGN KEY (id_couleur) REFERENCES couleur(id);
+
 ALTER TABLE panier
     ADD CONSTRAINT fk_article
         FOREIGN KEY (id_article) REFERENCES article(id);
 ALTER TABLE panier
     ADD CONSTRAINT fk_utilisateur
         FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
+
 ALTER TABLE commande
     ADD CONSTRAINT fk_utilisateur
         FOREIGN KEY (id_utilisateur) REFERENCES utilisateur(id);
