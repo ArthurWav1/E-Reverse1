@@ -17,7 +17,7 @@
     <nav class="menu">
         <ul class="niveau1">
             <li><a href="<c:url value='/'/>">Accueil</a></li>
-            <li class="sousmenu"><a href="">Les gourdes</a>
+            <li class="sousmenu"><a href="<c:url value='/MultiArticles'/>">Les gourdes</a>
                 <ul class="niveau2">
                     <li><a href="<c:url value='/gourdes?id_gamme=1'/>">Modèle 1</a></li>
                     <li><a href="<c:url value='/gourdes?id_gamme=2'/>">Modèle 2</a></li>
