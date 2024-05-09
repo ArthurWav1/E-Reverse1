@@ -19,9 +19,13 @@
             <li><a href="<c:url value='/'/>">Accueil</a></li>
             <li class="sousmenu"><a href="">Les gourdes</a>
                 <ul class="niveau2">
-                    <li><a href="<c:url value='/gourdes?id_gamme=1'/>">Modèle 1</a></li>
-                    <li><a href="<c:url value='/gourdes?id_gamme=2'/>">Modèle 2</a></li>
-                    <li><a href="<c:url value='/gourdes?id_gamme=3'/>">Modèle 3</a></li>
+                    <c:if test="${empty ListeGourde}">
+                        <!-- Afficher un message indiquant que la liste de gourdes est vide -->
+                        <p>Aucune gourde disponible pour le moment.</p>
+                    </c:if>
+                    <c:forEach var="gourde" items="${ListeGourde}">
+                        <li><a href="<c:url value='/gourdes?id_gamme=${gourde.id_gamme}'/>"><c:out value="${gourde.gamme}" /></a></li>
+                    </c:forEach>
                 </ul>
             </li>
             <li class="sousmenu"><a href="<c:url value='/'/>">Les Modules</a>

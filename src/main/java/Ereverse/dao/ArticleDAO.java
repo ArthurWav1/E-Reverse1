@@ -77,10 +77,10 @@ public class ArticleDAO {
                 connection = ServiceConnexionBDD.getConnection();
 
                 // Requête SQL pour sélectionner tous les articles et les éléments
-                String query ="SELECT article.*, gamme.*,couleur.libelle AS libelle_couleur" +
-                              "FROM article" +
+                String query ="SELECT article.*, gamme.*,couleur.libelle AS libelle_couleur " +
+                              "FROM article " +
                               "JOIN gamme ON article.id_gamme = gamme.id " +
-                              "JOIN couleur ON article.id_couleur = couleur.id"+
+                              "JOIN couleur ON article.id_couleur = couleur.id "+
                               "WHERE gamme.id = ?";
                 statement = connection.prepareStatement(query);
                 statement.setInt(1, id_gamme);
