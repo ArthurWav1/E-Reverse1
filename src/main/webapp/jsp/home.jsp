@@ -17,7 +17,7 @@
     <nav class="menu">
         <ul class="niveau1">
             <li><a href="<c:url value='/'/>">Accueil</a></li>
-            <li class="sousmenu"><a href="">Les gourdes</a>
+            <li class="sousmenu"><a href="<c:url value='/MultiArticles'/>">Les gourdes</a>
                 <ul class="niveau2">
                     <c:if test="${empty ListeGourde}">
                         <!-- Afficher un message indiquant que la liste de gourdes est vide -->
