@@ -1,9 +1,11 @@
 /*--------  CAROUSEL  ----------*/
 
-.carousel {
-    position: relative;
 
-    z-index: 2;
+div.carousel {
+    position: relative;
+    z-index: 1;
+}
+.carousel {
 
     margin-left: 15%;
     margin-right: 15%;
@@ -389,6 +391,11 @@ input:checked + .slide-container .nav label { display: block; }
 
 }
 
+nav.menu {
+    position: relative;
+    z-index: 2;
+}
+
 .menu ul li { float:left; list-style: none; }
 .menu ul ul {display:none; width:150px;}
 .menu  li {background:#CCCCCC;}
@@ -402,5 +409,4 @@ input:checked + .slide-container .nav label { display: block; }
     text-align: center;
     width: 100%; /* largeur 100% de la fenêtre */
     justify-content: center;
-    z-index: 3;
 }

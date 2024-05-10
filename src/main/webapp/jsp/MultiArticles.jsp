@@ -5,7 +5,7 @@
 <jsp:include page="début.jsp"/>
 <br>
 <link href="<c:url value='css/ArticleStyle.css'/>" rel="stylesheet">
-<br>
+<div style="margin-bottom: 20px;">
 <c:if test="${empty ListeGourdes}">
     <!-- Afficher un message indiquant que la liste de gourdes est vide -->
     <p>Aucune gourde disponible pour le moment.</p>
