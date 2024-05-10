@@ -7,19 +7,20 @@ import java.util.ArrayList;
 import java.io.Serializable;
 
 public class Panier implements Serializable {
-    private ArrayList<Article> articles = new ArrayList<>();
+    //private ArrayList<Article> articles = new ArrayList<>();
     private int id_utilisateur;
     private int id_article;
     private int nb_article;
-    public Panier(int id_utilisateur, int id_article) {
+    public Panier(int id_utilisateur, int id_article,int nb_article) {
         this.id_utilisateur = id_utilisateur;
         this.id_article = id_article;
+        this.nb_article=nb_article;
         }
 
        //setters
-    public void Set_nb_articles () {
-        nb_article = articles.size();
-    }
+    //public void Set_nb_articles () {
+        //nb_article = articles.size();
+    //}
 
     //getters
     public int get_nb_article(){
@@ -33,8 +34,28 @@ public class Panier implements Serializable {
         return id_utilisateur;
     }
 
-    public ArrayList get_articles (){
-        return articles;
+    //public ArrayList get_articles (){
+        //return articles;
+    //}
+
+    //public void add_article(Panier panier, Article article) {
+      //  panier.get_articles().add(article);
+    //}
+
+    // Méthode pour supprimer un produit du panier
+    //public void supp_article(Panier panier, Article article) {
+      //  panier.get_articles().remove(article);
+    //}
+
+    //calcul du montant des articles d'un panier
+    public double Prix_article_Panier(Panier panier, Article article){
+        return nb_article*article.getPrix();
+        //double somme = 0;
+        //ArrayList <Article> list_articles = panier.get_articles();
+        //for( Article article : list_articles) {
+          //  somme += article.getPrix();
+        //}
+        //return somme;
     }
 }
 
