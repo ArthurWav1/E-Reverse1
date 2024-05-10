@@ -12,7 +12,7 @@
 <input type="button" value="Recherche" />
 </div>-->
 
-<button type="button" class="btn btn-light"> <a href="<c:url value='/Compte'/>">Compte </a> </button>
+<button type="button" class="btn btn-light"> <a href="<c:url value='/Compte'/>"> Compte </a> </button>
 <div>
     <nav class="menu">
         <ul class="niveau1">
@@ -149,7 +149,7 @@
 
         <figure>
             <img src="<c:url value='picture/gourde1.jpg'/>" alt="Gourde 1" width="700" height="700">
-            <figcaption>Gourde 1</figcaption>
+            <figcaption> Gourde 1 </figcaption>
             <div></div>
             <div></div>
             <div></div>
@@ -158,7 +158,7 @@
 
         <figure>
             <img src="<c:url value='picture/gourde2.jpg'/>" alt="Gourde 2" width="700" height="700">
-            <figcaption>Gourde 2</figcaption>
+            <figcaption>  Gourde 2 </figcaption>
             <div></div>
             <div></div>
             <div></div>

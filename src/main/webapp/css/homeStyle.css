@@ -169,10 +169,10 @@ input:checked + .slide-container .nav label { display: block; }
     max-height: 670px;
     max-width: 1900px;
     margin: 35px 0px;
-    background-color: black;
+    background-color: #171616;
 
     background-size: 40px 40px;
-
+    color: #ffffff;
     outline-offset: 20px;
     overflow-x: auto;
     overflow-y: hidden;

@@ -4,8 +4,9 @@ import Ereverse.bean.articles.Article;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
-public class Panier {
+public class Panier implements Serializable {
     private List<Article> produits;
     private int id;
     public Panier() {
