@@ -21,8 +21,9 @@
         </div>
     </div>
     <div class="product__info">
+
         <div class="title">
-            <h1>${ListeGourde.get(0).gamme}</h1>
+            <h1>${ListeGourde.get(0).nom_Article}</h1>
         </div>
         <div class="price">
          <span>${ListeGourde.get(0).prix}</span>
@@ -39,9 +40,7 @@
         <div class="description">
             <h3>CARACTERISTIQUES</h3>
             <ul>
-                <li>Remet full shield</li>
-                <li>400 ml</li>
-                <li>Chauffe ou Refroidis</li>
+                ${ListeGourde.get(0).description}
             </ul>
         </div>
         <button class="buy--btn">AJOUTER AU PANIER</button>
