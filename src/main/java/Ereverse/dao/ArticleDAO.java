@@ -4,6 +4,8 @@ import Ereverse.ConnexionBDD.ServiceConnexionBDD;
 import Ereverse.bean.Client;
 import Ereverse.bean.articles.Article;
 import Ereverse.bean.articles.Gourde;
+import Ereverse.bean.articles.Pastille;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -117,6 +119,7 @@ public class ArticleDAO {
 
         return ListeGourde;
     }
+
 
 
     /**

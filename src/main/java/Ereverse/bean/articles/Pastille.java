@@ -9,7 +9,7 @@ public class Pastille extends Article {
 
     private String saveur;
 
-    public Pastille(String reference, String saveur, String nom_pastille,int prix) {
+    public Pastille(String reference, String saveur, int anInt, String nom_pastille, String libelleCouleur, int prix) {
         super(reference, nom_pastille, prix);
         this.saveur=saveur;
     }

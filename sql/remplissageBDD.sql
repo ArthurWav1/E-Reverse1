@@ -53,7 +53,7 @@ VALUES
 -- Pastille
 INSERT INTO article(reference,saveur,description,prix,id_type,nom)
 VALUES
-    ('PAC001CA','Café','10 pastilles café noir',4,3,'Café'),
+    ('PAC001CA','Café','10 pastilles café noir',4,2,'Café'),
     ('PAC002TH','Thé','10 pastilles thé vert',5,2,'Thé'),
     ('PAC003CH','ChocolatChaud','10 pastilles chocolat chaud',5,2,'Chocolat'),
     ('PAF004FR','Fraise','10 pastilles fraise',4,2,'Fraise'),
