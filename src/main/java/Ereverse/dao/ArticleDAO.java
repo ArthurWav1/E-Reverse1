@@ -274,6 +274,52 @@ public class ArticleDAO {
 
         return listeType;
     }
+    public static ArrayList<Gourde> ListerGourde2() {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        ArrayList<Gourde> ListeGourdes = new ArrayList<>();
+
+        try {
+            // Obtenir la connexion à la base de données
+            connection = ServiceConnexionBDD.getConnection();
+            String query = "SELECT a.reference, a.nom, a.prix, a.description, g.gamme, g.id " +
+                    "FROM article a " +
+                    "JOIN gamme g ON a.id_gamme = g.id" +
+                    " GROUP BY g.id, a.reference, a.nom, a.prix, a.description, g.gamme";
+
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String reference = resultSet.getString("reference");
+                String nomGourde = resultSet.getString("nom");
+                double prix = resultSet.getDouble("prix");
+                String description = resultSet.getString("description");
+                String gamme = resultSet.getString("gamme");
+                int id_gamme = resultSet.getInt("id");
+
+                Boolean gammeAlreadyExists = ListeGourdes.stream().anyMatch(g -> { return g.getGamme().equals(gamme); });
+
+                if(!gammeAlreadyExists){
+                    Gourde gourde = new Gourde(reference, nomGourde, prix, description, gamme, id_gamme);
+                    ListeGourdes.add(gourde);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermer les ressources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return ListeGourdes;
+    }
     }
 
 
