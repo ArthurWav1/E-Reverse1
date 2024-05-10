@@ -21,11 +21,8 @@ public class MultiArticlesServlet extends HttpServlet {
         request.setAttribute("ListeGourdes", listeGourdes);
         request.setAttribute("ListeTypes", listeTypes);
 
-        
-        // Récupérer l'identifiant de l'article à partir des paramètres de la requête
-        //int id_type =  Integer.parseInt(request.getParameter("id_type"));
-
 
         getServletContext().getRequestDispatcher("/jsp/MultiArticles.jsp").forward(request, response);
     }
+
 }
