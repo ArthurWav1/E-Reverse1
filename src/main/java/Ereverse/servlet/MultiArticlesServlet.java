@@ -14,7 +14,14 @@ import java.util.ArrayList;
 public class MultiArticlesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        ArrayList<Gourde> listeGourdes = ArticleDAO.ListerGourde2();
+        ArrayList<String> listeTypes = ArticleDAO.ListerType();
 
+        // Ajouter la liste des types d'articles à l'attribut de la requête pour la passer à la JSP
+        request.setAttribute("ListeGourdes", listeGourdes);
+        request.setAttribute("ListeTypes", listeTypes);
+
+        
         // Récupérer l'identifiant de l'article à partir des paramètres de la requête
         //int id_type =  Integer.parseInt(request.getParameter("id_type"));
 
