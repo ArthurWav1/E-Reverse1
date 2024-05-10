@@ -22,13 +22,13 @@
     </div>
     <div class="product__info">
         <div class="title">
-            <h1>GOURDE FAMILIALE</h1>
+            <h1>${ListeGourde.get(0).gamme}</h1>
         </div>
         <div class="price">
-         <span>109,99€</span>
+         <span>${ListeGourde.get(0).prix}</span>
         </div>
         <div class="variant">
-            <h3>COULEURS</h3>
+            <h3>${ListeGourde.get(0).couleur}</h3>
             <ul>
                 <li><img src="<c:url value='picture/ModèleOrange.webp'/>"></li>
                 <li><img src="<c:url value='picture/ModèleRose.webp'/>"></li>

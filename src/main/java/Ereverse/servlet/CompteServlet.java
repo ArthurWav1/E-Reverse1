@@ -22,19 +22,13 @@ public class CompteServlet extends HttpServlet {
         }
         getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(req, resp);
     }
-
-    /*
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /*protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupération des valeurs des champs du formulaire
-        String reference = request.getParameter("reference");
-        String saveur = request.getParameter("saveur");
-        String description = request.getParameter("description");
+        String typeProduit = request.getParameter("typeProduit");
+        String nomProduit = request.getParameter("nomProduit");
         double prix = Double.parseDouble(request.getParameter("prix"));
-        String image = request.getParameter("image");
-        int id_type = Integer.parseInt(request.getParameter("type"));
-        int id_gamme = Integer.parseInt(request.getParameter("gamme"));
-        int id_couleur = Integer.parseInt(request.getParameter("couleur"));
+        String caracteristique = request.getParameter("caracteristique");
+        int refArticle = Integer.parseInt(request.getParameter("refArticle"));
 
 
         String erreur = null;
@@ -60,12 +54,13 @@ public class CompteServlet extends HttpServlet {
         }
         //Si aucune erreur n'est détectée, ajout de l'utilisateur à la BDD et renvoie à la page de connexion.
         else{
-
+            Article article = new Article(refArticle,nomProduit,prix,caracteristique);
+            new ArticleDAO().EntreArticle(article);
             request.setAttribute("Entre Article en base de donné","enregristrement terminé,");
             getServletContext().getRequestDispatcher("/jsp/Compte.jsp").forward(request,response);
         }
-    }
-*/
+    } */
+
 
 
 }

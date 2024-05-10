@@ -17,11 +17,17 @@
     <nav class="menu">
         <ul class="niveau1">
             <li><a href="<c:url value='/'/>">Accueil</a></li>
-            <li class="sousmenu"><a href="">Les gourdes</a>
+            <li class="sousmenu"><a href="<c:url value='/MultiArticles'/>">Les Gourdes</a>
                 <ul class="niveau2">
-                    <li><a href="<c:url value='/gourdes?id_gamme=1'/>">Modèle 1</a></li>
-                    <li><a href="<c:url value='/gourdes?id_gamme=2'/>">Modèle 2</a></li>
-                    <li><a href="<c:url value='/gourdes?id_gamme=3'/>">Modèle 3</a></li>
+                    <c:if test="${empty ListeGourdes}">
+                        <!-- Afficher un message indiquant que la liste de gourdes est vide -->
+                        <p>Aucune gourde disponible pour le moment.</p>
+                    </c:if>
+                    <c:if test="${not empty ListeGourdes}">
+                        <c:forEach var="gourde" items="${ListeGourdes}">
+                            <li><a href="<c:url value='/gourdes?id_gamme=${gourde.getId_Gamme()}'/>"><c:out value="${gourde.gamme}" /></a></li>
+                        </c:forEach>
+                    </c:if>
                 </ul>
             </li>
             <li class="sousmenu"><a href="<c:url value='/'/>">Les Modules</a>
