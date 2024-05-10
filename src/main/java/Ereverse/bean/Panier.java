@@ -1,39 +1,42 @@
 package Ereverse.bean;
 
 import Ereverse.bean.articles.Article;
+import jakarta.el.CompositeELResolver;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.io.Serializable;
 
 public class Panier implements Serializable {
-    private List<Article> produits;
-    private int id;
-    public Panier() {
-        this.produits = new ArrayList<>();
-    }
-
-    // Méthode pour ajouter un produit au panier
-    public void ajouterProduit(Article article) {
-        produits.add(article);
-    }
-
-    // Méthode pour supprimer un produit du panier
-    public void supprimerProduit(Article article) {
-        produits.remove(article);
-    }
-
-    // Méthode pour récupérer tous les produits du panier
-    public List<Article> getProduits() {
-        return produits;
-    }
-
-    public double TotalPanier(){
-        double somme = 0;
-        for(Article article : produits){
-            somme += article.getPrix();
+    private ArrayList<Article> articles = new ArrayList<>();
+    private int id_utilisateur;
+    private int id_article;
+    private int nb_article;
+    public Panier(int id_utilisateur, int id_article) {
+        this.id_utilisateur = id_utilisateur;
+        this.id_article = id_article;
         }
-        return somme;
+
+       //setters
+    public void Set_nb_articles () {
+        nb_article = articles.size();
     }
 
+    //getters
+    public int get_nb_article(){
+        return nb_article;
+    }
+
+    public int get_id_article(){
+        return id_article;
+    }
+    public int get_id_utilisateur (){
+        return id_utilisateur;
+    }
+
+    public ArrayList get_articles (){
+        return articles;
+    }
 }
+
+
+
