@@ -6,14 +6,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Panier eReverse </title>
+    <title> Panier eReverse </title>
     <jsp:include page="début.jsp"/>
     <div class="card">
         <div class="row">
             <div class="col-md-8 cart">
                 <div class="title">
                     <div class="row">
-                        <div class="col"><h4><b>Articles</b></h4></div>
+                        <div class="col"><h4><b> Articles </b></h4></div>
                         <div class="col align-self-center text-right text-muted">3 items</div>
                     </div>
                 </div>
@@ -79,6 +79,5 @@
             </div>
                 </div>
             </div>
-        </div>
 
 <jsp:include page="fin.jsp"/>
