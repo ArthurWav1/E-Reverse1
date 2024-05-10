@@ -21,6 +21,10 @@ VALUES
     (500,129,'Familiale'),
     (200,99,'Sport');
 
+INSERT INTO gamme(volume,prix,gamme)
+VALUES
+    (800,159,'Maxi'),
+    (150,89,'Enfant');
 
 
 -- Gourdes
@@ -37,7 +41,13 @@ VALUES
     ('GOFA004V','Gourde Familiale : autonomie 10 boissons, taille 32cm',129,2,2,1,'Gourde Familiale'),
 
     ('GOSP001BE','Gourde Sport : ergonomique, autonomie 3 boissons, taille 18cm',99,3,3,1,'Gourde Sport'),
-    ('GOSP0002R','Gourde Sport : ergonomique, autonomie 3 boissons, taille 18cm',99,1,3,1,'Gourde Sport');
+    ('GOSP0002R','Gourde Sport : ergonomique, autonomie 3 boissons, taille 18cm',99,1,3,1,'Gourde Sport'),
+
+    ('GOMX001N','Gourde Maxi : autonomie 8 boissons, taille 35cm',159,5,4,1,'Gourde Maxi'),
+    ('GOMX002BA','Gourde Maxi : autonomie 8 boissons, taille 35cm',109,6,4,1,'Gourde Maxi'),
+
+    ('GOEN001N','Gourde Enfant : autonomie 5 boissons, taille 19cm',89,5,5,1,'Gourde Enfant'),
+    ('GOEN002BA','Gourde Enfant : autonomie 5 boissons, taille 19cm',89,6,5,1,'Gourde Enfant');
 
 
 -- Pastille
