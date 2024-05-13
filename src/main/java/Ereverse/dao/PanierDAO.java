@@ -53,6 +53,10 @@ public class PanierDAO {
 
     }
 
+    /**
+     * Méthode permettant de supprimer un article dans la table du panier (BDD).
+     * @param panier :  panier de l'utilisateur.
+     */
     public void supression_d_article (Panier panier) {
 
         Connection connection = null;
@@ -70,7 +74,13 @@ public class PanierDAO {
 
     }
 
-    public void modification_nb_articles_panier(Panier panier, int nouveau_nb ){
+    /**
+     * Méthode permettant de modifier les quantités d'un article dans la table du panier (BDD).
+     * @param panier :  panier de l'utilisateur.
+     * @param nouveau_nb : l'article à ajouter.
+     */
+    //Changement nbarticle
+    public void modification_nb_articles_panier(Panier panier, int nouveau_nb){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
@@ -78,7 +88,6 @@ public class PanierDAO {
                             "SET nbarticle = ? " +
                             "WHERE id_utilisateur = ? ");
             int i = 1;
-            //Changement nbarticle
             prep.setInt(i++,nouveau_nb);
 
             prep.execute();
@@ -90,6 +99,27 @@ public class PanierDAO {
 
     }
 
+    /**
+     * Méthode permettant de récupérer la liste des articles du panier et leur quantités respectives (BDD).
+     */
+    //Recupération liste des articles du panier et leur quantité respective
+    public static ArrayList recup_articles_panier(){
+
+        ArrayList <Article> liste_articles = new ArrayList <>();
+
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                    "SELECT id_utilisateur, nbarticle FROM panier " +
+                            "WHERE id_utilisateur = ? ");
+            prep.execute();
+            System.out.println( "liste articles du panier = " + prep);
+
+            return liste_articles ;
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur de connection à la base de donnée");
+        }
+    }
 
 
 }

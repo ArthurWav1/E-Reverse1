@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
 
 @WebServlet({"/Panier"})
 public class PanierServlet extends HttpServlet {
@@ -21,14 +23,16 @@ public class PanierServlet extends HttpServlet {
     }*/
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Panier panier = (Panier) req.getSession().getAttribute(FiltreAuthentification.SESSION_USER_KEY);
-               // Article article = (Article);
+        getServletContext().getRequestDispatcher("/jsp/Panier.jsp").forward(req, resp);
 
-        if (panier != null) {
-            req.setAttribute("liste_articles_panier", panier.get_nb_article());
-            req.setAttribute("nb_articles_panier",panier.get_nb_article());
+       ArrayList panier = PanierDAO.recup_articles_panier();
+
+        //if (panier != null) {
+          //  req.setAttribute("article_panier", panier.get_id_article());
+            //req.setAttribute("nb_articles_panier",panier.get_nb_article());
             //req.setAttribute("prix_articles_panier",panier.Prix_article_Panier(panier, article));
-        }
+        //}
+
         getServletContext().getRequestDispatcher("/jsp/panier.jsp").forward(req, resp);
     }
 }
