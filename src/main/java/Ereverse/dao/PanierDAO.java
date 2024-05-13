@@ -39,17 +39,18 @@ public class PanierDAO {
                             "VALUES (?,?,?)");
 
             //Préparations des Strings simples
-            int i = 1;
-            prep.setInt(i++,panier.get_id_utilisateur());
-            prep.setInt(i++,panier.get_id_article());
-            prep.setInt(i++,panier.get_nb_article());
+            prep.setInt(1,panier.get_id_utilisateur());
+            prep.setInt(2,panier.get_id_article());
+            prep.setInt(3,panier.get_nb_article());
 
             prep.execute();
             System.out.println("Client " + article.getNom_Article() + " article ajouté à la table du panier");
 
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
 
     }
 
@@ -57,7 +58,7 @@ public class PanierDAO {
      * Méthode permettant de supprimer un article dans la table du panier (BDD).
      * @param panier :  panier de l'utilisateur.
      */
-    public void supression_d_article (Panier panier) {
+    public void supression_d_article (Panier panier,Article article) {
 
         Connection connection = null;
         try {
@@ -112,8 +113,8 @@ public class PanierDAO {
             PreparedStatement prep = connection.prepareStatement(
                     "SELECT id_utilisateur, nbarticle FROM panier " +
                             "WHERE id_utilisateur = ? ");
-            prep.execute();
-            System.out.println( "liste articles du panier = " + prep);
+            ResultSet rst = prep.executeQuery() ;
+            System.out.println( "liste articles du panier = " + rst);
 
             return liste_articles ;
         } catch (SQLException e) {

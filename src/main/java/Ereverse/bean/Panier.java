@@ -48,6 +48,7 @@ public class Panier implements Serializable {
     //}
 
     //calcul du montant des articles d'un panier
+
     public double Prix_article_Panier(Panier panier, Article article){
         return nb_article*article.getPrix();
         //double somme = 0;
@@ -57,6 +58,10 @@ public class Panier implements Serializable {
         //}
         //return somme;
     }
+
+    public Panier(){
+    }
+
 }
 
 

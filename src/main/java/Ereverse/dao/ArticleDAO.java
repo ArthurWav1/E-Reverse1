@@ -212,14 +212,14 @@ public class ArticleDAO {
             }
         }
 
-        public static String AjoutArticle(String reference, String saveur, String description, double prix, byte[] image, int id_type, int id_gamme, int id_couleur, String nom){
+        public static void AjoutArticle(String reference, String saveur, String description, double prix, byte[] image, int id_type, int id_gamme, int id_couleur, String nom){
             Connection connection = null;
             PreparedStatement statement = null;
             ResultSet resultSet = null;
 
             try {
                 connection = ServiceConnexionBDD.getConnection();
-                String query = "INSERT INTO article(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                String query = "INSERT INTO article(reference,saveur,description,prix,image,id_type,id_gamme,id_couleur,nom)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 statement = connection.prepareStatement(query);
                 statement.setString(1,reference);
                 statement.setString(2,saveur);
@@ -230,11 +230,13 @@ public class ArticleDAO {
                 statement.setInt(7,id_gamme);
                 statement.setInt(8,id_couleur);
                 statement.setString(9,nom);
+
                 resultSet = statement.executeQuery();
 
-                return ("Article " + reference +" rajouté");
+                System.out.println("Article " + reference +" rajouté");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
+
             }
         }
     }
