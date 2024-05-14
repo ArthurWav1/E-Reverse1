@@ -213,25 +213,37 @@ public class ArticleDAO {
         }
 
         public static void AjoutArticle(String reference, String saveur, String description, double prix, byte[] image, int id_type, int id_gamme, int id_couleur, String nom){
-            Connection connection = null;
-            PreparedStatement statement = null;
-            ResultSet resultSet = null;
+            //Connection connection = null;
+            //PreparedStatement statement = null;
+            //ResultSet resultSet = null;
 
             try {
-                connection = ServiceConnexionBDD.getConnection();
-                String query = "INSERT INTO article(reference,saveur,description,prix,image,id_type,id_gamme,id_couleur,nom)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                statement = connection.prepareStatement(query);
-                statement.setString(1,reference);
-                statement.setString(2,saveur);
-                statement.setString(3,description);
-                statement.setDouble(4,prix);
-                statement.setBytes(5, image);
-                statement.setInt(6, id_type);
-                statement.setInt(7,id_gamme);
-                statement.setInt(8,id_couleur);
-                statement.setString(9,nom);
+                Connection connection = ServiceConnexionBDD.getConnection();
+                PreparedStatement prep = connection.prepareStatement("INSERT INTO article(reference,saveur,description,prix,image,id_type,id_gamme,id_couleur,nom)"
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-                resultSet = statement.executeQuery();
+                //statement = connection.prepareStatement(query);
+                //statement.setString(1,reference);
+                //statement.setString(2,saveur);
+                //statement.setString(3,description);
+                //statement.setDouble(4,prix);
+                //statement.setBytes(5, image);
+                //statement.setInt(6, id_type);
+                //statement.setInt(7,id_gamme);
+                //statement.setInt(8,id_couleur);
+                //statement.setString(9,nom);
+
+                prep.setString(1,reference);
+                prep.setString(2,saveur);
+                prep.setString(3,description);
+                prep.setDouble(4,prix);
+                prep.setBytes(5, image);
+                prep.setInt(6, id_type);
+                prep.setInt(7,id_gamme);
+                prep.setInt(8,id_couleur);
+                prep.setString(9,nom);
+
+                prep.execute();
 
                 System.out.println("Article " + reference +" rajouté");
             } catch (SQLException e) {
@@ -239,7 +251,22 @@ public class ArticleDAO {
 
             }
         }
+
+    public static void supression_article(Article article){
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                    "DELETE FROM article WHERE reference = ?");
+            prep.setString(1,article.get_ref());
+            prep.execute();
+            System.out.println("Article" + article.get_ref() + " supprimé");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
+
+}
 
 
 

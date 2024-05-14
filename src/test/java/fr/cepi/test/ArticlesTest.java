@@ -2,6 +2,7 @@ package fr.cepi.test;
 
 import Ereverse.ConnexionBDD.ServiceConnexionBDD;
 import Ereverse.bean.Client;
+import Ereverse.bean.articles.Article;
 import Ereverse.dao.ArticleDAO;
 import Ereverse.dao.ClientDAO;
 import org.junit.jupiter.api.Assertions;
@@ -31,8 +32,10 @@ public class ArticlesTest {
     public void test() {
 
         //test ajout d'article dans BDD
+        dao.AjoutArticle("ref 2", "saveur 2", "description", 50, null, 1, 1, 1, "gourde");
 
-        dao.AjoutArticle("ref 1", "saveur 1", "description", 50, new byte[2], 1, 1, 111, "gourde");
+        //test supression d'article dans BDD
+        dao.supression_article(new Article("ref 2"));
 
     }
 }
