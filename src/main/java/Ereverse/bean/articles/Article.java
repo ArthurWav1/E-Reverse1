@@ -36,8 +36,7 @@ public class Article implements Serializable {
         this.description=description;
     }
 
-    public Article(String ref){
-        this.ref_Article=ref;
+    public Article(){
     }
 
     //constructeur affectant reference et identifiant de l'article, pour ajouter un article
