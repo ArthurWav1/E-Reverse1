@@ -14,11 +14,10 @@ public class ArticleDAO {
 
     /**
      * Méthode pour obtenir un article à partir de sa référence
-     *
      * @param ref_article : référence de l'article
      * @return Article dont la référence est ref_article (null s'il n'existe pas)
      */
-    public static Article TrouverArticle(int ref_article) {
+    public static Article TrouverArticle(String ref_article) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -31,7 +30,7 @@ public class ArticleDAO {
             // Requête SQL pour sélectionner l'article par son identifiant
             String query = "SELECT * FROM article WHERE reference = ?";
             statement = connection.prepareStatement(query);
-            statement.setInt(1, ref_article);
+            statement.setString(1, ref_article);
 
             // Exécuter la requête
             resultSet = statement.executeQuery();
@@ -40,9 +39,11 @@ public class ArticleDAO {
             if (resultSet.next()) {
                 // Créer un objet Article avec les données récupérées de la base de données
                 article = new Article(
+                        resultSet.getInt("id"),
                         resultSet.getString("reference"),
                         resultSet.getString("nom"),
-                        resultSet.getDouble("prix")
+                        resultSet.getDouble("prix"),
+                        resultSet.getString("description")
                         // Ajoutez d'autres attributs de l'article ici si nécessaire
                 );
             }
@@ -59,12 +60,13 @@ public class ArticleDAO {
             }
         }
 
+        System.out.println("l'identifiant de l'article est " + article.get_id() + " et sa reference est " + article.get_ref());
         return article;
+
     }
 
     /**
      * Méthode permettant de renvoyer la liste des gourdes d'une certaine gamme
-     *
      * @param id_gamme : id de la gamme voulue
      * @return liste des gourdes de la gamme voulue (null si la liste est vide)
      */
@@ -122,7 +124,6 @@ public class ArticleDAO {
     /**
      * Méthode permettant de renvoyer tous les articles d'un certain type
      * (gourde/module/pastille/accessoire)
-     *
      * @param libelle_type : nom du type
      * @return la liste des articles du type demandé (null si la liste est vide)
      */
@@ -216,31 +217,46 @@ public class ArticleDAO {
         }
     }
 
-    public static String AjoutArticle(String reference, String saveur, String description, double prix, byte[] image, int id_type, int id_gamme, int id_couleur, String nom) {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
+        public static void AjoutArticle(String reference, String saveur, String description, double prix, byte[] image, int id_type, int id_gamme, int id_couleur, String nom){
+            //Connection connection = null;
+            //PreparedStatement statement = null;
+            //ResultSet resultSet = null;
 
-        try {
-            connection = ServiceConnexionBDD.getConnection();
-            String query = "INSERT INTO article(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            statement = connection.prepareStatement(query);
-            statement.setString(1, reference);
-            statement.setString(2, saveur);
-            statement.setString(3, description);
-            statement.setDouble(4, prix);
-            statement.setBytes(5, image);
-            statement.setInt(6, id_type);
-            statement.setInt(7, id_gamme);
-            statement.setInt(8, id_couleur);
-            statement.setString(9, nom);
-            resultSet = statement.executeQuery();
+            try {
+                Connection connection = ServiceConnexionBDD.getConnection();
+                PreparedStatement prep = connection.prepareStatement("INSERT INTO article(reference,saveur,description,prix,image,id_type,id_gamme,id_couleur,nom)"
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-            return ("Article " + reference + " rajouté");
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+                //statement = connection.prepareStatement(query);
+                //statement.setString(1,reference);
+                //statement.setString(2,saveur);
+                //statement.setString(3,description);
+                //statement.setDouble(4,prix);
+                //statement.setBytes(5, image);
+                //statement.setInt(6, id_type);
+                //statement.setInt(7,id_gamme);
+                //statement.setInt(8,id_couleur);
+                //statement.setString(9,nom);
+
+                prep.setString(1,reference);
+                prep.setString(2,saveur);
+                prep.setString(3,description);
+                prep.setDouble(4,prix);
+                prep.setBytes(5, image);
+                prep.setInt(6, id_type);
+                prep.setInt(7,id_gamme);
+                prep.setInt(8,id_couleur);
+                prep.setString(9,nom);
+
+                prep.execute();
+
+                System.out.println("Article " + reference +" rajouté");
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+
+            }
         }
-    }
+
     public static ArrayList<String> ListerType() {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -274,6 +290,7 @@ public class ArticleDAO {
 
         return listeType;
     }
+
     public static ArrayList<Gourde> ListerGourde2() {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -320,7 +337,71 @@ public class ArticleDAO {
         }
         return ListeGourdes;
     }
+
+
+    public static void supression_article(Article article){
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                    "DELETE FROM article WHERE reference = ?");
+            prep.setString(1,article.get_ref());
+            prep.execute();
+            System.out.println("Article" + article.get_ref() + " supprimé");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
+
+    public static Article TrouverArticle(int id_article) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Article article = null;
+
+        try {
+            // Obtenir la connexion à la base de données
+            connection = ServiceConnexionBDD.getConnection();
+
+            // Requête SQL pour sélectionner l'article par son identifiant
+            String query = "SELECT * FROM article WHERE id = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, id_article);
+
+            // Exécuter la requête
+            resultSet = statement.executeQuery();
+
+            // Vérifier s'il y a un résultat
+            if (resultSet.next()) {
+                // Créer un objet Article avec les données récupérées de la base de données
+                article = new Article(
+                        resultSet.getInt("id"),
+                        resultSet.getString("reference"),
+                        resultSet.getString("nom"),
+                        resultSet.getDouble("prix"),
+                        resultSet.getString("description")
+                        // Ajoutez d'autres attributs de l'article ici si nécessaire
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermer les ressources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //System.out.println("l'identifiant de l'article est " + article.get_id() + " et sa reference est " + article.get_ref());
+        return article;
+
+    }
+
+}
 
 
 

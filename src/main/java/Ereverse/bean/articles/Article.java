@@ -29,7 +29,8 @@ public class Article implements Serializable {
         this.prix=prix;
     }
 
-    public Article(String ref_Article, String nom_Article, double prix, String description) {
+    public Article(int id, String ref_Article, String nom_Article, double prix, String description) {
+        this.id=id;
         this.ref_Article=ref_Article;
         this.nom_Article=nom_Article;
         this.prix=prix;
@@ -38,6 +39,7 @@ public class Article implements Serializable {
 
     public Article(){
     }
+
     //constructeur affectant reference et identifiant de l'article, pour ajouter un article
     public Article(int id, String ref_Article, String nom_Article,int id_type,double prix) {
         this(ref_Article,nom_Article,prix);
@@ -52,6 +54,10 @@ public class Article implements Serializable {
 
     public int get_idType(){
         return id_type;}
+
+    public int get_id(){
+        return id;}
+
 
     public double getPrix() {
         return prix;

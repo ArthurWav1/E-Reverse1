@@ -1,4 +1,4 @@
--- Création de la table des utilisateurs
+--Création de la table des utilisateurs
 DROP TABLE utilisateur CASCADE;
 DROP TABLE panier CASCADE;
 DROP TABLE Commande CASCADE;

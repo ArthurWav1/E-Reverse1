@@ -1,6 +1,8 @@
 package Ereverse.bean;
 
-public class Client {
+import java.io.Serializable;
+
+public class Client implements Serializable {
     private int id;
     private String prenom;
     private String nom;
@@ -44,6 +46,7 @@ public class Client {
             this.access = false;
         }
     }
+
 
     //Méthodes d'accès
     public int getId(){

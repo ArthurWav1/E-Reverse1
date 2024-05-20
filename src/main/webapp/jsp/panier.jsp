@@ -6,14 +6,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Panier</title>
+    <title> Panier eReverse </title>
     <jsp:include page="début.jsp"/>
     <div class="card">
         <div class="row">
             <div class="col-md-8 cart">
                 <div class="title">
                     <div class="row">
-                        <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                        <div class="col"><h4><b> Articles </b></h4></div>
                         <div class="col align-self-center text-right text-muted">3 items</div>
                     </div>
                 </div>
@@ -57,16 +57,16 @@
                     </div>
                 </div>
                 <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
-            </div>
-            <div class="col-md-4 summary">
-                <div><h5><b>Summary</b></h5></div>
+                </div>
+                <div class="col-md-4 summary">
+                <div><h5><b> Summary </b></h5></div>
                 <hr>
                 <div class="row">
-                    <div class="col" style="padding-left:0;">ITEMS 3</div>
-                    <div class="col text-right">&euro; 132.00</div>
+                    <div class="col" style="padding-left:0;"> Nombre d'articles </div>
+                    <div class="col text-right">&euro; Somme prix articles 132.00</div>
                 </div>
                 <form>
-                    <p>SHIPPING</p>
+                    <p>Montant Livraison (SHIPPING) </p>
                     <select><option class="text-muted">Standard-Delivery- &euro;5.00</option></select>
                     <p>GIVE CODE</p>
                     <input id="code" placeholder="Enter your code">
@@ -75,8 +75,9 @@
                     <div class="col">TOTAL PRICE</div>
                     <div class="col text-right">&euro; 137.00</div>
                 </div>
-                <button class="btn">CHECKOUT</button>
+                <button class="btn"> Commander </button>
             </div>
-        </div>
-    </div>
-    <jsp:include page="fin.jsp"/>
+                </div>
+            </div>
+
+<jsp:include page="fin.jsp"/>
