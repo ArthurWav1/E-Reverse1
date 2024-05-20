@@ -4,6 +4,7 @@ import Ereverse.ConnexionBDD.ServiceConnexionBDD;
 import Ereverse.bean.Client;
 import Ereverse.bean.Panier;
 import Ereverse.bean.articles.Article;
+import Ereverse.dao.ArticleDAO;
 import Ereverse.dao.PanierDAO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -33,9 +34,9 @@ public class PanierTest {
     @Test
     public void test() {
         Client client = new Client("pnom","nom", "mail", "adress");
-        Article article = new Article("ref 1","gourde",50,"description");
+        Article article = ArticleDAO.TrouverArticle("ref 1");
         int id_client = client.getId();
-        Panier panier = new Panier(id_client);
+        Panier panier = new Panier(id_client, article.get_id(), 0);
 
         //ajout article
         dao.ajout_d_article(panier,article);

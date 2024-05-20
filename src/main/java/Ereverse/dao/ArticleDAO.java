@@ -39,6 +39,7 @@ public class ArticleDAO {
             if (resultSet.next()) {
                 // Créer un objet Article avec les données récupérées de la base de données
                 article = new Article(
+                        resultSet.getInt("id"),
                         resultSet.getString("reference"),
                         resultSet.getString("nom"),
                         resultSet.getDouble("prix"),
@@ -59,7 +60,7 @@ public class ArticleDAO {
             }
         }
 
-        System.out.println(article.get_ref());
+        System.out.println("l'identifiant de l'article est " + article.get_id() + " et sa reference est " + article.get_ref());
         return article;
 
     }

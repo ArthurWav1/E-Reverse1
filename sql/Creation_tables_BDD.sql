@@ -1,4 +1,4 @@
--- Création de la table des utilisateurs
+--Création de la table des utilisateurs
 DROP TABLE utilisateur CASCADE;
 DROP TABLE panier CASCADE;
 DROP TABLE Commande CASCADE;
@@ -17,7 +17,8 @@ CREATE TABLE utilisateur
     mail     VARCHAR(100) NOT NULL UNIQUE,
     adresse  VARCHAR(1000) NOT NULL,
     salt     BYTEA NOT NULL,
-    password BYTEA NOT NULL
+    password BYTEA NOT NULL,
+    id_panier INT NOT NULL
 );
 
 --Création de la table panier qui représente le panier actuel d'un utilisateur avant commande

@@ -29,7 +29,8 @@ public class Article implements Serializable {
         this.prix=prix;
     }
 
-    public Article(String ref_Article, String nom_Article, double prix, String description) {
+    public Article(int id, String ref_Article, String nom_Article, double prix, String description) {
+        this.id=id;
         this.ref_Article=ref_Article;
         this.nom_Article=nom_Article;
         this.prix=prix;
