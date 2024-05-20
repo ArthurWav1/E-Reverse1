@@ -11,16 +11,15 @@ public class Panier implements Serializable {
     private int id_utilisateur;
     private int id_article;
     private int nb_article;
-    public Panier(int id_utilisateur, int id_article,int nb_article) {
+    public Panier(int id_utilisateur, int id_article) {
         this.id_utilisateur = id_utilisateur;
         this.id_article = id_article;
-        this.nb_article=nb_article;
         }
 
        //setters
-    //public void Set_nb_articles () {
-        //nb_article = articles.size();
-    //}
+    public void set_nb_articles (int nb) {
+        nb_article = nb;
+    }
 
     //getters
     public int get_nb_article(){

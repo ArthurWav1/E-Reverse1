@@ -2,6 +2,7 @@ package Ereverse.dao;
 
 import Ereverse.ConnexionBDD.ServiceConnexionBDD;
 import Ereverse.bean.Client;
+import Ereverse.bean.articles.Article;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -29,8 +30,8 @@ public class ClientDAO {
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
-                    "INSERT INTO Utilisateur(nom,prenom,mail,adresse,salt,password) " +
-                            "VALUES (?,?,?,?,?,?)");
+                    "INSERT INTO Utilisateur(nom,prenom,mail,adresse,salt,password,id_panier) " +
+                            "VALUES (?,?,?,?,?,?,?)");
             //Préparations des Strings simples
             int i = 1;
             prep.setString(i++,client.getNom());
@@ -44,6 +45,7 @@ public class ClientDAO {
             random.nextBytes(salt);
             prep.setBytes(i++, salt);
             prep.setBytes(i++, hashPassword(salt, mdp));
+            prep.setInt(i++,client.get_id_Panier());
             prep.execute();
             System.out.println("Client " + client.getNom() + " ajouté à la bdd");
 
@@ -145,5 +147,53 @@ public class ClientDAO {
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 1024, 128);
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
         return factory.generateSecret(spec).getEncoded();
+    }
+
+    public static int Trouver_id_Client(String mail_client) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Client client = null;
+
+        try {
+            // Obtenir la connexion à la base de données
+            connection = ServiceConnexionBDD.getConnection();
+
+            // Requête SQL pour sélectionner le client par son identifiant
+            String query = "SELECT * FROM utilisateur WHERE mail = ?";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, mail_client);
+
+            // Exécuter la requête
+            resultSet = statement.executeQuery();
+
+            // Vérifier s'il y a un résultat
+            if (resultSet.next()) {
+                // Créer un objet client avec les données récupérées de la base de données
+                client = new Client(
+                        resultSet.getInt("id"),
+                        resultSet.getString("prenom"),
+                        resultSet.getString("nom"),
+                        resultSet.getString("mail"),
+                        resultSet.getString("adresse")
+                        // Ajoutez d'autres attributs de l'article ici si nécessaire
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermer les ressources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("l'identifiant du client est " + client.getId() + ", son adresse mail est " + client.getMail());
+        return client.getId();
+
     }
 }

@@ -31,7 +31,7 @@ public class PanierDAO {
      * @param article : l'article à ajouter.
      */
 
-    public void ajout_d_article (Panier panier, Article article) {
+    public void ajout_d_article (Panier panier, Article article, int nb_article) {
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
@@ -40,11 +40,13 @@ public class PanierDAO {
 
             //Préparations des Strings simples
             prep.setInt(1,panier.get_id_utilisateur());
-            prep.setInt(2,panier.get_id_article());
-            prep.setInt(3,panier.get_nb_article());
+            prep.setInt(2,article.get_id());
+            prep.setInt(3,nb_article);
+
+            panier.set_nb_articles(nb_article);
 
             prep.execute();
-            System.out.println("Client " + article.getNom_Article() + " article ajouté à la table du panier");
+            System.out.println(article.getNom_Article() + " numero " + article.get_ref() + " ajouté à la table du panier");
 
             connection.close();
         } catch (SQLException e) {
@@ -56,9 +58,9 @@ public class PanierDAO {
 
     /**
      * Méthode permettant de supprimer un article dans la table du panier (BDD).
-     * @param panier :  panier de l'utilisateur.
+     * @param article :  panier de l'utilisateur.
      */
-    public void supression_d_article (Panier panier,Article article) {
+    public void supression_d_article (Article article) {
 
         Connection connection = null;
         try {
@@ -66,9 +68,9 @@ public class PanierDAO {
             PreparedStatement prep = connection.prepareStatement(
                     "DELETE FROM panier WHERE id_article = ? "
             );
-            prep.setInt (1,panier.get_id_article());
+            prep.setInt (1,article.get_id());
             prep.execute();
-            System.out.println("article" + panier.get_id_article() + " supprimé du panier ");
+            System.out.println("article " + article.getNom_Article() + " numero "+article.get_ref() + " supprimé du panier ");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -77,25 +79,26 @@ public class PanierDAO {
 
     /**
      * Méthode permettant de modifier les quantités d'un article dans la table du panier (BDD).
-     * @param panier :  panier de l'utilisateur.
      * @param nouveau_nb : l'article à ajouter.
      */
     //Changement nbarticle
-    public void modification_nb_articles_panier(Panier panier, int nouveau_nb){
+    public void modification_nb_articles(Panier panier,Article article, int nouveau_nb){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
                     "UPDATE panier " +
                             "SET nbarticle = ? " +
-                            "WHERE id_utilisateur = ? ");
-            int i = 1;
-            prep.setInt(i++,nouveau_nb);
+                            "WHERE id_article = ? ");
+            prep.setInt(1,nouveau_nb);
+            prep.setInt(2,article.get_id());
+
+            panier.set_nb_articles(nouveau_nb);
 
             prep.execute();
-            System.out.println( panier.get_id_article() + " nombre " + "modifié");
+            System.out.println( "nouveau nombre article " + article.get_ref() + " est " + panier.get_nb_article());
 
         } catch (SQLException e) {
-            throw new RuntimeException("Erreur de connection à la base de donnée");
+            throw new RuntimeException(e);
         }
 
     }
