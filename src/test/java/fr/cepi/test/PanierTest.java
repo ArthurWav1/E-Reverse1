@@ -43,13 +43,13 @@ public class PanierTest {
         int id_client = daoClient.Trouver_id_Client("space@sgfd");
 
         //ajout article
-        //daoPanier.ajout_d_article(new Panier(id_client),article,2);
+        daoPanier.ajout_d_article(new Panier(id_client),article,2);
 
         //supp article
-        //daoPanier.supression_d_article(article);
+        daoPanier.supression_d_article(article);
 
         //Changement nbarticle
-        //daoPanier.modification_nb_articles(new Panier(id_client),article,5);
+        daoPanier.modification_nb_articles(new Panier(id_client),article,5);
 
         //Recupération liste des articles du panier et leur quantité respective
         daoPanier.recup_articles_panier(new Panier(id_client));

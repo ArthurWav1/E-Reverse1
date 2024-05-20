@@ -145,7 +145,7 @@ public class PanierDAO {
 
             //System.out.println( "liste articles du panier = " + rst);
 
-            //System.out.println( "liste articles du panier = " + liste_articles);
+            System.out.println( "liste articles du panier = " + liste_articles);
             return liste_articles;
 
         } catch (SQLException e) {
