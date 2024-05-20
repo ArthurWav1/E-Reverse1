@@ -73,12 +73,13 @@
 
 <!-- Affichage des informations du compte -->
 <div>
+    <%@ include file="alerte.jsp"%>
     <h1>Informations du compte : </h1>
     <br><br><br><br>
-    <h5 name="prenom">Prénom: ${prenom}</h5>
-    <h5 name="nom">Nom de famille: ${nom}</h5>
-    <h5 name="mail">Mail associé au compte: ${mail}</h5>
-    <h5 name="adresse">Adresse de livraison: ${adresse}</h5>
+    <h5 name="prenom" class="text-white">Prénom: ${prenom}</h5>
+    <h5 name="nom" class="text-white">Nom de famille: ${nom}</h5>
+    <h5 name="mail" class="text-white">Mail associé au compte: ${mail}</h5>
+    <h5 name="adresse" class="text-white">Adresse de livraison: ${adresse}</h5>
     <br><br>
     <a href="<c:url value="/AjoutArticle"/>" class="btn btn-primary">Modifier ses informations personnelles</a><br>
 </div>

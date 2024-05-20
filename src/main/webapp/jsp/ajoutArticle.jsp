@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
+<%@ include file="alerte.jsp"%>
 <body>
 
 <br>
@@ -23,21 +24,19 @@
         <select class="form-select" aria-label="Default select example" name="type">
             <option selected value="-1">Type de produit</option>
             <option value="1">Gourde</option>
-            <option value="2">Module</option>
+            <option value="2">Pastille</option>
             <option value="3">Accessoire</option>
-            <option value="4">Pastille</option>
+            <option value="4">Module</option>
         </select>
 
-        <!--
-        <c:if test="${gourde}">
-            <select class="form-select" aria-label="Default select example" name="gamme">
-                <option selected value="-1">Gamme de la gourde</option>
-                <option value="1">Standard</option>
-                <option value="2">Familiale</option>
-                <option value="3">Sport</option>
-            </select>
-        </c:if>
-        -->
+        <br>
+
+        <select class="form-select" aria-label="Default select example" name="gamme">
+            <option selected value="-1">Gamme de la gourde</option>
+            <option value="1">Standard</option>
+            <option value="2">Familiale</option>
+            <option value="3">Sport</option>
+        </select>
 
         <br>
 
@@ -62,6 +61,13 @@
 
         <br>
 
+        <!-- Nom du produit pour le client -->
+        <div class="mb-3">
+            <input type="text" class="form-control" name="nomProduit" placeholder="Nom du produit">
+        </div>
+
+        <br>
+
         <!--Volume -->
         <div class="input-group">
             <input type="text" class="form-control"  name="volume" placeholder="Volume">
@@ -74,7 +80,7 @@
             <label for="exampleFormControlInput1" class="form-label"></label>
             <br>
             <span class="input-group-text">€</span>
-            <input type="text" class="form-control" name="Prix" aria-label="Amount (to the nearest dollar)">
+            <input type="text" class="form-control" name="prix" aria-label="Amount (to the nearest dollar)">
         </div>
 
         <br>

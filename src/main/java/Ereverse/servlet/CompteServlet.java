@@ -20,6 +20,9 @@ public class CompteServlet extends HttpServlet {
             req.setAttribute("nomEtPrenom", client.getPrenom() + " " + client.getNom());
             req.setAttribute("acces",client.getAccess());
             req.setAttribute("prenom",client.getPrenom());
+            req.setAttribute("nom",client.getNom());
+            req.setAttribute("mail",client.getMail());
+            req.setAttribute("adresse",client.getAdresse());
         }
         getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(req, resp);
     }

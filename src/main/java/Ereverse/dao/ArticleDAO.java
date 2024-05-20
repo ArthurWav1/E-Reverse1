@@ -212,27 +212,54 @@ public class ArticleDAO {
             }
         }
 
-        public static String AjoutArticle(String reference, String saveur, String description, double prix, byte[] image, int id_type, int id_gamme, int id_couleur, String nom){
+        public static String AjoutArticle(String reference, String saveur, String description, double prix, String image, int id_type, int id_gamme, int id_couleur, String nom){
             Connection connection = null;
             PreparedStatement statement = null;
             ResultSet resultSet = null;
-
             try {
                 connection = ServiceConnexionBDD.getConnection();
-                String query = "INSERT INTO article(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                statement = connection.prepareStatement(query);
-                statement.setString(1,reference);
-                statement.setString(2,saveur);
-                statement.setString(3,description);
-                statement.setDouble(4,prix);
-                statement.setBytes(5, image);
-                statement.setInt(6, id_type);
-                statement.setInt(7,id_gamme);
-                statement.setInt(8,id_couleur);
-                statement.setString(9,nom);
+                int i =1;
+                String query;
+                switch (id_type){
+                    case 1:
+                        query = "INSERT INTO article(reference, description, prix, image, id_type, id_gamme, id_couleur, nom)" +
+                                "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+                        statement = connection.prepareStatement(query);
+                        statement.setString(i++,reference);
+                        statement.setString(i++,description);
+                        statement.setDouble(i++,prix);
+                        statement.setString(i++, image);
+                        statement.setInt(i++, id_type);
+                        statement.setInt(i++,id_gamme);
+                        statement.setInt(i++,id_couleur);
+                        statement.setString(i++,nom);
+                        break;
+                    case 2:
+                        query = "INSERT INTO article(reference, saveur, description, prix, image, id_type, nom)" +
+                                "VALUES(?, ?, ?, ?, ?, ?, ?)";
+                        statement = connection.prepareStatement(query);
+                        statement.setString(i++,reference);
+                        statement.setString(i++,saveur);
+                        statement.setString(i++,description);
+                        statement.setDouble(i++,prix);
+                        statement.setString(i++, image);
+                        statement.setInt(i++, id_type);
+                        statement.setString(i++,nom);
+                        break;
+                    case 3:
+                    case 4:
+                        query = "INSERT INTO article(reference, description, prix, image, id_type, nom)" +
+                                "VALUES(?, ?, ?, ?, ?, ?)";
+                        statement = connection.prepareStatement(query);
+                        statement.setString(i++,reference);
+                        statement.setString(i++,description);
+                        statement.setDouble(i++,prix);
+                        statement.setString(i++, image);
+                        statement.setInt(i++, id_type);
+                        statement.setString(i++,nom);
+                }
                 resultSet = statement.executeQuery();
-
-                return ("Article " + reference +" rajouté");
+                return ("Article '" + nom +"'rajouté");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

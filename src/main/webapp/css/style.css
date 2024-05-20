@@ -123,6 +123,14 @@ h5{
     color: white;
     margin-bottom: 0;
 }
+
+.text-success {
+    color: #28a745 !important;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}
 /*-----------------------*/
 
 

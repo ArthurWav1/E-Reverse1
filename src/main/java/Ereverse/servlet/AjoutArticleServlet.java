@@ -1,6 +1,7 @@
 package Ereverse.servlet;
 
 import Ereverse.bean.Client;
+import Ereverse.dao.ArticleDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -25,61 +26,71 @@ public class AjoutArticleServlet extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Récupération des valeurs des champs du formulaire
+        String erreur = null;
+        double prix = 0.;
+        int id_gamme = 0;
+        int id_couleur = 0;
+        String saveur = "";
 
+        System.out.println(request.getParameter("type") + " " + request.getParameter("reference") + " " + request.getParameter("nomProduit") + " " + request.getParameter("description") + " " + request.getParameter("prix") + " " + request.getParameter("image") + " " + request.getParameter("couleur") + " " + request.getParameter("gamme") + " " + request.getParameter("volume") + " " + request.getParameter("saveur"));
+
+
+        // Récupération des valeurs des champs du formulaire
         //1 = Gourde, 2 = Module, 3 = Accessoire, 4 = Pastille
         int id_type = Integer.parseInt(request.getParameter("type"));
         String reference = request.getParameter("reference");
         String nomProduit = request.getParameter("nomProduit");
         String description = request.getParameter("description");
-        double prix = Double.parseDouble(request.getParameter("prix"));
+
+        if (request.getParameter("prix") != null){
+            prix = Double.parseDouble(request.getParameter("prix"));
+        }
+        else{
+            erreur = erreur + "Veuillez préciser un prix. ";
+        }
+
         String image = request.getParameter("image");
 
         if (id_type == 1){
             //1 = Rouge, 2 = Vert, 3 = Bleu foncé, 4 = Jaune, 5 = Noir, 6 = Blanc
-            int id_couleur = Integer.parseInt(request.getParameter("couleur"));
-            int id_gamme = Integer.parseInt(request.getParameter("gamme"));
+            id_couleur = Integer.parseInt(request.getParameter("couleur"));
+            id_gamme = Integer.parseInt(request.getParameter("gamme"));
             int volume = Integer.parseInt(request.getParameter("volume"));
         }
 
         if (id_type == 4){
-            String saveur = request.getParameter("saveur");
+            saveur = request.getParameter("saveur");
         }
-
 
         //Vérification de la validité des champs.
-        String erreur = null;
 
         if (id_type == -1){
-            erreur = "Veuillez sélectionner un type d'article valide, ";
+            erreur = "Veuillez sélectionner un type d'article valide. ";
         }
 
-        if (nomProduit.length() > 20) {
-            erreur = erreur + "Nom du produit incorrect (>20 caractères), ";
+        if (nomProduit.length() > 50 || nomProduit == null) {
+            erreur = erreur + "Nom du produit manquant ou trop long (>50 caractères).  ";
         }
 
-        if (description.length() > 1000) {
-            erreur = erreur + "Description trop longue (>1000 caractères), ";
+        if (description.length() > 1000 || description == null ) {
+            erreur = erreur + "Description manquante ou trop longue (>1000 caractères).  ";
         }
 
-        if (prix < 0) {
-            erreur = erreur + "Prix négatif.";
+        if (reference.length() > 30 || reference == null){
+            erreur = erreur + "Référence manquante ou trop longue  (>30 caractères). ";
         }
-
 
         //Affichage d'une erreur éventuelle.
         if (erreur != null) {
             request.setAttribute("erreurChamp", erreur);
-            getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/jsp/ajoutArticle.jsp").forward(request, response);
         }
-        //Si aucune erreur n'est détectée, ajout de l'utilisateur à la BDD et renvoie à la page de connexion.
+
+        //Si aucune erreur n'est détectée, ajout de l'article à la BDD et retour à la page du compte.
         else{
-
-            request.setAttribute("Entre Article en base de donné","enregristrement terminé,");
-            getServletContext().getRequestDispatcher("/jsp/Compte.jsp").forward(request,response);
+            ArticleDAO.AjoutArticle(reference, saveur, description, prix, image, id_type, id_gamme, id_couleur, nomProduit);
+            request.setAttribute("ajoutReussi","Ajout de l'article effectué avec succès !");
+            getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(request,response);
         }
-
     }
-
-
 }
