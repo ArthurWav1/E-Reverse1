@@ -8,7 +8,6 @@ public class Client implements Serializable {
     private String nom;
     private String mail;
     private String adresse;
-    private int id_panier;
     private boolean access;
     /**
      * Constructeur pour l'enregistrement de l'utilisateur
@@ -22,15 +21,6 @@ public class Client implements Serializable {
         this.nom = nom;
         this.mail = mail;
         this.adresse = adresse;
-        this.access = false;
-    }
-
-    public Client(String prenom,String nom,String mail,String adresse,int id_panier){
-        this.prenom = prenom;
-        this.nom = nom;
-        this.mail = mail;
-        this.adresse = adresse;
-        this.id_panier = id_panier;
         this.access = false;
     }
 
@@ -76,9 +66,6 @@ public class Client implements Serializable {
     }
     public boolean getAccess(){
         return access;
-    }
-    public int get_id_Panier(){
-        return this.id_panier;
     }
 
     @Override
