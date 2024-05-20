@@ -106,21 +106,19 @@ public class PanierDAO {
     }
 
     /**
-     * Méthode permettant de récupérer la liste des articles du panier et leurs quantités respectives (BDD).
+     * Méthode permettant de récupérer la liste des articles du panier (BDD).
      */
     //Recupération liste des articles du panier et leur quantité respective
-    public static List<Object[]> recup_articles_panier(Panier panier){
-
-        List<Object[]> objs = new LinkedList<>();
+    public static ArrayList<Article> recup_articles_panier(Panier panier){
 
         ArrayList <Article> liste_articles = new ArrayList ();
         ArrayList <Integer> id_articles = new ArrayList<>();
-        ArrayList <Integer> liste_nb_articles = new ArrayList<>();
+        //ArrayList <Integer> liste_nb_articles = new ArrayList<>();
 
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
-                    "SELECT id_article, nbarticle FROM panier " +
+                    "SELECT id_article FROM panier " +
                             "WHERE id_utilisateur = ? ");
             prep.setInt(1,panier.get_id_utilisateur());
 
@@ -129,7 +127,7 @@ public class PanierDAO {
             //recuperation des donnees du panier dans la BDD
            while (rst.next()) {
                id_articles.add(rst.getInt("id_article"));
-               liste_nb_articles.add(rst.getInt("nbarticle"));
+               //liste_nb_articles.add(rst.getInt("nbarticle"));
             }
             //Article [] liste_articles = new Article [id_articles.size()];
             //int [] list_nb_articles = new int [id_articles.size()];
@@ -146,13 +144,40 @@ public class PanierDAO {
                 }
 
             //System.out.println( "liste articles du panier = " + rst);
-            Object[] obj = new Object[2];
-           obj[0]=liste_articles;
-           obj[1]=liste_nb_articles;
-           objs.add(obj);
 
-            System.out.println( "liste articles du panier = " + liste_articles + liste_nb_articles);
-            return objs;
+            //System.out.println( "liste articles du panier = " + liste_articles);
+            return liste_articles;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur de connection à la base de donnée");
+        }
+    }
+
+    /**
+     * Méthode permettant de récupérer la liste des articles du panier et leurs quantités respectives (BDD).
+     */
+    //Recupération liste des articles du panier et leur quantité respective
+    public static ArrayList<Integer> recup_nb_articles_panier(Panier panier){
+
+        ArrayList <Integer> liste_nb_articles = new ArrayList<>();
+
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                    "SELECT nbarticle FROM panier " +
+                            "WHERE id_utilisateur = ? ");
+            prep.setInt(1,panier.get_id_utilisateur());
+
+            ResultSet rst = prep.executeQuery() ;
+
+            //recuperation des donnees du panier dans la BDD
+            while (rst.next()) {
+                liste_nb_articles.add(rst.getInt("nbarticle"));
+            }
+
+
+            System.out.println( "liste articles du panier = " + liste_nb_articles);
+            return liste_nb_articles;
 
         } catch (SQLException e) {
             throw new RuntimeException("Erreur de connection à la base de donnée");

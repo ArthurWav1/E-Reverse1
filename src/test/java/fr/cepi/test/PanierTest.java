@@ -53,6 +53,7 @@ public class PanierTest {
 
         //Recupération liste des articles du panier et leur quantité respective
         daoPanier.recup_articles_panier(new Panier(id_client));
+        daoPanier.recup_nb_articles_panier(new Panier(id_client));
 
     }
 }
