@@ -10,6 +10,9 @@
 
 </head>
 <body>
+
+<!-- Barre de navigation entre les onglets sur le côté droit de la page -->
+
 <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="<c:url value='/'/>"> Reverse </a>
@@ -68,102 +71,20 @@
 <br>
 <br>
 
-<c:if test="${acces}"> <!-- test pour savoir si la partie vendeur est accessible à partir de l'attribut acces de l'utilisateur -->
+<!-- Affichage des informations du compte -->
 <div>
-    <ul class="nav nav-pills nav-fill">
-
-     <br>
-     <li class="nav-item">
-         <a class="nav-link active" aria-current="page" href="#">Caractéristiques produit</a>
-     </li>
-     <li class="nav-item">
-          <a class="nav-link" href="#">Images</a>
-        </li>
-        <li class="nav-item">
-         <a class="nav-link" href="#">Apercu</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Finalisation</a>
-        </li>
-
-    </ul>
-<br>
-    <div>
-        <form method="post" action="Compte">
-
-            <!-- TypeProduit -->
-        <select class="form-select" aria-label="Default select example" name="type">
-            <option selected>Type de produit</option>
-             <option value="1">Gourde</option>
-             <option value="2">Module</option>
-             <option value="3">Accessoire</option>
-             <option value="4">Pastille</option>
-        </select>
-
-            <br>
-
-        <br>
-
-            <!-- Couleur> -->
-        <select class="form-select" aria-label="Default select example" name="couleur">
-            <option selected>Couleur du produit</option>
-            <option value="0">Pas de couleur</option>
-            <option value="1">Rouge</option>
-            <option value="2">Vert</option>
-            <option value="3">Bleu Fonce</option>
-            <option value="4">Jaune</option>
-            <option value="5">Noir</option>
-            <option value="6">Blanc</option>
-        </select>
-
-            <!-- Nom -->
-        <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Nom du produit</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" name="Nom" placeholder="Nom du produit">
-        </div>
-
-        <br>
-
-            <!--Volume -->
-            <div class="input-group">
-                <input class="input-group-text" name="volume">Volume</input>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
-            </div>
-
-            <!-- Prix -->
-        <div class="input-group mb-3">
-             <label for="exampleFormControlInput1" class="form-label">Prix</label>
-             <br>
-             <span class="input-group-text">€</span>
-            <input type="text" class="form-control" name="Prix" aria-label="Amount (to the nearest dollar)">
-        </div>
-
-        <br>
-
-            <!-- Description -->
-        <div class="input-group">
-            <input class="input-group-text" name="description">Description</input>
-            <textarea class="form-control" aria-label="With textarea"></textarea>
-        </div>
-
-        <br>
-
-            <!-- Saveur -->
-        <div class="input-group">
-            <input class="input-group-text" name="saveur">Saveur</input>
-            <textarea class="form-control" aria-label="With textarea"></textarea>
-        </div>
-
-            <!-- Image -->
-        <div class="input-group mb-3">
-            <input type="file" class="form-control" id="inputGroupFile02" name="image">
-            <label class="input-group-text" for="inputGroupFile02">Upload</label>
-        </div>
-            <input type="submit" value="Ajouter l'article">
-        </form>
-    </div>
+    <h1>Informations du compte : </h1>
+    <br><br><br><br>
+    <h5 name="prenom">Prénom: ${prenom}</h5>
+    <h5 name="nom">Nom de famille: ${nom}</h5>
+    <h5 name="mail">Mail associé au compte: ${mail}</h5>
+    <h5 name="adresse">Adresse de livraison: ${adresse}</h5>
+    <br><br>
+    <a href="<c:url value="/AjoutArticle"/>" class="btn btn-primary">Modifier ses informations personnelles</a><br>
 </div>
+
+<c:if test="${acces}"> <!-- test pour savoir si la partie vendeur est accessible à partir de l'attribut acces de l'utilisateur -->
+<a href="<c:url value="/AjoutArticle"/>" class="btn btn-primary">Ajouter un article</a>
 </c:if>
 
-<br>
 <jsp:include page="fin.jsp"/>
