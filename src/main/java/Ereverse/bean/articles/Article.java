@@ -54,6 +54,10 @@ public class Article implements Serializable {
     public int get_idType(){
         return id_type;}
 
+    public int get_id(){
+        return id;}
+
+
     public double getPrix() {
         return prix;
     }

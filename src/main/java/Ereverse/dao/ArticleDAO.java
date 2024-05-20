@@ -17,7 +17,7 @@ public class ArticleDAO {
      * @param ref_article : référence de l'article
      * @return Article dont la référence est ref_article (null s'il n'existe pas)
      */
-    public static Article TrouverArticle(int ref_article) {
+    public static Article TrouverArticle(String ref_article) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -30,7 +30,7 @@ public class ArticleDAO {
             // Requête SQL pour sélectionner l'article par son identifiant
             String query = "SELECT * FROM article WHERE reference = ?";
             statement = connection.prepareStatement(query);
-            statement.setInt(1, ref_article);
+            statement.setString(1, ref_article);
 
             // Exécuter la requête
             resultSet = statement.executeQuery();
@@ -41,7 +41,8 @@ public class ArticleDAO {
                 article = new Article(
                         resultSet.getString("reference"),
                         resultSet.getString("nom"),
-                        resultSet.getDouble("prix")
+                        resultSet.getDouble("prix"),
+                        resultSet.getString("description")
                         // Ajoutez d'autres attributs de l'article ici si nécessaire
                 );
             }
@@ -58,7 +59,9 @@ public class ArticleDAO {
             }
         }
 
+        System.out.println(article.get_ref());
         return article;
+
     }
 
     /**

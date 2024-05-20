@@ -35,8 +35,10 @@ public class ArticlesTest {
         dao.AjoutArticle("ref 2", "saveur 2", "description", 50, null, 1, 1, 1, "gourde");
 
         //test supression d'article dans BDD
-        dao.supression_article(new Article("ref 2","gourde",50));
+       dao.supression_article(new Article("ref 2","gourde",50));
 
+        //test Trouver article dans BDD
+        dao.TrouverArticle("ref 2");
 
 
     }

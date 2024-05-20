@@ -33,13 +33,12 @@ public class PanierTest {
     @Test
     public void test() {
         Client client = new Client("pnom","nom", "mail", "adress");
-        Article article = new Article("01","grd",20,"verte");
+        Article article = new Article("ref 1","gourde",50,"description");
         int id_client = client.getId();
-        int id_article = article.get_idType();
-        Panier panier = new Panier();
+        Panier panier = new Panier(id_client);
 
         //ajout article
-        dao.ajout_d_article(panier,article) ;
+        dao.ajout_d_article(panier,article);
 
         //supp article
         //dao.supression_d_article(panier,article);

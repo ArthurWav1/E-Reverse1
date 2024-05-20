@@ -59,7 +59,8 @@ public class Panier implements Serializable {
         //return somme;
     }
 
-    public Panier(){
+    public Panier(int id_utilisateur){
+        this.id_utilisateur = id_utilisateur;
     }
 
 }
