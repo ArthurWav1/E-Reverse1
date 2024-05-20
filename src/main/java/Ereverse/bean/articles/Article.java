@@ -37,6 +37,14 @@ public class Article implements Serializable {
         this.description=description;
     }
 
+    public Article( String ref_Article, String nom_Article, double prix, String description) {
+        this.ref_Article=ref_Article;
+        this.nom_Article=nom_Article;
+        this.prix=prix;
+        this.description=description;
+    }
+
+
     public Article(){
     }
 
