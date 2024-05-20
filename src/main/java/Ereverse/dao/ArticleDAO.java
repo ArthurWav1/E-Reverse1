@@ -270,6 +270,54 @@ public class ArticleDAO {
 
     }
 
+    public static Article TrouverArticle(int id_article) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Article article = null;
+
+        try {
+            // Obtenir la connexion à la base de données
+            connection = ServiceConnexionBDD.getConnection();
+
+            // Requête SQL pour sélectionner l'article par son identifiant
+            String query = "SELECT * FROM article WHERE id = ?";
+            statement = connection.prepareStatement(query);
+            statement.setInt(1, id_article);
+
+            // Exécuter la requête
+            resultSet = statement.executeQuery();
+
+            // Vérifier s'il y a un résultat
+            if (resultSet.next()) {
+                // Créer un objet Article avec les données récupérées de la base de données
+                article = new Article(
+                        resultSet.getInt("id"),
+                        resultSet.getString("reference"),
+                        resultSet.getString("nom"),
+                        resultSet.getDouble("prix"),
+                        resultSet.getString("description")
+                        // Ajoutez d'autres attributs de l'article ici si nécessaire
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermer les ressources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        //System.out.println("l'identifiant de l'article est " + article.get_id() + " et sa reference est " + article.get_ref());
+        return article;
+
+    }
+
 }
 
 

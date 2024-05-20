@@ -37,10 +37,10 @@ public class PanierTest {
     @Test
     public void test() {
 
-        daoClient.login("mail","mdp");
+        daoClient.login("space@sgfd","urrgp");
 
-        Article article = ArticleDAO.TrouverArticle("ref 1");
-        int id_client = daoClient.Trouver_id_Client("mail");
+        Article article = ArticleDAO.TrouverArticle("ref 2");
+        int id_client = daoClient.Trouver_id_Client("space@sgfd");
 
         //ajout article
         //daoPanier.ajout_d_article(new Panier(id_client),article,2);
@@ -49,13 +49,10 @@ public class PanierTest {
         //daoPanier.supression_d_article(article);
 
         //Changement nbarticle
-        daoPanier.modification_nb_articles(new Panier(id_client),article,5);
+        //daoPanier.modification_nb_articles(new Panier(id_client),article,5);
 
         //Recupération liste des articles du panier et leur quantité respective
-        //dao.recup_articles_panier();
+        daoPanier.recup_articles_panier(new Panier(id_client));
 
     }
 }
-
-
-
