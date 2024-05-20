@@ -30,8 +30,8 @@ public class ClientDAO {
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
-                    "INSERT INTO Utilisateur(nom,prenom,mail,adresse,salt,password,id_panier) " +
-                            "VALUES (?,?,?,?,?,?,?)");
+                    "INSERT INTO Utilisateur(nom,prenom,mail,adresse,salt,password) " +
+                            "VALUES (?,?,?,?,?,?)");
             //Préparations des Strings simples
             int i = 1;
             prep.setString(i++,client.getNom());
@@ -45,7 +45,6 @@ public class ClientDAO {
             random.nextBytes(salt);
             prep.setBytes(i++, salt);
             prep.setBytes(i++, hashPassword(salt, mdp));
-            prep.setInt(i++,client.get_id_Panier());
             prep.execute();
             System.out.println("Client " + client.getNom() + " ajouté à la bdd");
 
