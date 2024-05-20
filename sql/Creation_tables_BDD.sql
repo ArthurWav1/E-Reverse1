@@ -17,8 +17,7 @@ CREATE TABLE utilisateur
     mail     VARCHAR(100) NOT NULL UNIQUE,
     adresse  VARCHAR(1000) NOT NULL,
     salt     BYTEA NOT NULL,
-    password BYTEA NOT NULL,
-    id_panier INT NOT NULL
+    password BYTEA NOT NULL
 );
 
 --Création de la table panier qui représente le panier actuel d'un utilisateur avant commande
