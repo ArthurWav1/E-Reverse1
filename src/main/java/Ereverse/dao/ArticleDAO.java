@@ -217,53 +217,132 @@ public class ArticleDAO {
         }
     }
 
-        public static String AjoutArticle(String reference, String saveur, String description, double prix, String image, int id_type, int id_gamme, int id_couleur, String nom){
-            Connection connection = null;
-            PreparedStatement statement = null;
+    public static String AjoutArticle(String reference, String saveur, String description, double prix, String image, int id_type, int id_gamme, int id_couleur, String nom){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = ServiceConnexionBDD.getConnection();
+            int i =1;
+            String query;
+            switch (id_type){
+                case 1:
+                    query = "INSERT INTO article(reference, description, prix, image, id_type, id_gamme, id_couleur, nom)" +
+                            "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+                    statement = connection.prepareStatement(query);
+                    statement.setString(i++,reference);
+                    statement.setString(i++,description);
+                    statement.setDouble(i++,prix);
+                    statement.setString(i++, image);
+                    statement.setInt(i++, id_type);
+                    statement.setInt(i++,id_gamme);
+                    statement.setInt(i++,id_couleur);
+                    statement.setString(i++,nom);
+                    break;
+                case 2:
+                    query = "INSERT INTO article(reference, saveur, description, prix, image, id_type, nom)" +
+                            "VALUES(?, ?, ?, ?, ?, ?, ?)";
+                    statement = connection.prepareStatement(query);
+                    statement.setString(i++,reference);
+                    statement.setString(i++,saveur);
+                    statement.setString(i++,description);
+                    statement.setDouble(i++,prix);
+                    statement.setString(i++, image);
+                    statement.setInt(i++, id_type);
+                    statement.setString(i++,nom);
+                    break;
+                case 3:
+                case 4:
+                    query = "INSERT INTO article(reference, description, prix, image, id_type, nom)" +
+                            "VALUES(?, ?, ?, ?, ?, ?)";
+                    statement = connection.prepareStatement(query);
+                    statement.setString(i++,reference);
+                    statement.setString(i++,description);
+                    statement.setDouble(i++,prix);
+                    statement.setString(i++, image);
+                    statement.setInt(i++, id_type);
+                    statement.setString(i++,nom);
+            }
+            statement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ("Article '" + nom + "' de référence: " + reference + " rajouté");
+    }
+
+    public static ArrayList<String> ListerType() {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        ArrayList<String> listeType = new ArrayList<>();
+
+        try {
+            connection = ServiceConnexionBDD.getConnection();
+            String query = "SELECT libelle FROM type"; // Sélectionnez seulement la colonne libelle
+
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+
+            // Parcourir les résultats et ajouter les libellés des types à la liste
+            while (resultSet.next()) {
+                String libelleType = resultSet.getString("libelle");
+                listeType.add(libelleType);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            // Fermer les ressources (ResultSet, PreparedStatement et Connection)
             try {
-                connection = ServiceConnexionBDD.getConnection();
-                int i =1;
-                String query;
-                switch (id_type){
-                    case 1:
-                        query = "INSERT INTO article(reference, description, prix, image, id_type, id_gamme, id_couleur, nom)" +
-                                "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-                        statement = connection.prepareStatement(query);
-                        statement.setString(i++,reference);
-                        statement.setString(i++,description);
-                        statement.setDouble(i++,prix);
-                        statement.setString(i++, image);
-                        statement.setInt(i++, id_type);
-                        statement.setInt(i++,id_gamme);
-                        statement.setInt(i++,id_couleur);
-                        statement.setString(i++,nom);
-                        break;
-                    case 2:
-                        query = "INSERT INTO article(reference, saveur, description, prix, image, id_type, nom)" +
-                                "VALUES(?, ?, ?, ?, ?, ?, ?)";
-                        statement = connection.prepareStatement(query);
-                        statement.setString(i++,reference);
-                        statement.setString(i++,saveur);
-                        statement.setString(i++,description);
-                        statement.setDouble(i++,prix);
-                        statement.setString(i++, image);
-                        statement.setInt(i++, id_type);
-                        statement.setString(i++,nom);
-                        break;
-                    case 3:
-                    case 4:
-                        query = "INSERT INTO article(reference, description, prix, image, id_type, nom)" +
-                                "VALUES(?, ?, ?, ?, ?, ?)";
-                        statement = connection.prepareStatement(query);
-                        statement.setString(i++,reference);
-                        statement.setString(i++,description);
-                        statement.setDouble(i++,prix);
-                        statement.setString(i++, image);
-                        statement.setInt(i++, id_type);
-                        statement.setString(i++,nom);
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return listeType;
+    }
+
+    public static ArrayList<Gourde> ListerGourde2() {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        ArrayList<Gourde> ListeGourdes = new ArrayList<>();
+
+        try {
+            // Obtenir la connexion à la base de données
+            connection = ServiceConnexionBDD.getConnection();
+            String query = "SELECT a.reference, a.nom, a.prix, a.description, g.gamme, g.id " +
+                    "FROM article a " +
+                    "JOIN gamme g ON a.id_gamme = g.id" +
+                    " GROUP BY g.id, a.reference, a.nom, a.prix, a.description, g.gamme";
+
+            statement = connection.prepareStatement(query);
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                String reference = resultSet.getString("reference");
+                String nomGourde = resultSet.getString("nom");
+                double prix = resultSet.getDouble("prix");
+                String description = resultSet.getString("description");
+                String gamme = resultSet.getString("gamme");
+                int id_gamme = resultSet.getInt("id");
+
+                Boolean gammeAlreadyExists = ListeGourdes.stream().anyMatch(g -> { return g.getGamme().equals(gamme); });
+
+                if(!gammeAlreadyExists){
+                    Gourde gourde = new Gourde(reference, nomGourde, prix, description, gamme, id_gamme);
+                    ListeGourdes.add(gourde);
                 }
-                statement.executeQuery();
-                return ("Article '" + nom + "' de référence: " + reference + " rajouté");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Fermer les ressources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (statement != null) statement.close();
+                if (connection != null) connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
