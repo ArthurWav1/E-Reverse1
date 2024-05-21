@@ -33,10 +33,10 @@ public class PanierServlet extends HttpServlet {
         for (int i=0;i<articles_panier.size();i++){
             Article art_i = (Article) articles_panier.get(i);
             int nb_i = (int) nb_des_articles.get(i);
-            req.setAttribute("article_panier_i", art_i.get_ref());
-            req.setAttribute("article_panier_i", art_i.getNom_Article());
-            req.setAttribute("article_panier_i", art_i.getPrix());
-            req.setAttribute("article_panier_i", nb_i);
+            req.setAttribute("ref_article_panier_i", art_i.get_ref());
+            req.setAttribute("nom_article_panier_i", art_i.getNom_Article());
+            req.setAttribute("prix_article_panier_i", art_i.getPrix());
+            req.setAttribute("nb_article_panier_i", nb_i);
 
         }
 

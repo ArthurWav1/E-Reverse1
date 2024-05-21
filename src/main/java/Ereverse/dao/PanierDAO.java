@@ -33,7 +33,7 @@ public class PanierDAO {
      * @param article : l'article à ajouter.
      */
 
-    public void ajout_d_article (Panier panier, Article article, int nb_article) {
+    public static void ajout_d_article(Panier panier, Article article, int nb_article) {
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(

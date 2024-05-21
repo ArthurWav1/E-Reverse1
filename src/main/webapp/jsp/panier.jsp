@@ -31,8 +31,14 @@
 
                         <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
                         <div class="col">
+                            <h1 class="row text-muted" id = "nomArticlePanier">${nom_article_panier_i}</h1>
+                            <h1 class="row text-muted" id = "refArticlePanier">${ref_article_panier_i}</h1>
+
+                            <!--
                             <div class="row text-muted">Shirt</div>
                             <div class="row">Cotton T-shirt</div>
+                            -->
+
                         </div>
                         <div class="col">
                             <input type="number" name = "nb_article" id = "nb_article" min ="1" max ="100" >
