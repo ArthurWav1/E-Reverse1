@@ -1,9 +1,11 @@
 /*--------  CAROUSEL  ----------*/
 
-.carousel {
-    position: relative;
 
-    z-index: 2;
+div.carousel {
+    position: relative;
+    z-index: 1;
+}
+.carousel {
 
     margin-left: 15%;
     margin-right: 15%;
@@ -169,10 +171,10 @@ input:checked + .slide-container .nav label { display: block; }
     max-height: 670px;
     max-width: 1900px;
     margin: 35px 0px;
-    background-color: black;
+    background-color: #171616;
 
     background-size: 40px 40px;
-
+    color: #ffffff;
     outline-offset: 20px;
     overflow-x: auto;
     overflow-y: hidden;
@@ -387,6 +389,11 @@ input:checked + .slide-container .nav label { display: block; }
         scroll-snap-align: unset;
     }
 
+}
+
+nav.menu {
+    position: relative;
+    z-index: 2;
 }
 
 .menu ul li { float:left; list-style: none; }

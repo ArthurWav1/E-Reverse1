@@ -14,7 +14,7 @@ public class PageArticleServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Récupérer l'identifiant de l'article à partir des paramètres de la requête
-        int ref_article =  Integer.parseInt(request.getParameter("ref_article"));
+        String ref_article =  String.join(request.getParameter("ref_article"));
 
         // Utiliser cet identifiant pour charger les informations de l'article depuis la base de données
         // (vous pouvez utiliser votre DAO pour cela)

@@ -1,5 +1,6 @@
 package Ereverse.servlet;
 import Ereverse.bean.articles.Article;
+import Ereverse.bean.articles.Gourde;
 import Ereverse.dao.ArticleDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -19,10 +20,10 @@ public class PageGourdeServlet extends HttpServlet {
 
         // Utiliser cet identifiant pour charger les informations de l'article depuis la base de données
         // (vous pouvez utiliser votre DAO pour cela)
-        ArrayList<Article> articles = ArticleDAO.ListerGourde(id_gamme);
+        ArrayList <Gourde> ListeGourde = ArticleDAO.ListerGourde(id_gamme);
 
         // Mettre l'objet ListeGourde en tant qu'attribut de la requête pour l'affichage dans la JSP
-        request.setAttribute("ListeGourde", articles);
+        request.setAttribute("ListeGourde", ListeGourde);
 
         // Rediriger vers la page JSP de l'article avec les informations chargées
         request.getRequestDispatcher("/jsp/PageArticle.jsp").forward(request, response);
