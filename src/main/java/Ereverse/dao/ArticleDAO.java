@@ -34,7 +34,6 @@ public class ArticleDAO {
 
             // Exécuter la requête
             resultSet = statement.executeQuery();
-
             // Vérifier s'il y a un résultat
             if (resultSet.next()) {
                 // Créer un objet Article avec les données récupérées de la base de données
@@ -46,6 +45,9 @@ public class ArticleDAO {
                         resultSet.getString("description")
                         // Ajoutez d'autres attributs de l'article ici si nécessaire
                 );
+            }
+            else{
+                System.out.println("Article introuvable");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -59,10 +61,8 @@ public class ArticleDAO {
                 e.printStackTrace();
             }
         }
-
         System.out.println("l'identifiant de l'article est " + article.get_id() + " et sa reference est " + article.get_ref());
         return article;
-
     }
 
     /**

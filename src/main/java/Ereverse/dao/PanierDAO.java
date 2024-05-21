@@ -60,7 +60,7 @@ public class PanierDAO {
 
     /**
      * Méthode permettant de supprimer un article dans la table du panier (BDD).
-     * @param article :  panier de l'utilisateur.
+     * @param article : panier de l'utilisateur.
      */
     public void supression_d_article (Article article) {
 

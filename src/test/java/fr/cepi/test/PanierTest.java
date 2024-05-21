@@ -25,7 +25,7 @@ public class PanierTest {
         try {
             ServiceConnexionBDD.setupDriver("src/main/webapp/WEB-INF/db.properties");
             daoPanier = new PanierDAO();
-            daoClient=new ClientDAO();
+            daoClient = new ClientDAO();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -39,8 +39,8 @@ public class PanierTest {
 
         daoClient.login("space@sgfd","urrgp");
 
-        Article article = ArticleDAO.TrouverArticle("ref 2");
-        int id_client = daoClient.Trouver_id_Client("space@sgfd");
+        Article article = ArticleDAO.TrouverArticle("GOST001BE");
+        int id_client = daoClient.Trouver_id_Client("vendeur@reverse.com");
 
         //ajout article
         daoPanier.ajout_d_article(new Panier(id_client),article,2);
