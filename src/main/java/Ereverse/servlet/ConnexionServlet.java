@@ -16,8 +16,12 @@ import java.io.IOException;
 public class ConnexionServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/jsp/connexion.jsp").forward(req, resp);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("ajoutReussi") != null){
+            session.removeAttribute("ajoutReussi");
+        }
+        getServletContext().getRequestDispatcher("/jsp/connexion.jsp").forward(request, response);
     }
 
     @Override
@@ -43,7 +47,7 @@ public class ConnexionServlet extends HttpServlet {
             Client client = new ClientDAO().login(mail,mdp);
             if (client != null){
                 System.out.println("Client trouvé : " + client);
-                HttpSession session =request.getSession();
+                HttpSession session = request.getSession();
                 session.setAttribute(FiltreAuthentification.SESSION_USER_KEY,client);
                 response.sendRedirect("Compte");
             }

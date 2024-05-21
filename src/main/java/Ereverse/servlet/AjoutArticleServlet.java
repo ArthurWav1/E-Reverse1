@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -15,24 +16,23 @@ public class AjoutArticleServlet extends HttpServlet {
 
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Client client = (Client) req.getSession().getAttribute(FiltreAuthentification.SESSION_USER_KEY);
-        if (client != null) {
-            req.setAttribute("nomEtPrenom", client.getPrenom() + " " + client.getNom());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        if (session.getAttribute("ajoutReussi") != null){
+            session.removeAttribute("ajoutReussi");
         }
-        getServletContext().getRequestDispatcher("/jsp/ajoutArticle.jsp").forward(req, resp);
+        getServletContext().getRequestDispatcher("/jsp/ajoutArticle.jsp").forward(request, response);
     }
 
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String erreur = null;
+        // Initialisation des variables
+        String erreur = "";
         double prix = 0.;
         int id_gamme = 0;
         int id_couleur = 0;
         String saveur = "";
-
-        System.out.println(request.getParameter("type") + " " + request.getParameter("reference") + " " + request.getParameter("nomProduit") + " " + request.getParameter("description") + " " + request.getParameter("prix") + " " + request.getParameter("image") + " " + request.getParameter("couleur") + " " + request.getParameter("gamme") + " " + request.getParameter("volume") + " " + request.getParameter("saveur"));
 
 
         // Récupération des valeurs des champs du formulaire
@@ -43,7 +43,12 @@ public class AjoutArticleServlet extends HttpServlet {
         String description = request.getParameter("description");
 
         if (request.getParameter("prix") != null){
-            prix = Double.parseDouble(request.getParameter("prix"));
+            try{
+                prix = Double.parseDouble(request.getParameter("prix"));
+            }
+            catch (NumberFormatException e){
+                erreur = erreur + "Le format du prix n'est pas valide (format correct: XXXXX.YY). ";
+            }
         }
         else{
             erreur = erreur + "Veuillez préciser un prix. ";
@@ -51,14 +56,31 @@ public class AjoutArticleServlet extends HttpServlet {
 
         String image = request.getParameter("image");
 
-        if (id_type == 1){
-            //1 = Rouge, 2 = Vert, 3 = Bleu foncé, 4 = Jaune, 5 = Noir, 6 = Blanc
+        if (id_type == 1){ //Gourde
+            //1 = Rouge, 2 = Vert, 3 = Bleu foncé, 4 = Jaune, 5 = Noir, 6 = Blanc, -1 = erreur
             id_couleur = Integer.parseInt(request.getParameter("couleur"));
             id_gamme = Integer.parseInt(request.getParameter("gamme"));
-            int volume = Integer.parseInt(request.getParameter("volume"));
+            //Vérification de la validité des champs pour la couleur, la gamme et le volume
+            if (id_couleur == -1){
+                erreur = "Veuillez sélectionner une couleur valide. ";
+            }
+            if (id_gamme == -1){
+                erreur = "Veuillez sélectionner une gamme valide. ";
+            }
+            if (request.getParameter("volume") != null){
+                try{
+                    int volume = Integer.parseInt(request.getParameter("volume"));
+                }
+                catch (NumberFormatException e){
+                    erreur = erreur + "Le format du volume n'est pas valide, veuillez entrer uniquement un entier positif. ";
+                }
+            }
+            else{
+                erreur = erreur + "Veuillez préciser le volume de la gourde. ";
+            }
         }
 
-        if (id_type == 4){
+        if (id_type == 2){ //Saveur
             saveur = request.getParameter("saveur");
         }
 
@@ -68,29 +90,35 @@ public class AjoutArticleServlet extends HttpServlet {
             erreur = "Veuillez sélectionner un type d'article valide. ";
         }
 
-        if (nomProduit.length() > 50 || nomProduit == null) {
+        if (nomProduit.length() > 50 || nomProduit.isEmpty()) {
             erreur = erreur + "Nom du produit manquant ou trop long (>50 caractères).  ";
         }
 
-        if (description.length() > 1000 || description == null ) {
+        if (description.length() > 1000 || description.isEmpty() ) {
             erreur = erreur + "Description manquante ou trop longue (>1000 caractères).  ";
         }
 
-        if (reference.length() > 30 || reference == null){
+        if (reference.length() > 30 || reference.isEmpty()){
             erreur = erreur + "Référence manquante ou trop longue  (>30 caractères). ";
         }
 
         //Affichage d'une erreur éventuelle.
-        if (erreur != null) {
+        if (!erreur.isEmpty()) {
             request.setAttribute("erreurChamp", erreur);
             getServletContext().getRequestDispatcher("/jsp/ajoutArticle.jsp").forward(request, response);
         }
 
         //Si aucune erreur n'est détectée, ajout de l'article à la BDD et retour à la page du compte.
         else{
-            ArticleDAO.AjoutArticle(reference, saveur, description, prix, image, id_type, id_gamme, id_couleur, nomProduit);
-            request.setAttribute("ajoutReussi","Ajout de l'article effectué avec succès !");
+            //ArticleDAO.AjoutArticle(reference, saveur, description, prix, image, id_type, id_gamme, id_couleur, nomProduit);
+            Client client = (Client) request.getSession().getAttribute(FiltreAuthentification.SESSION_USER_KEY);
+            HttpSession session = request.getSession();
+            session.setAttribute(FiltreAuthentification.SESSION_USER_KEY,client);
+            session.setAttribute("ajoutReussi","Ajout de l'article effectué avec succès !");
+            response.sendRedirect("Compte");
+            /*
             getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(request,response);
+            */
         }
     }
 }

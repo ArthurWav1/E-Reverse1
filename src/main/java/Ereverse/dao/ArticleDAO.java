@@ -26,7 +26,6 @@ public class ArticleDAO {
         try {
             // Obtenir la connexion à la base de données
             connection = ServiceConnexionBDD.getConnection();
-
             // Requête SQL pour sélectionner l'article par son identifiant
             String query = "SELECT * FROM article WHERE reference = ?";
             statement = connection.prepareStatement(query);
@@ -215,7 +214,6 @@ public class ArticleDAO {
         public static String AjoutArticle(String reference, String saveur, String description, double prix, String image, int id_type, int id_gamme, int id_couleur, String nom){
             Connection connection = null;
             PreparedStatement statement = null;
-            ResultSet resultSet = null;
             try {
                 connection = ServiceConnexionBDD.getConnection();
                 int i =1;
@@ -258,8 +256,8 @@ public class ArticleDAO {
                         statement.setInt(i++, id_type);
                         statement.setString(i++,nom);
                 }
-                resultSet = statement.executeQuery();
-                return ("Article '" + nom +"'rajouté");
+                statement.executeQuery();
+                return ("Article '" + nom + "' de référence: " + reference + " rajouté");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

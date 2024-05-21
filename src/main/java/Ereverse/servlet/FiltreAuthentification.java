@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Filtre qui permet de savoir si l'utilisateur est connecté où non, ce qui permet d'accéder à sa page utilisateur et sa page panier
+ * Filtre qui permet de savoir si l'utilisateur est connecté où non, ce qui permet d'accéder à la page de son compte et sa page panier
  */
 
 @WebFilter("/*")

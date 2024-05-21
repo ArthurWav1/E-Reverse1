@@ -17,6 +17,7 @@ public class CompteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Client client = (Client) req.getSession().getAttribute(FiltreAuthentification.SESSION_USER_KEY);
         if (client != null) {
+            System.out.println(client);
             req.setAttribute("nomEtPrenom", client.getPrenom() + " " + client.getNom());
             req.setAttribute("acces",client.getAccess());
             req.setAttribute("prenom",client.getPrenom());
