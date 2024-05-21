@@ -1,7 +1,6 @@
 package Ereverse.dao;
 
 import Ereverse.ConnexionBDD.ServiceConnexionBDD;
-import Ereverse.bean.Client;
 import Ereverse.bean.articles.Article;
 import Ereverse.bean.articles.Gourde;
 import java.sql.Connection;
@@ -217,45 +216,45 @@ public class ArticleDAO {
         }
     }
 
-        public static void AjoutArticle(String reference, String saveur, String description, double prix, byte[] image, int id_type, int id_gamme, int id_couleur, String nom){
-            //Connection connection = null;
-            //PreparedStatement statement = null;
-            //ResultSet resultSet = null;
+    public static void AjoutArticle(String reference, String saveur, String description, double prix, byte[] image, int id_type, int id_gamme, int id_couleur, String nom){
+        //Connection connection = null;
+        //PreparedStatement statement = null;
+        //ResultSet resultSet = null;
 
-            try {
-                Connection connection = ServiceConnexionBDD.getConnection();
-                PreparedStatement prep = connection.prepareStatement("INSERT INTO article(reference,saveur,description,prix,image,id_type,id_gamme,id_couleur,nom)"
-                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement("INSERT INTO article(reference,saveur,description,prix,image,id_type,id_gamme,id_couleur,nom)"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-                //statement = connection.prepareStatement(query);
-                //statement.setString(1,reference);
-                //statement.setString(2,saveur);
-                //statement.setString(3,description);
-                //statement.setDouble(4,prix);
-                //statement.setBytes(5, image);
-                //statement.setInt(6, id_type);
-                //statement.setInt(7,id_gamme);
-                //statement.setInt(8,id_couleur);
-                //statement.setString(9,nom);
+            //statement = connection.prepareStatement(query);
+            //statement.setString(1,reference);
+            //statement.setString(2,saveur);
+            //statement.setString(3,description);
+            //statement.setDouble(4,prix);
+            //statement.setBytes(5, image);
+            //statement.setInt(6, id_type);
+            //statement.setInt(7,id_gamme);
+            //statement.setInt(8,id_couleur);
+            //statement.setString(9,nom);
 
-                prep.setString(1,reference);
-                prep.setString(2,saveur);
-                prep.setString(3,description);
-                prep.setDouble(4,prix);
-                prep.setBytes(5, image);
-                prep.setInt(6, id_type);
-                prep.setInt(7,id_gamme);
-                prep.setInt(8,id_couleur);
-                prep.setString(9,nom);
+            prep.setString(1,reference);
+            prep.setString(2,saveur);
+            prep.setString(3,description);
+            prep.setDouble(4,prix);
+            prep.setBytes(5, image);
+            prep.setInt(6, id_type);
+            prep.setInt(7,id_gamme);
+            prep.setInt(8,id_couleur);
+            prep.setString(9,nom);
 
-                prep.execute();
+            prep.execute();
 
-                System.out.println("Article " + reference +" rajouté");
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
+            System.out.println("Article " + reference +" rajouté");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
 
-            }
         }
+    }
 
     public static ArrayList<String> ListerType() {
         Connection connection = null;
@@ -398,10 +397,5 @@ public class ArticleDAO {
 
         //System.out.println("l'identifiant de l'article est " + article.get_id() + " et sa reference est " + article.get_ref());
         return article;
-
     }
-
 }
-
-
-
