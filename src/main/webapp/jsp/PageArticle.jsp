@@ -43,7 +43,7 @@
                 ${ListeGourde.get(0).description}
             </ul>
         </div>
-        <button class="buy--btn">AJOUTER AU PANIER</button>
+        <a href="<c:url value="Panier"/>"> AJOUTER AU PANIER </a>
     </div>
 </section>
 <jsp:include page="fin.jsp"/>

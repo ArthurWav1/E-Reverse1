@@ -8,26 +8,41 @@
     <meta charset="UTF-8">
     <title> Panier eReverse </title>
     <jsp:include page="début.jsp"/>
+
+    <!--</head> et <body> dans debut
+    </body> et </html> dans fin -->
+
     <div class="card">
         <div class="row">
             <div class="col-md-8 cart">
                 <div class="title">
                     <div class="row">
                         <div class="col"><h4><b> Articles </b></h4></div>
-                        <div class="col align-self-center text-right text-muted">3 items</div>
+
+                        <!--code pour compter les items ici
+                        -->
+                        <div class="col align-self-center text-right text-muted"> nombre items</div>
                     </div>
                 </div>
+
                 <div class="row border-top border-bottom">
                     <div class="row main align-items-center">
+
+
                         <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
                         <div class="col">
                             <div class="row text-muted">Shirt</div>
                             <div class="row">Cotton T-shirt</div>
                         </div>
                         <div class="col">
-                            <a href="#">-</a><a href="#" class="border">1</a><a href="#">+</a>
+                            <input type="number" name = "nb_article" id = "nb_article" min ="1" max ="100" >
                         </div>
                         <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
+                        <div class="col">
+                            <a href="<c:url value="SuppArticlePanier"/>"> Supprimer cet article </span>
+                            </a>
+                        </div>
+
                     </div>
                 </div>
                 <div class="row">
@@ -56,6 +71,7 @@
                         <div class="col">&euro; 44.00 <span class="close">&#10005;</span></div>
                     </div>
                 </div>
+
                 <div class="back-to-shop"><a href="#">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
                 </div>
                 <div class="col-md-4 summary">
@@ -79,5 +95,7 @@
             </div>
                 </div>
             </div>
+
+    <a href = "<c:url value="MultiArticles"/>" > Continuer vos achats </a>
 
 <jsp:include page="fin.jsp"/>
