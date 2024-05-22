@@ -12,6 +12,8 @@
 <%@ include file="alerte.jsp"%>
 <body>
 
+<a href="<c:url value="/Compte"/>" class="btn btn-primary">Retour</a><br><br>
+
 <br>
 <br>
 <h1> Ajoutez votre article en précisant ses caractéristiques</h1>
