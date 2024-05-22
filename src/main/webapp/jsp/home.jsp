@@ -24,7 +24,7 @@
                     </c:if>
                     <c:if test="${not empty ListeGourdes}">
                         <c:forEach var="gourde" items="${ListeGourdes}">
-                            <li><a href="<c:url value='/gourdes?id_gamme=${gourde.getId_Gamme()}'/>"><c:out value="${gourde.gamme}" /></a></li>
+                            <li><a href="<c:url value='/gourdes?id_gamme=${gourde.getId_Gamme()}'/>"> <c:out value="${gourde.gamme}" /> </a></li>
                         </c:forEach>
                     </c:if>
                 </ul>

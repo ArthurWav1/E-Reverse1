@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 /** Classe de test de la classe UserDao */
 public class ClientDaoTest {
 
-    private static ClientDAO dao;
-
     /**
      * Initialisation du pool de connexion et création du DAO
      */

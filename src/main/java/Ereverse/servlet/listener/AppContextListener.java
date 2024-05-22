@@ -1,7 +1,7 @@
 package Ereverse.servlet.listener;
 
 import Ereverse.ConnexionBDD.ServiceConnexionBDD;
-import Ereverse.servlet.ConnexionServlet;
+import Ereverse.servlet.compte.ConnexionServlet;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;

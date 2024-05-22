@@ -1,7 +1,9 @@
-package Ereverse.servlet;
+package Ereverse.servlet.servletAjoutArticles;
 
 import Ereverse.bean.Client;
+import Ereverse.bean.articles.Gamme;
 import Ereverse.dao.ArticleDAO;
+import Ereverse.servlet.FiltreAuthentification;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,6 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet({"/AjoutArticle"})
 public class AjoutArticleServlet extends HttpServlet {
@@ -21,7 +24,14 @@ public class AjoutArticleServlet extends HttpServlet {
         if (session.getAttribute("ajoutReussi") != null){
             session.removeAttribute("ajoutReussi");
         }
-        getServletContext().getRequestDispatcher("/jsp/ajoutArticle.jsp").forward(request, response);
+
+        ArrayList<Gamme> listeGammes = ArticleDAO.listerGamme();
+        for(Gamme g : listeGammes){
+            System.out.println(g.getId_gamme());
+        }
+        session.setAttribute("listeGammes",listeGammes);
+
+        getServletContext().getRequestDispatcher("/jsp/ajoutArticles/ajoutArticle.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,13 +44,14 @@ public class AjoutArticleServlet extends HttpServlet {
 
 
         // Récupération des valeurs des champs du formulaire
-        //1 = Gourde, 2 = Module, 3 = Accessoire, 4 = Pastille
+        //1 = Gourde, 2 = Gamme, 3 = Accessoire, 4 = Pastille
         int id_type = Integer.parseInt(request.getParameter("type"));
+
         String reference = request.getParameter("reference");
         String nomProduit = request.getParameter("nomProduit");
         String description = request.getParameter("description");
 
-        if (request.getParameter("prix") != null){
+        if (!request.getParameter("prix").isEmpty() && id_type != 1){
             try{
                 prix = Double.parseDouble(request.getParameter("prix"));
             }
@@ -65,20 +76,10 @@ public class AjoutArticleServlet extends HttpServlet {
             if (id_gamme == -1){
                 erreur = "Veuillez sélectionner une gamme valide. ";
             }
-            /*
-            if (request.getParameter("volume") != null){
-                try{
-                    int volume = Integer.parseInt(request.getParameter("volume"));
-                }
-                catch (NumberFormatException e){
-                    erreur = erreur + "Le format du volume n'est pas valide, veuillez entrer uniquement un entier positif. ";
-                }
+            else{ //Le prix est obligatoirement celui de la gamme
+                Gamme gamme = ArticleDAO.chercherGamme(id_gamme);
+                prix = gamme.getPrix();
             }
-            else{
-                erreur = erreur + "Veuillez préciser le volume de la gourde. ";
-            }
-
-             */
         }
 
         if (id_type == 2){ //Saveur
@@ -106,7 +107,7 @@ public class AjoutArticleServlet extends HttpServlet {
         //Affichage d'une erreur éventuelle.
         if (!erreur.isEmpty()) {
             request.setAttribute("erreurChamp", erreur);
-            getServletContext().getRequestDispatcher("/jsp/ajoutArticle.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/jsp/ajoutArticles/ajoutArticle.jsp").forward(request, response);
         }
 
         //Si aucune erreur n'est détectée, ajout de l'article à la BDD et retour à la page du compte.

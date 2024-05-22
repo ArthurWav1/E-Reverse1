@@ -1,6 +1,7 @@
-package Ereverse.servlet;
+package Ereverse.servlet.compte;
 
 import Ereverse.bean.Client;
+import Ereverse.servlet.FiltreAuthentification;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

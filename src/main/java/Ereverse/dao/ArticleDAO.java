@@ -1,8 +1,8 @@
 package Ereverse.dao;
 
 import Ereverse.ConnexionBDD.ServiceConnexionBDD;
-import Ereverse.bean.Client;
 import Ereverse.bean.articles.Article;
+import Ereverse.bean.articles.Gamme;
 import Ereverse.bean.articles.Gourde;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -405,21 +405,113 @@ public class ArticleDAO {
     }
 
 
-    public static void supression_article(Article article){
+    public static void suppression_article(Article article){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
-            PreparedStatement prep = connection.prepareStatement(
-                    "DELETE FROM article WHERE reference = ?");
-            prep.setString(1,article.get_ref());
-            prep.execute();
-            System.out.println("Article" + article.get_ref() + " supprimé");
+
+            PreparedStatement prep1 = connection.prepareStatement(
+                    "SELECT * FROM article WHERE reference = ?"
+            );
+            prep1.setString(1,article.get_ref());
+            ResultSet rs = prep1.executeQuery();
+
+            if (rs.next()){
+                PreparedStatement prep2 = connection.prepareStatement(
+                        "DELETE FROM article WHERE reference = ?");
+                prep2.setString(1,article.get_ref());
+                prep2.execute();
+                System.out.println("Article: " + article.get_ref() + " supprimé");
+            }
+            else{
+                System.out.println("L'article à supprimer n'existe pas");
+            }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
 
+    public static void ajoutGamme(String gamme, double prix, int volume){
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                    "INSERT INTO gamme(prix, volume, gamme) " +
+                            "VALUES (?,?,?)"
+            );
+            prep.setDouble(1,prix);
+            prep.setInt(2,volume);
+            prep.setString(3,gamme);
+            prep.execute();
+            System.out.println("Gamme " + gamme + " ajoutée avec succès à la base");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
+    }
+
+    public static Gamme chercherGamme(int id_gamme){
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                    "SELECT * FROM gamme WHERE id = ?");
+            prep.setInt(1,id_gamme);
+            ResultSet rs = prep.executeQuery();
+            rs.next();
+            return new Gamme(id_gamme, rs.getString("gamme"),rs.getDouble("prix"),rs.getInt("volume"));
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Méthode donnant la liste de toutes les gammes de gourdes
+     * @return : Liste des gammes
+     */
+    public static ArrayList<Gamme> listerGamme(){
+        ArrayList<Gamme> listeGamme = new ArrayList<>();
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                    "SELECT * FROM gamme"
+            );
+            ResultSet rs = prep.executeQuery();
+            while(rs.next()){
+                listeGamme.add(new Gamme(rs.getInt("id"),rs.getString("gamme"),rs.getDouble("prix"),rs.getInt("volume")));
+            }
+            return listeGamme;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void supprimerGamme(int id_gamme){
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+
+            PreparedStatement prep1 = connection.prepareStatement(
+                    "SELECT * FROM gamme WHERE id = ?"
+            );
+            prep1.setInt(1,id_gamme);
+            ResultSet rs = prep1.executeQuery();
+
+            if (rs.next()){
+                PreparedStatement prep2 = connection.prepareStatement(
+                        "DELETE FROM gamme WHERE id = ?"
+                );
+                prep2.setInt(1,id_gamme);
+                prep2.execute();
+                System.out.println("Gamme " + id_gamme + " supprimée");
+            }
+            else{
+                System.out.println("La gamme à supprimer n'existe pas");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
 

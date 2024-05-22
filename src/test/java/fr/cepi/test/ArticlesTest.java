@@ -1,16 +1,15 @@
 package fr.cepi.test;
 
 import Ereverse.ConnexionBDD.ServiceConnexionBDD;
-import Ereverse.bean.Client;
 import Ereverse.bean.articles.Article;
+import Ereverse.bean.articles.Gamme;
 import Ereverse.dao.ArticleDAO;
-import Ereverse.dao.ClientDAO;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 public class ArticlesTest {
-    private static ArticleDAO dao;
 
     /**
      * Initialisation du pool de connexion et création du DAO
@@ -19,7 +18,6 @@ public class ArticlesTest {
     public static void init()  {
         try {
             ServiceConnexionBDD.setupDriver("src/main/webapp/WEB-INF/db.properties");
-            dao = new ArticleDAO();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -31,18 +29,35 @@ public class ArticlesTest {
     @Test
     public void test() {
         //test ajout d'article dans BDD
-        dao.AjoutArticle("ref 5", "saveur 1", "description", 50, null, 1, 1, 1, "gourde");
+        ArticleDAO.AjoutArticle("ref 5", "saveur 1", "description", 50, null, 1, 1, 1, "gourde");
 
     }
     @Test
     public void test2(){
         //test supression d'article dans BDD
-        dao.supression_article(new Article("ref 5","gourde",50));
+        ArticleDAO.suppression_article(new Article("ref 5","gourde",50));
     }
 
     @Test
     public void test3(){
         //test Trouver article dans BDD
-        dao.TrouverArticle("ref 2");
+        ArticleDAO.TrouverArticle("ref 2");
+    }
+
+    @Test
+    public void testGamme(){
+        ArticleDAO.ajoutGamme("gammeTest",100,150);
+
+        ArrayList<Gamme> liste = ArticleDAO.listerGamme();
+        for(Gamme g : liste){
+            System.out.println("Id: " + g.getId_gamme() + " Gamme: " + g.getGamme() + " Prix: " + g.getPrix() + " Volume: " + g.getVolume());
+        }
+
+        ArticleDAO.supprimerGamme(liste.get(liste.size()-1).getId_gamme());
+
+        liste = ArticleDAO.listerGamme();
+        for(Gamme g : liste){
+            System.out.println("Id: " + g.getId_gamme() + " Gamme: " + g.getGamme() + " Prix: " + g.getPrix() + " Volume: " + g.getVolume());
+        }
     }
 }

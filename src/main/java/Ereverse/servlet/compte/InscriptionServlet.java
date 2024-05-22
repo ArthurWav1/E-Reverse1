@@ -1,4 +1,4 @@
-package Ereverse.servlet;
+package Ereverse.servlet.compte;
 
 import Ereverse.dao.ClientDAO;
 import Ereverse.bean.Client;

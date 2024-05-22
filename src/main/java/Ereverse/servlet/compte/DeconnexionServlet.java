@@ -1,5 +1,6 @@
-package Ereverse.servlet;
+package Ereverse.servlet.compte;
 
+import Ereverse.servlet.FiltreAuthentification;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import org.apache.logging.log4j.LogManager;
