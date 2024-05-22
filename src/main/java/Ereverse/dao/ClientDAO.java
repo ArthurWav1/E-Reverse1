@@ -116,9 +116,9 @@ public class ClientDAO {
             Connection connection = ServiceConnexionBDD.getConnection();
 
             //Tests des champs qui ne sont pas remplis
-            boolean a = (nouveauNom != null);
-            boolean b = (nouveauPrenom != null);
-            boolean c = (nouvelleAdresse != null);
+            boolean a = (!nouveauNom.isEmpty());
+            boolean b = (!nouveauPrenom.isEmpty());
+            boolean c = (!nouvelleAdresse.isEmpty());
 
             //Préparation de la commande sql
             PreparedStatement prep = connection.prepareStatement(
@@ -164,9 +164,10 @@ public class ClientDAO {
             Connection connection = ServiceConnexionBDD.getConnection();
 
             //Tests des champs qui ne sont pas remplis
-            boolean a = (nouveauNom != null);
-            boolean b = nouveauPrenom != null;
-            boolean c = nouvelleAdresse != null;
+            boolean a = (!nouveauNom.isEmpty());
+            boolean b = (!nouveauPrenom.isEmpty());
+            boolean c = (!nouvelleAdresse.isEmpty());
+
 
             //Préparation de la commande sql
             PreparedStatement prep = connection.prepareStatement(

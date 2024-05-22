@@ -34,12 +34,13 @@ public class ModificationServlet extends HttpServlet {
         String ancienmdp = request.getParameter("ancienmdp");
         String nouveaumdp = request.getParameter("nouveaumdp");
 
-        if ( (nouveaumdp != null && ancienmdp == null) || (ancienmdp != null && nouveaumdp == null) ){
+        if ( (nouveaumdp.isEmpty() && !ancienmdp.isEmpty()) || (!ancienmdp.isEmpty() && nouveaumdp.isEmpty())){
             request.setAttribute("erreurChamp","Veuillez préciser l'ancien et le nouveau mot de passe pour le modifier (entre 6 et 20 caractères)");
             getServletContext().getRequestDispatcher("/jsp/Modification.jsp").forward(request, response);
 
         }
-        if (nouveaumdp != null){
+        if (!nouveaumdp.isEmpty()){
+            System.out.println(nouveaumdp);
             if (nouveaumdp.length() > 20 || nouveaumdp.length() <5){
                  request.setAttribute("erreurChamp","Veuillez choisir un mot de passe contenant entre 6 et 20 caractères");
                  getServletContext().getRequestDispatcher("/jsp/Modification.jsp").forward(request, response);
@@ -58,7 +59,7 @@ public class ModificationServlet extends HttpServlet {
             }
         }
         else{
-            if (nom != null || prenom != null || adresse != null){
+            if (!nom.isEmpty() || !prenom.isEmpty() || !adresse.isEmpty()){
             ClientDAO.modificationSansMDP(client, nom, prenom, adresse);
             request.setAttribute("enregistrementReussi","Modifications effectuées avec succès");
             getServletContext().getRequestDispatcher("/jsp/Modification.jsp").forward(request, response);

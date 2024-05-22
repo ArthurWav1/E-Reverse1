@@ -29,25 +29,15 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<c:url value='/Compte'/>">Accueil</a>
+                        <a class="nav-link active" aria-current="page" href="<c:url value='/'/>">Accueil</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value='/Compte/Parametre'/>">Paramètre du compte</a>
+                        <a class="nav-link" href="<c:url value='/Modification'/>">Paramètre du compte</a>
                     </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="<c:url value='/Compte'/>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Gerer les annonces
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Modifier un article</a></li>
-                            <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Déposer un article</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Nouvelle gamme</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value='/AjoutArticle'/>">Modifier un article</a>
                     </li>
 
                     <li class="nav-item">

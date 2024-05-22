@@ -19,11 +19,11 @@ public class SuppressionServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String ancienMDP = request.getParameter("ancienMDP");
+        String mdp = request.getParameter("motdepasse");
         Client client = (Client) request.getSession().getAttribute(FiltreAuthentification.SESSION_USER_KEY);
 
-        if (ancienMDP != null){ //Vérification qu'un mdp a bien été entré
-            if (ClientDAO.compareMDP(client.getMail(), ancienMDP)){ // Vérification que les mdp sont identiques
+        if (!mdp.isEmpty()){ //Vérification qu'un mdp a bien été entré
+            if (ClientDAO.compareMDP(client.getMail(), mdp)){ // Vérification que les mdp sont identiques
                 //Supprime le client de la BDD et déconnecte le client en le renvoyant à la page d'accueil
                 ClientDAO.suppressionClient(client);
                 response.sendRedirect("Deconnexion");

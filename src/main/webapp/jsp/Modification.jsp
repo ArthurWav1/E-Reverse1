@@ -42,14 +42,12 @@
         </div><br>
 
         <div class="mb-3">
-            <input type="password" class="form-control" name="ancienmdp" placeholder="Ancien mot de passe">
+            <input type="text" class="form-control" name="ancienmdp" placeholder="Ancien mot de passe">
         </div><br>
 
         <div class="mb-3">
-            <input type="password" class="form-control" name="nouveaumdp" placeholder="Nouveau mot de passe">
-        </div><br>
-
-        <br><br><br>
+            <input type="text" class="form-control" name="nouveaumdp" placeholder="Nouveau mot de passe">
+        </div><br><br>
 
         <input type="submit" value="Modifier les informations">
     </form>

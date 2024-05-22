@@ -12,9 +12,9 @@
 <%@ include file="alerte.jsp"%>
 
     <body>
-    <form method="post" action="Modification">
+    <form method="post" action="Suppression">
         <div class="mb-3">
-            <input type="password" class="form-control" name="validAncienMDP" placeholder="Ancien mot de passe">
+            <input type="text" class="form-control" name="motdepasse" placeholder="Mot de passe du compte">
         </div>
         <input type="submit" value="Supprimer le compte">
         <a href="<c:url value="/Modification"/>" class="btn btn-primary">Annuler</a><br>
