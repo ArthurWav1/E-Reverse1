@@ -25,7 +25,7 @@ public class ClientDAO {
      * @param client : l'objet client de l'utilisateur à enregistrer.
      * @param mdp : le mot de passe qu'a entré le client pour s'enregistrer.
      */
-    public void enregistrement(Client client, String mdp){
+    public static void enregistrement(Client client, String mdp){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             PreparedStatement prep = connection.prepareStatement(
@@ -56,9 +56,9 @@ public class ClientDAO {
      * Méthode qui s'exécute lorsqu'un utilisateur souhaite se connecter.
      * @param mail : login entré par l'utilisateur.
      * @param mdp : mdp entré par l'utilisateur.
-     * @return l'objet correspondant au client en cas de succès de la connexion ou null dans le cas contraire.
+     * @return L'objet correspondant au client en cas de succès de la connexion ou null dans le cas contraire.
      */
-    public Client login(String mail,String mdp){
+    public static Client login(String mail,String mdp){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
             //Préparation de la commande.
@@ -102,7 +102,7 @@ public class ClientDAO {
                 byte[] salt = rs.getBytes("salt");
                 byte[] password = rs.getBytes("password");
                 byte[] hash = hashPassword(salt,autreMDP);
-                return Arrays.compare(hash,rs.getBytes("password")) == 0;
+                return Arrays.compare(hash,password) == 0;
             }
             else{
                 return false;
@@ -111,46 +111,32 @@ public class ClientDAO {
             throw new RuntimeException(e);
         }
     }
-    public static void modification(Client client, String nouveauNom, String nouveauPrenom, String nouvelleAdresse, String ancienMDP, String nouveauMDP){
+    public static void modificationAvecMDP(Client client, String nouveauNom, String nouveauPrenom, String nouvelleAdresse, String nouveauMDP){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
-            String setValeur = "";
-            boolean b = false;
-            if (nouveauNom != null){
-                setValeur = setValeur + "nom = ?";
-                b = true;
-            }
-            if (nouveauPrenom != null){
-                if (b){
-                    setValeur = setValeur +", prenom =?";
-                }
-                else{
-                    setValeur = setValeur +"prenom = ?";
-                    b = true;
-                }
-            }
-            if (nouvelleAdresse != null){
-                if (b){
-                    setValeur = setValeur +", adresse =?";
-                }
-                else{
-                    setValeur = setValeur +"adresse = ?";
-                    b = true;
-                }
-            }
-            if (nouveauMDP != null){
 
-            }
+            //Tests des champs qui ne sont pas remplis
+            boolean a = (nouveauNom != null);
+            boolean b = (nouveauPrenom != null);
+            boolean c = (nouvelleAdresse != null);
 
+            //Préparation de la commande sql
             PreparedStatement prep = connection.prepareStatement(
                     "UPDATE utilisateur " +
-                            "SET nom = ? , prenom = ? , adresse = ? , salt = ? , password = ? " +
-                            "WHERE mail = ? ");
-            int i = 1;
-            //Changement des Strings normaux de l'utilisateur (on ne peut pas modifier le mail)
-            prep.setString(i++,nouveauNom);
-            prep.setString(i++,nouveauPrenom);
-            prep.setString(i++,nouvelleAdresse);
+                            "SET nom = ?, prenom = ?, adresse = ?, salt = ?, password = ? "+
+                            "WHERE mail = ?");
+
+            int i =1;
+
+            //Remplissage des champs de la commande selon le remplissage
+            if (a){prep.setString(i++,nouveauNom);}
+            else{ prep.setString(i++,client.getNom());}
+
+            if (b){prep.setString(i++,nouveauPrenom);}
+            else{ prep.setString(i++,client.getPrenom());}
+
+            if (c){prep.setString(i++,nouvelleAdresse);}
+            else{ prep.setString(i++,client.getAdresse());}
 
             //Changement du mot de passe et du salt de la bdd à partir du nouveau mdp de l'utilisateur
             SecureRandom random = new SecureRandom();
@@ -158,17 +144,60 @@ public class ClientDAO {
             random.nextBytes(salt);
             prep.setBytes(i++, salt);
             prep.setBytes(i++, hashPassword(salt, nouveauMDP));
+            prep.setString(i++,client.getMail());
+
             prep.execute();
             System.out.println("Les données du client ont bien été modifiées.");
+            prep.close();
+            connection.close();
 
         } catch (SQLException e) {
             throw new RuntimeException("Erreur de connection à la base de donnée");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidKeySpecException e) {
+        } catch (NoSuchAlgorithmException | InvalidKeySpecException e) {
             throw new RuntimeException(e);
         }
+    }
 
+
+        public static void modificationSansMDP(Client client, String nouveauNom, String nouveauPrenom, String nouvelleAdresse){
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+
+            //Tests des champs qui ne sont pas remplis
+            boolean a = (nouveauNom != null);
+            boolean b = nouveauPrenom != null;
+            boolean c = nouvelleAdresse != null;
+
+            //Préparation de la commande sql
+            PreparedStatement prep = connection.prepareStatement(
+                    "UPDATE utilisateur " +
+                            "SET nom = ?, prenom = ?, adresse = ? "+
+                            "WHERE mail = ?");
+
+            int i =1;
+
+            //Remplissage des champs de la commande selon le remplissage
+            if (a){prep.setString(i++,nouveauNom);}
+            else{ prep.setString(i++,client.getNom());}
+
+            if (b){prep.setString(i++,nouveauPrenom);}
+            else{ prep.setString(i++,client.getPrenom());}
+
+            if (c){prep.setString(i++,nouvelleAdresse);}
+            else{ prep.setString(i++,client.getAdresse());}
+
+            prep.setString(i++,client.getMail());
+
+            prep.execute();
+            System.out.println("Les données du client ont bien été modifiées.");
+            prep.close();
+            connection.close();
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void suppressionClient(Client client){
@@ -180,26 +209,13 @@ public class ClientDAO {
             );
             prep.setString(1,client.getMail());
             prep.execute();
-            System.out.println("Utilisateur" + client.getNom() + " supprimé");
+            System.out.println("Utilisateur " + client.getNom() + " supprimé");
+            prep.close();
+            connection.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Renvoie le hash d'un mot de passe avec du sel
-     *
-     * @param salt sel
-     * @param password mot de passe
-     * @return le hash du mot de passe
-     * @throws NoSuchAlgorithmException
-     * @throws InvalidKeySpecException
-     */
-    private static byte[] hashPassword(byte[] salt, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        // Augmenter iteration count pour plus de sécurité
-        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 1024, 128);
-        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-        return factory.generateSecret(spec).getEncoded();
     }
 
     public static int Trouver_id_Client(String mail_client) {
@@ -248,5 +264,21 @@ public class ClientDAO {
         System.out.println("l'identifiant du client est " + client.getId() + ", son adresse mail est " + client.getMail());
         return client.getId();
 
+    }
+
+    /**
+     * Renvoie le hash d'un mot de passe avec du sel
+     *
+     * @param salt sel
+     * @param password mot de passe
+     * @return le hash du mot de passe
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeySpecException
+     */
+    private static byte[] hashPassword(byte[] salt, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        // Augmenter iteration count pour plus de sécurité
+        KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 1024, 128);
+        SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        return factory.generateSecret(spec).getEncoded();
     }
 }

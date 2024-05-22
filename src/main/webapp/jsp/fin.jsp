@@ -2,12 +2,13 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 <link href="<c:url value='css/style.css'/>" rel="stylesheet">
+
 <br>
 <br>
 <br>
 <br>
+
 <div class="d-inline p-2 text-bg-dark">
     <ul class="nav justify-content-center">
         <li class="nav-item">
@@ -32,7 +33,6 @@
     </ul>
 
 </div>
-
 
 </body>
 </html>

@@ -12,57 +12,49 @@
 <%@ include file="alerte.jsp"%>
 
 <body>
-<c:if test="${validationSuppression==null}">
-<h3 name="Instructions" class="text-white">Veuillez remplir les champs que vous souhaitez modifier</h3>
 
-<br>
-
-<h4 name="Instructions2" class="text-danger">Remplissez uniquement les informations à changer</h4>
-
-<br><br><br>
-
-
-<form method="post" action="Modification" id="formulaireModification">
-    <label class="text-danger">
-        <input type="radio" value="suppression" class="alert-danger" name="suppression">Supprimer le compte
-    </label><input type="submit" value="Supprimer le compte"><br><br>
+    <h3 name="Instructions" class="text-white">Veuillez remplir les champs que vous souhaitez modifier</h3>
 
     <br>
 
-    <div class="mb-3">
-        <input type="text" class="form-control" name="nom" placeholder="Nom">
-    </div><br>
-
-    <div class="mb-3">
-        <input type="text" class="form-control" name="prenom" placeholder="Prénom">
-    </div><br>
-
-    <div class="mb-3">
-        <input type="text" class="form-control" name="adresse" placeholder="Adresse postale">
-    </div><br>
-
-    <div class="mb-3">
-        <input type="password" class="form-control" name="ancienmdp" placeholder="Ancien mot de passe">
-    </div><br>
-
-    <div class="mb-3">
-        <input type="password" class="form-control" name="nouveaumdp" placeholder="Nouveau mot de passe">
-    </div><br>
+    <h4 name="Instructions2" class="text-danger">Remplissez uniquement les informations à changer</h4>
 
     <br><br><br>
 
-    <input type="submit" value="Modifier les informations"><br><br>
+    <!-- Vers la page du compte-->
+    <a href="<c:url value="/Compte"/>" class="btn btn-primary">Retour</a><br><br>
 
-</form>
+    <!-- Formulaire pour changer les informations -->
+    <form method="post" action="Modification" id="formulaireModification">
 
-</c:if>
+        <br>
 
-<c:if test="${validationSuppression != null}">
-<form method="post" action="Modification" id ="formulaireSuppression">
-    ${validationSuppression}
-    <a href="<c:url value="/Modification"/>" class="btn btn-primary">Annuler</a><br>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="nom" placeholder="Nom">
+        </div><br>
 
-</form>
-</c:if>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="prenom" placeholder="Prénom">
+        </div><br>
 
-<jsp:include page="fin.jsp"/>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="adresse" placeholder="Adresse postale">
+        </div><br>
+
+        <div class="mb-3">
+            <input type="password" class="form-control" name="ancienmdp" placeholder="Ancien mot de passe">
+        </div><br>
+
+        <div class="mb-3">
+            <input type="password" class="form-control" name="nouveaumdp" placeholder="Nouveau mot de passe">
+        </div><br>
+
+        <br><br><br>
+
+        <input type="submit" value="Modifier les informations">
+    </form>
+
+    <!-- Vers la suppression du compte -->
+    <a href="<c:url value="/Suppression"/>" class="btn btn-danger">Supprimer le compte</a><br><br>
+
+    <jsp:include page="fin.jsp"/>

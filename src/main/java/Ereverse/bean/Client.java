@@ -70,6 +70,6 @@ public class Client implements Serializable {
 
     @Override
     public String toString() {
-        return "Nom du client: " + this.getNom() + ", id du client: " + this.getId();
+        return "Nom du client: " + this.getNom() + ", prenom du client: " + this.getPrenom() + " , Mail:" + this.getMail() + " , id du client: " + this.getId();
     }
 }
