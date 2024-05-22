@@ -30,16 +30,19 @@ public class ArticlesTest {
      */
     @Test
     public void test() {
-
         //test ajout d'article dans BDD
-        dao.AjoutArticle("ref 1", "saveur 1", "description", 50, null, 1, 1, 1, "gourde");
+        dao.AjoutArticle("ref 5", "saveur 1", "description", 50, null, 1, 1, 1, "gourde");
 
+    }
+    @Test
+    public void test2(){
         //test supression d'article dans BDD
-       //dao.supression_article(new Article("ref 2","gourde",50));
+        dao.supression_article(new Article("ref 5","gourde",50));
+    }
 
+    @Test
+    public void test3(){
         //test Trouver article dans BDD
-        //dao.TrouverArticle("ref 2");
-
-
+        dao.TrouverArticle("ref 2");
     }
 }

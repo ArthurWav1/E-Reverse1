@@ -56,7 +56,7 @@
 
         <!-- Référence du produit -->
         <div class="mb-3">
-            <input type="text" class="form-control" id="exampleFormControlInput1" name="reference" placeholder="Référence">
+            <input type="text" class="form-control" name="reference" placeholder="Référence">
         </div>
 
         <br>
@@ -68,19 +68,11 @@
 
         <br>
 
-        <!--Volume -->
-        <div class="input-group">
-            <input type="text" class="form-control"  name="volume" placeholder="Volume (en mL)">
-        </div>
-
-        <br>
-
         <!-- Prix -->
         <div class="input-group mb-3">
-            <label for="exampleFormControlInput1" class="form-label"></label>
             <br>
             <span class="input-group-text">€</span>
-            <input type="text" class="form-control" name="prix" aria-label="Amount (to the nearest dollar)">
+            <input type="number" class="form-control" name="prix" aria-label="Amount (to the nearest dollar)">
         </div>
 
         <br>
@@ -104,10 +96,9 @@
             <input type="file" class="form-control" id="inputGroupFile02" name="image">
             <label class="input-group-text" for="inputGroupFile02">Upload</label>
         </div>
+
         <input type="submit" value="Ajouter l'article">
     </form>
-
 </div>
-
 
 <jsp:include page="fin.jsp"/>

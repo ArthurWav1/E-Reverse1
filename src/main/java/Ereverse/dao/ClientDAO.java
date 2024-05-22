@@ -2,7 +2,6 @@ package Ereverse.dao;
 
 import Ereverse.ConnexionBDD.ServiceConnexionBDD;
 import Ereverse.bean.Client;
-import Ereverse.bean.articles.Article;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -85,9 +84,64 @@ public class ClientDAO {
         }
     }
 
-    public void modification(Client client, String nouveauNom, String nouveauPrenom, String nouvelleAdresse, String nouveauMDP){
+    /**
+     * Méthode qui permet d'obtenir le mot de passe et le sel
+     * @param mail : mail unique de l'utilisateur pour retrouver son MDP enregistré dans la BDD
+     * @return boolean : Renvoie si le MDP en entrée est le même que celui de la BDD
+     */
+    public static boolean compareMDP(String mail, String autreMDP){
         try {
             Connection connection = ServiceConnexionBDD.getConnection();
+            PreparedStatement prep = connection.prepareStatement(
+                    "SELECT salt, password FROM utilisateur "+
+                            "WHERE mail = ?");
+
+            prep.setString(1,mail);
+            ResultSet rs = prep.executeQuery();
+            if (rs.next()){
+                byte[] salt = rs.getBytes("salt");
+                byte[] password = rs.getBytes("password");
+                byte[] hash = hashPassword(salt,autreMDP);
+                return Arrays.compare(hash,rs.getBytes("password")) == 0;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException | NoSuchAlgorithmException | InvalidKeySpecException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public static void modification(Client client, String nouveauNom, String nouveauPrenom, String nouvelleAdresse, String ancienMDP, String nouveauMDP){
+        try {
+            Connection connection = ServiceConnexionBDD.getConnection();
+            String setValeur = "";
+            boolean b = false;
+            if (nouveauNom != null){
+                setValeur = setValeur + "nom = ?";
+                b = true;
+            }
+            if (nouveauPrenom != null){
+                if (b){
+                    setValeur = setValeur +", prenom =?";
+                }
+                else{
+                    setValeur = setValeur +"prenom = ?";
+                    b = true;
+                }
+            }
+            if (nouvelleAdresse != null){
+                if (b){
+                    setValeur = setValeur +", adresse =?";
+                }
+                else{
+                    setValeur = setValeur +"adresse = ?";
+                    b = true;
+                }
+            }
+            if (nouveauMDP != null){
+
+            }
+
             PreparedStatement prep = connection.prepareStatement(
                     "UPDATE utilisateur " +
                             "SET nom = ? , prenom = ? , adresse = ? , salt = ? , password = ? " +
@@ -117,7 +171,7 @@ public class ClientDAO {
 
     }
 
-    public void suppressionClient(Client client){
+    public static void suppressionClient(Client client){
         Connection connection = null;
         try {
             connection = ServiceConnexionBDD.getConnection();
@@ -141,7 +195,7 @@ public class ClientDAO {
      * @throws NoSuchAlgorithmException
      * @throws InvalidKeySpecException
      */
-    private byte[] hashPassword(byte[] salt, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
+    private static byte[] hashPassword(byte[] salt, String password) throws NoSuchAlgorithmException, InvalidKeySpecException {
         // Augmenter iteration count pour plus de sécurité
         KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 1024, 128);
         SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");

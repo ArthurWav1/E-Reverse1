@@ -28,6 +28,7 @@ public class DeconnexionServlet extends HttpServlet{
             logger.info("Logout de l'utilisateur " + session.getAttribute(FiltreAuthentification.SESSION_USER_KEY));
             session.invalidate();
         }
+
         // redirection vers la page d'accueil
         try {
             response.sendRedirect("");

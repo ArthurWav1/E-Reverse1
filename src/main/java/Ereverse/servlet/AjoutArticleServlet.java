@@ -24,8 +24,6 @@ public class AjoutArticleServlet extends HttpServlet {
         getServletContext().getRequestDispatcher("/jsp/ajoutArticle.jsp").forward(request, response);
     }
 
-
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Initialisation des variables
         String erreur = "";
@@ -67,6 +65,7 @@ public class AjoutArticleServlet extends HttpServlet {
             if (id_gamme == -1){
                 erreur = "Veuillez sélectionner une gamme valide. ";
             }
+            /*
             if (request.getParameter("volume") != null){
                 try{
                     int volume = Integer.parseInt(request.getParameter("volume"));
@@ -78,6 +77,8 @@ public class AjoutArticleServlet extends HttpServlet {
             else{
                 erreur = erreur + "Veuillez préciser le volume de la gourde. ";
             }
+
+             */
         }
 
         if (id_type == 2){ //Saveur
@@ -110,15 +111,15 @@ public class AjoutArticleServlet extends HttpServlet {
 
         //Si aucune erreur n'est détectée, ajout de l'article à la BDD et retour à la page du compte.
         else{
-            //ArticleDAO.AjoutArticle(reference, saveur, description, prix, image, id_type, id_gamme, id_couleur, nomProduit);
+            //Ajout de l'article à la BDD
+            ArticleDAO.AjoutArticle(reference, saveur, description, prix, image, id_type, id_gamme, id_couleur, nomProduit);
             Client client = (Client) request.getSession().getAttribute(FiltreAuthentification.SESSION_USER_KEY);
             HttpSession session = request.getSession();
+            //Attributs pour la page compte, infos utilisateur + notif de réussite
             session.setAttribute(FiltreAuthentification.SESSION_USER_KEY,client);
             session.setAttribute("ajoutReussi","Ajout de l'article effectué avec succès !");
+            //Redirige vers la page compte lorsque l'article est rajouté
             response.sendRedirect("Compte");
-            /*
-            getServletContext().getRequestDispatcher("/jsp/compte.jsp").forward(request,response);
-            */
         }
     }
 }

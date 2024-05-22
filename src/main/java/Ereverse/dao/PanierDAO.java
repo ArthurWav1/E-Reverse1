@@ -29,10 +29,9 @@ public class PanierDAO {
 
     /**
      * Méthode permettant d'ajouter un article dans la table du panier (BDD).
-     * @param panier :  panier de l'utilisateur.
+     * @param panier : panier de l'utilisateur.
      * @param article : l'article à ajouter.
      */
-
     public void ajout_d_article (Panier panier, Article article, int nb_article) {
         try {
             Connection connection = ServiceConnexionBDD.getConnection();

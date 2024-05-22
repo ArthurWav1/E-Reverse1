@@ -4,11 +4,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Reverse </title>
+    <title>Mon compte </title>
     <link href="<c:url value='css/style.css'/>" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
+
 <body>
 
 <!-- Barre de navigation entre les onglets sur le côté droit de la page -->
@@ -37,16 +38,6 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="<c:url value='/Compte'/>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Statistiques
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Action</a></li>
-                            <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Another action</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="<c:url value='/Compte'/>" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Gerer les annonces
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
@@ -55,8 +46,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Ordres des articles</a></li>
-                            <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Nouvelle catégorie</a></li>
+                            <li><a class="dropdown-item" href="<c:url value='/Compte'/>">Nouvelle gamme</a></li>
                         </ul>
                     </li>
 
@@ -81,9 +71,11 @@
     <h5 name="mail" class="text-white">Mail associé au compte: ${mail}</h5>
     <h5 name="adresse" class="text-white">Adresse de livraison: ${adresse}</h5>
     <br><br>
-    <a href="<c:url value="/AjoutArticle"/>" class="btn btn-primary">Modifier ses informations personnelles</a><br>
+
+    <a href="<c:url value="/Modification"/>" class="btn btn-primary">Modifier ses informations personnelles</a><br>
 </div>
 
+<br><br>
 <c:if test="${acces}"> <!-- test pour savoir si la partie vendeur est accessible à partir de l'attribut acces de l'utilisateur -->
 <a href="<c:url value="/AjoutArticle"/>" class="btn btn-primary">Ajouter un article</a>
 </c:if>
