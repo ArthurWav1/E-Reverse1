@@ -59,9 +59,7 @@ public class AjoutArticleServlet extends HttpServlet {
                 erreur = erreur + "Le format du prix n'est pas valide (format correct: XXXXX.YY). ";
             }
         }
-        else{
-            erreur = erreur + "Veuillez préciser un prix. ";
-        }
+
 
         String image = request.getParameter("image");
 

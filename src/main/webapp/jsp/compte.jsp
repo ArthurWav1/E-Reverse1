@@ -36,9 +36,11 @@
                         <a class="nav-link" href="<c:url value='/Modification'/>">Paramètre du compte</a>
                     </li>
 
+                    <c:if test="${acces}">
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value='/AjoutArticle'/>">Modifier un article</a>
                     </li>
+                    </c:if>
 
                     <li class="nav-item">
                         <a href="<c:url value="Deconnexion"/>">Se déconnecter</a> <!-- Déconnexion du compte et renvoie vers home -->

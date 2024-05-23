@@ -19,7 +19,7 @@
                         <img src="<c:url value='picture/ModèleNoir1.webp'/>" class="card-img-top" alt="image gourde">
                         <div class="card-body">
                             <h5 class="card-title"><c:out value="${gourde.gamme}" /></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text"><c:out value="${gourde.description}"/></p>
                             <a href="<c:url value='/gourdes?id_gamme=${gourde.getId_Gamme()}'/>" class="btn btn-primary">Voir le modèle</a>
                         </div>
                     </div>
